@@ -1,6 +1,6 @@
 {
   "name": "utility",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Some utility functions to use",
   "main": "index.js",
   "scripts": {
