@@ -1,5 +1,5 @@
 # utility
-Some utility functions to use.
+Some web utility functions to use.
 
 ## install
 `npm i @simboonlong/utility`
@@ -8,7 +8,7 @@ Some utility functions to use.
 
 ### setCookie
 
-setCookie('`name`', `value`, `days`);
+setCookie(`name`, `value`, `days`);
 
 Example:
 
@@ -21,7 +21,7 @@ setCookie('isVisited', true, 0); // deletes cookie by setting expiry to 0
 
 ### getCookie
 
-getCookie('`name`');
+getCookie(`name`);
 
 Example:
 
@@ -42,19 +42,44 @@ getViewport().w // returns current viewport width
 getViewport().h // returns current viewport height
 ```
 
-### throttle
+### onWindowResize
 
-throttle(`callBack`, `wait`)
+onWindowResize(`callback`, `throtteRate`)
 
 Example:
 
 ```
-import { getViewport, throttle } from '@simboonlong/utility'
+import { onWindowResize } from '@simboonlong/utility'
 
-const onWindowResize = () => {
-  console.log(getViewport().w, getViewport().h); // returns current viewport dimensions at interval of 100ms
-}
+onWindowResize(() => {
+  console.log('window resize')
+}, 75) // throtteRate default is 50
+```
 
-const throttled = throttle(onWindowResize, 100);
-window.addEventListener('resize', throttled);
+### onWindowScroll
+
+onWindowScroll(`callback`, `throtteRate`)
+
+Example:
+
+```
+import { onWindowScroll } from '@simboonlong/utility'
+
+onWindowScroll({
+  scrollDown: () => {
+    console.log('scroll down')
+  },
+  scrollUp: () => {
+    console.log('scroll up')
+  },
+  hitTop: () => {
+    console.log('hit top')
+  }, // optional
+  hitInBetween: (st) => {
+    console.log(`hit between - handle any custom logic with scrollTop value - ${st}`)
+  }, // optional
+  hitBottom: () => {
+    console.log('hit bottom')
+  } // optional
+}, 75) // throtteRate default is 50
 ```

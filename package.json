@@ -1,11 +1,15 @@
 {
   "name": "utility",
-  "version": "0.2.1",
-  "description": "Some utility functions to use",
+  "version": "0.2.2",
+  "description": "Some web utility functions to use.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "simboonlong",
+  "author": {
+    "name": "Sim Boon Long",
+    "email": "simboonlong@gmail.com",
+    "url": "http://simboonlong.com/"
+  },
   "license": "MIT"
 }
