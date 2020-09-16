@@ -1,6 +1,6 @@
 {
-  "name": "utility",
-  "version": "0.2.2",
+  "name": "@simboonlong/utility",
+  "version": "0.2.3",
   "description": "Some web utility functions to use.",
   "main": "index.js",
   "scripts": {
