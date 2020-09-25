@@ -1,4 +1,4 @@
-import { throttle } from './throttle'
+import { throttle } from './throttle.js'
 
 export const onWindowResize = (callback, throtteRate = 50) => {
   const onResize = () => {
@@ -16,12 +16,12 @@ export const onWindowScroll = (callback, throtteRate = 50) => {
     const st = window.pageYOffset || document.documentElement.scrollTop
     const mostBottomTop = document.body.scrollHeight - window.innerHeight
 
-    if (callback.hitTop && st <= 0) {
-      callback.hitTop()
+    if (callback.hitBetween) {
+      callback.hitBetween(st)
     }
 
-    if (callback.hitInBetween) {
-      callback.hitInBetween(st)
+    if (callback.hitTop && st <= 0) {
+      callback.hitTop()
     }
 
     if (callback.hitBottom && st >= mostBottomTop) {
