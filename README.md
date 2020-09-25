@@ -1,6 +1,9 @@
 # utility
 Some web utility functions to use.
 
+## demo
+https://lucid-ardinghelli-84074a.netlify.app/
+
 ## install
 `npm i @simboonlong/utility`
 
