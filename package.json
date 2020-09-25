@@ -8,7 +8,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "e2e:local": "concurrently \"npm:serve\" \"npm:cy:open\"",
-    "e2e:ci": "concurrently -k \"npm:serve\" \"npm:cy:run\"",
+    "e2e:ci": "concurrently -k -s first \"npm:serve\" \"npm:cy:run\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sim Boon Long",
