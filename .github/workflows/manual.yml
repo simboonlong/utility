@@ -1,11 +1,9 @@
 name: CI
 
-on:
-  push:
-    branches: [ master ]
+on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,5 +16,5 @@ jobs:
 
     - name: Install node dependancies
       run: npm ci
-    - name: Integration
-      run: e2e:ci
+    - name: Integration test
+      run: npm run e2e:ci

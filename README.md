@@ -4,7 +4,7 @@
 Some web utility functions to use.
 
 ## demo
-https://lucid-ardinghelli-84074a.netlify.app/
+<a href="https://lucid-ardinghelli-84074a.netlify.app/" target="_blank">https://lucid-ardinghelli-84074a.netlify.app/</a>
 
 ## install
 `npm i @simboonlong/utility`
