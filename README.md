@@ -1,5 +1,10 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/13e83d25-b833-48e5-bc73-bac4e8e32958/deploy-status)](https://app.netlify.com/sites/lucid-ardinghelli-84074a/deploys)
+
 # utility
 Some web utility functions to use.
+
+## demo
+https://lucid-ardinghelli-84074a.netlify.app/
 
 ## install
 `npm i @simboonlong/utility`
