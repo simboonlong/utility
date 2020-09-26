@@ -14,6 +14,8 @@
         -moz-osx-font-smoothing: grayscale;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-weight: 400;
+        color: #222;
+        background-color: #fcfcfc;
       }
 
       hr {
@@ -23,13 +25,17 @@
         background-color: #ddd;
       }
 
-      .padding-y {
-        padding-top: 8px;
-        padding-bottom: 8px;
+      b {
+        color: orange;
       }
 
-      .light {
-        color: #ccc;
+      button {
+        cursor: pointer;
+      }
+
+      .padding-y {
+        padding-top: 4px;
+        padding-bottom: 4px;
       }
     </style>
   </head>
@@ -38,29 +44,29 @@
     <p>Some web utility functions to use.</p>
     <hr>
     <div class="padding-y">
-      <h4>getCookie, setCookie</h4>
-      <p>getCookie('isVisited') = <b id="cookie" data-testid="cookie"></b></p>
+      <h3>getCookie, setCookie</h3>
+      <p>getCookie('tracker') = <b id="cookie" data-testid="cookie"></b></p>
       <p>
-        <button type="button" id="cookie-set" data-testid="cookie-set">setCookie('isVisited', true, 0.125)</button>
-        <button type="button" id="cookie-unset" data-testid="cookie-unset">setCookie('isVisited', true, 0)</button>
+        <button type="button" id="cookie-set" data-testid="cookie-set">setCookie('tracker', 'abc123', 0.125)</button>
+        <button type="button" id="cookie-unset" data-testid="cookie-unset">setCookie('tracker', 'abc123', 0)</button>
       </p>
     </div>
     <hr>
     <div class="padding-y">
-      <h4>getViewport, onWindowResize</h4>
+      <h3>getViewport, onWindowResize</h3>
       <p>getViewport().w = <b id="vp-w" data-testid="vp-w"></b></p>
       <p>getViewport().h = <b id="vp-h" data-testid="vp-h"></b></p>
     </div>
     <hr>
-    <div class="padding-y" style="position: sticky; top: 0; background-color: white;">
-      <h4>onWindowScroll</h4>
+    <div class="padding-y" style="position: sticky; top: 0; background-color: #fcfcfc;">
+      <h3>onWindowScroll</h3>
       <p>scrollDown / scrollUp = <b id="scroll" data-testid="scroll"></b></p>
       <p>hitTop = <b id="hit-top" data-testid="hit-top"></b></p>
       <p>hitBetween = <b id="hit-between" data-testid="hit-between"></b></p>
       <p>hitBottom = <b id="hit-bottom" data-testid="hit-bottom"></b></p>
     </div>
     <hr>
-    <div class="padding-y light" style="max-width: 600px;">
+    <div class="padding-y" style="max-width: 600px;">
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</p>
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</p>
