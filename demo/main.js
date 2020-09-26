@@ -1,4 +1,4 @@
-import { getCookie, setCookie, getViewport, onWindowResize, onWindowScroll } from '../helper/index.js'
+import { getCookie, setCookie, getViewport, onWindowResize, onWindowScroll } from '../index.js'
 
 const updateCookie = () => {
   document.getElementById('cookie').innerText = getCookie('tracker') ?? undefined
