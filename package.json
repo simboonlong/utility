@@ -4,7 +4,7 @@
   "description": "Some web utility functions to use.",
   "main": "index.js",
   "scripts": {
-    "serve": "npx http-server",
+    "serve": "http-server",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "e2e:local": "concurrently \"npm:serve\" \"npm:cy:open\"",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@testing-library/cypress": "^7.0.1",
     "concurrently": "^5.3.0",
-    "cypress": "^5.2.0"
+    "cypress": "^5.2.0",
+    "http-server": "^0.12.3"
   }
 }
