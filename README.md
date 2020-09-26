@@ -33,7 +33,7 @@ Example:
 ```
 import { getCookie } from '@simboonlong/utility'
 
-getCookie('isVisited'); // returns cookie's value if set
+getCookie('tracker'); // returns cookie's value if set
 ```
 
 ### getViewport
