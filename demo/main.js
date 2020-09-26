@@ -1,7 +1,7 @@
 import { getCookie, setCookie, getViewport, onWindowResize, onWindowScroll } from '../helper/index.js'
 
 const updateCookie = () => {
-  document.getElementById('cookie').innerText = getCookie('isVisited') ?? false
+  document.getElementById('cookie').innerText = getCookie('tracker') ?? undefined
 }
 
 const updateViewport = () => {
@@ -10,12 +10,12 @@ const updateViewport = () => {
 }
 
 document.getElementById('cookie-unset').addEventListener('click', () => {
-  setCookie('isVisited', true, 0)
+  setCookie('tracker', 'abc123', 0)
   updateCookie()
 })
 
 document.getElementById('cookie-set').addEventListener('click', () => {
-  setCookie('isVisited', true, 0.125)
+  setCookie('tracker', 'abc123', 0.125)
   updateCookie()
 })
 

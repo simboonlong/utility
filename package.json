@@ -9,7 +9,8 @@
     "cy:run": "cypress run",
     "e2e": "concurrently \"npm:serve\" \"npm:cy:open\"",
     "e2e:ci": "concurrently -k -s first \"npm:serve\" \"npm:cy:run\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest ./*.test.js",
+    "test:single": "jest --watch"
   },
   "author": "Sim Boon Long",
   "license": "MIT",
@@ -18,9 +19,12 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.11.5",
     "@testing-library/cypress": "^7.0.1",
+    "babel-jest": "^26.3.0",
     "concurrently": "^5.3.0",
     "cypress": "^5.2.0",
-    "http-server": "^0.12.3"
+    "http-server": "^0.12.3",
+    "jest": "^26.4.2"
   }
 }
