@@ -5,16 +5,16 @@ describe('cookie', () => {
 
     user.findByTestId('cookie-set')
       .click()
-    user.findByTestId('cookie').should('have.text', 'true')
+    user.findByTestId('cookie').should('have.text', 'abc123')
 
     user.reload()
-    user.findByTestId('cookie').should('have.text', 'true')
+    user.findByTestId('cookie').should('have.text', 'abc123')
 
     user.findByTestId('cookie-unset')
       .click()
-    user.findByTestId('cookie').should('have.text', 'false')
+    user.findByTestId('cookie').should('have.text', 'undefined')
 
     user.reload()
-    user.findByTestId('cookie').should('have.text', 'false')
+    user.findByTestId('cookie').should('have.text', 'undefined')
   })
 })
