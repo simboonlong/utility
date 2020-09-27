@@ -16,6 +16,8 @@ jobs:
 
     - name: Install node dependancies
       run: npm ci
+    - name: Lint
+      run: npm run lint
     - name: Unit test
       run: npm run test
     - name: Integration test
