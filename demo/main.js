@@ -21,7 +21,12 @@ document.getElementById('cookie-set').addEventListener('click', () => {
 
 document.getElementById('scroll-to-y').addEventListener('click', (event) => {
   event.preventDefault()
-  scrollToY({ endValue: 1600 })
+  scrollToY({ endValue: 1400 })
+})
+
+document.getElementById('scroll-to-target').addEventListener('click', (event) => {
+  event.preventDefault()
+  scrollToY({ endValue: document.getElementById('target').offsetTop })
 })
 
 onWindowScroll({
