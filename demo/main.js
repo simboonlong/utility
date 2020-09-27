@@ -24,6 +24,11 @@ document.getElementById('scroll-to-y').addEventListener('click', (event) => {
   scrollToY({ endValue: 1400 })
 })
 
+document.getElementById('scroll-to-y-infinity').addEventListener('click', (event) => {
+  event.preventDefault()
+  scrollToY({ endValue: Infinity })
+})
+
 document.getElementById('scroll-to-target').addEventListener('click', (event) => {
   event.preventDefault()
   scrollToY({ endValue: document.getElementById('target').offsetTop })

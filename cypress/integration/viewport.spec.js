@@ -1,5 +1,5 @@
 describe('viewport', () => {
-  it('viewport resize values should be set correctly', () => {
+  it('should show resize values correctly', () => {
     const user = cy
     user.visit('/')
 
