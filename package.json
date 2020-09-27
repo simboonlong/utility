@@ -11,7 +11,8 @@
     "e2e:ci": "concurrently -k -s first \"npm:serve\" \"npm:cy:run\"",
     "lint": "eslint ./helper/*.js",
     "test": "jest ./*.test.js",
-    "test:single": "jest --watch"
+    "test:single": "jest --watch",
+    "prep": "npm run lint && npm run test && npm run e2e:ci"
   },
   "author": "Sim Boon Long",
   "license": "MIT",

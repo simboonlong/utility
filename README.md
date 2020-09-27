@@ -89,7 +89,7 @@ onWindowScroll({
 }, 75) // throtteRate default is 50
 ```
 
-### scrollTo
+### scrollToY
 
 scrollToY({`endValue`, `easeType`, `duration`, `onComplete`})
 
