@@ -1,5 +1,5 @@
 describe('cookie', () => {
-  it('cookie should be set and unset correctly', () => {
+  it('should set correctly, after reload cookie should exist', () => {
     const user = cy
     user.visit('/')
 
@@ -9,6 +9,11 @@ describe('cookie', () => {
 
     user.reload()
     user.findByTestId('cookie').should('have.text', 'abc123')
+  })
+
+  it('should unset correctly, after reload cookie should not exist', () => {
+    const user = cy
+    user.visit('/')
 
     user.findByTestId('cookie-unset')
       .click()

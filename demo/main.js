@@ -1,4 +1,4 @@
-import { getCookie, setCookie, getViewport, onWindowResize, onWindowScroll } from '../helper/index.js'
+import { getCookie, setCookie, getViewport, onWindowResize, onWindowScroll, scrollToY } from '../index.js'
 
 const updateCookie = () => {
   document.getElementById('cookie').innerText = getCookie('tracker') ?? undefined
@@ -17,6 +17,21 @@ document.getElementById('cookie-unset').addEventListener('click', () => {
 document.getElementById('cookie-set').addEventListener('click', () => {
   setCookie('tracker', 'abc123', 0.125)
   updateCookie()
+})
+
+document.getElementById('scroll-to-y').addEventListener('click', (event) => {
+  event.preventDefault()
+  scrollToY({ endValue: 200 })
+})
+
+document.getElementById('scroll-to-y-infinity').addEventListener('click', (event) => {
+  event.preventDefault()
+  scrollToY({ endValue: Infinity })
+})
+
+document.getElementById('scroll-to-target').addEventListener('click', (event) => {
+  event.preventDefault()
+  scrollToY({ endValue: document.getElementById('target').offsetTop })
 })
 
 onWindowScroll({

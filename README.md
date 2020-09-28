@@ -88,3 +88,18 @@ onWindowScroll({
   } // optional
 }, 75) // throtteRate default is 50
 ```
+
+### scrollToY
+
+scrollToY({`endValue`, `easeType`, `duration`, `onComplete`})
+
+Example:
+
+```
+import { scrollToY, easeOutCubic } from '@simboonlong/utility'
+
+document.getElementById('someId').addEventListener('click', (event) => {
+  event.preventDefault()
+  scrollToY({ endValue: 1600, easeType: easeOutCubic, duration: 1100, onComplete: () => { console.log('scroll completed') } })
+})
+```
