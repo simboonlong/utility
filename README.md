@@ -33,7 +33,7 @@ Example:
 ```
 import { getCookie } from '@simboonlong/utility'
 
-getCookie('tracker'); // if set = returns cookie's value, if unset = undefined
+getCookie('tracker'); // if set = returns cookie's value, if unset = returns undefined
 ```
 
 ### getViewport
@@ -81,7 +81,7 @@ onWindowScroll({
     console.log('hit top')
   }, // optional
   hitInBetween: (st) => {
-    console.log(`hit between - handle any custom logic with scrollTop value - ${st}`)
+    console.log(`hit between - ${st}`)
   }, // optional
   hitBottom: () => {
     console.log('hit bottom')
@@ -100,6 +100,7 @@ import { scrollToY, easeOutQuart } from '@simboonlong/utility'
 
 document.getElementById('someId').addEventListener('click', (event) => {
   event.preventDefault()
+
   scrollToY({
     endValue: 200,
     easeType: easeOutQuart, // optional, default is easeInOutCubic
