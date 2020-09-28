@@ -21,7 +21,7 @@ Example:
 import { setCookie } from '@simboonlong/utility'
 
 setCookie('tracker', 'abc123', 0.125); // set cookie to 3 hours expiry
-setCookie('tracker', 'abc123', 0); // deletes cookie by setting expiry to 0
+setCookie('tracker', 'abc123', 0); // delete cookie by setting expiry to 0
 ```
 
 ### getCookie
@@ -33,7 +33,7 @@ Example:
 ```
 import { getCookie } from '@simboonlong/utility'
 
-getCookie('tracker'); // returns cookie's value if set
+getCookie('tracker'); // if set = returns cookie's value, if unset = returns undefined
 ```
 
 ### getViewport
@@ -81,7 +81,7 @@ onWindowScroll({
     console.log('hit top')
   }, // optional
   hitInBetween: (st) => {
-    console.log(`hit between - handle any custom logic with scrollTop value - ${st}`)
+    console.log(`hit between - ${st}`)
   }, // optional
   hitBottom: () => {
     console.log('hit bottom')
@@ -96,10 +96,18 @@ scrollToY({`endValue`, `easeType`, `duration`, `onComplete`})
 Example:
 
 ```
-import { scrollToY, easeOutCubic } from '@simboonlong/utility'
+import { scrollToY, easeOutQuart } from '@simboonlong/utility'
 
 document.getElementById('someId').addEventListener('click', (event) => {
   event.preventDefault()
-  scrollToY({ endValue: 1600, easeType: easeOutCubic, duration: 1100, onComplete: () => { console.log('scroll completed') } })
+
+  scrollToY({
+    endValue: 200,
+    easeType: easeOutQuart, // optional, default is easeInOutCubic
+    duration: 500, // optional, default is 1000
+    onComplete: () => {
+      console.log('scroll completed')
+    } // optional
+  })
 })
 ```
