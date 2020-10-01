@@ -58,10 +58,10 @@ const PI = Math.PI
 export const ease = ({
   startValue,
   endValue,
-  duration,
-  easeType,
+  duration = 1000,
+  easeType = easeInOutCubic,
   onStep,
-  onComplete,
+  onComplete = () => {},
 }) => {
   const now = window.performance.now()
   let currentSinValue = 0
