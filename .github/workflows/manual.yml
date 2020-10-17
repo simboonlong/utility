@@ -22,7 +22,7 @@ jobs:
       run: npm run test
     - name: Integration test
       run: npm run e2e:ci
-    - name: Release
+    - name: Semantic release
       run: npx semantic-release --branches master
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
