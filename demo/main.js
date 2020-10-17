@@ -1,3 +1,4 @@
+import { ease } from '../helper/ease.js'
 import { getCookie, setCookie, getViewport, onWindowResize, onWindowScroll, scrollToY } from '../index.js'
 
 const updateCookie = () => {
@@ -22,6 +23,11 @@ document.getElementById('cookie-set').addEventListener('click', () => {
 document.getElementById('scroll-to-y').addEventListener('click', (event) => {
   event.preventDefault()
   scrollToY({ endValue: 200 })
+})
+
+document.getElementById('scroll-to-x').addEventListener('click', (event) => {
+  event.preventDefault()
+  ease({ startValue: 0, endValue: 1000, onStep: value => { document.getElementById('scrollable-x').scrollLeft = value } })
 })
 
 document.getElementById('scroll-to-y-infinity').addEventListener('click', (event) => {

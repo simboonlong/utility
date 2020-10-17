@@ -90,9 +90,30 @@ onWindowScroll({
 }, 75) // throtteRate default is 50
 ```
 
+### ease
+
+ease({`startValue`, `endValue`, `duration`, `easeType`, `onStep`, `onComplete`})
+
+Example:
+
+```
+import { ease, easeOutQuart } from '@simboonlong/utility'
+
+ease({
+  startValue: 0,
+  endValue: 1000,
+  duration: 500, // optional, default is 1000,
+  easeType: easeOutQuart, // optional, default is easeInOutCubic
+  onStep: value => { document.getElementById('scrollable-x').scrollLeft = value },
+  onComplete: () => {
+    console.log('scroll completed')
+  } // optional
+})
+```
+
 ### scrollToY
 
-scrollToY({`endValue`, `easeType`, `duration`, `onComplete`})
+scrollToY({`endValue`, `duration`, `easeType`, `onComplete`})
 
 Example:
 
@@ -104,8 +125,8 @@ document.getElementById('someId').addEventListener('click', (event) => {
 
   scrollToY({
     endValue: 200,
-    easeType: easeOutQuart, // optional, default is easeInOutCubic
     duration: 500, // optional, default is 1000
+    easeType: easeOutQuart, // optional, default is easeInOutCubic
     onComplete: () => {
       console.log('scroll completed')
     } // optional
