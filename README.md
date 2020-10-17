@@ -12,9 +12,13 @@ Some web utility functions to use.
 
 ---
 
-### setCookie
+### [setCookie](#setCookie)
 
+Set browser cookie.
+
+```
 setCookie(`name`, `value`, `days`);
+```
 
 Example:
 
@@ -25,9 +29,13 @@ setCookie('tracker', 'abc123', 0.125); // set cookie to 3 hours expiry
 setCookie('tracker', 'abc123', 0); // delete cookie by setting expiry to 0
 ```
 
-### getCookie
+### [getCookie](#getCookie)
 
+Get browser cookie.
+
+```
 getCookie(`name`);
+```
 
 Example:
 
@@ -37,7 +45,11 @@ import { getCookie } from '@simboonlong/utility'
 getCookie('tracker'); // if set = returns cookie's value, if unset = returns undefined
 ```
 
-### getViewport
+---
+
+### [getViewport](#getViewport)
+
+Get accurate viewport width or height, regardless of cross-browser scrollbar width or its presence.
 
 Example:
 
@@ -48,9 +60,15 @@ getViewport().w // returns current viewport width
 getViewport().h // returns current viewport height
 ```
 
-### onWindowResize
+---
 
+### [onWindowResize](#onWindowScroll)
+
+Throttled window resize event.
+
+```
 onWindowResize(`callback`, `throtteRate`)
+```
 
 Example:
 
@@ -62,9 +80,13 @@ onWindowResize(() => {
 }, 75) // throtteRate default is 50
 ```
 
-### onWindowScroll
+### [onWindowScroll](#onWindowScroll)
 
+Various scrolling scenario callbacks, on window scroll event.
+
+```
 onWindowScroll(`callback`, `throtteRate`)
+```
 
 Example:
 
@@ -90,9 +112,15 @@ onWindowScroll({
 }, 75) // throtteRate default is 50
 ```
 
-### ease
+---
 
+### [ease](#ease)
+
+Set easing values on anything.
+
+```
 ease({`startValue`, `endValue`, `duration`, `easeType`, `onStep`, `onComplete`})
+```
 
 Example:
 
@@ -111,9 +139,13 @@ ease({
 })
 ```
 
-### scrollToY
+### [scrollToY](#scrollToY)
 
+`scrollToY` is built upon [`ease`](#ease) function. Mainly for vertical ease scrolling of window.
+
+```
 scrollToY({`endValue`, `duration`, `easeType`, `onComplete`})
+```
 
 Example:
 
