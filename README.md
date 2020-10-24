@@ -16,10 +16,6 @@ Some web utility functions to use.
 
 Get browser cookie.
 
-```
-getCookie({ `cname` });
-```
-
 Example:
 
 ```
@@ -31,10 +27,6 @@ getCookie({ cname: "tracker" }); // if set = returns cookie's value, if unset = 
 ### [setCookie](#setCookie)
 
 Set browser cookie.
-
-```
-setCookie({ `cname`, `cvalue`, `exdays` });
-```
 
 Example:
 
@@ -66,10 +58,6 @@ getViewport().h // returns current viewport height
 
 Throttled window resize event.
 
-```
-onWindowResize({ `callback`, `throtteRate` })
-```
-
 Example:
 
 ```
@@ -86,10 +74,6 @@ onWindowResize({
 ### [onWindowScroll](#onWindowScroll)
 
 Various scrolling scenario callbacks, on window scroll event.
-
-```
-onWindowScroll({ `callback`, `throtteRate` })
-```
 
 Example:
 
@@ -124,10 +108,6 @@ onWindowScroll({
 
 Set easing values on anything.
 
-```
-ease({`startValue`, `endValue`, `duration`, `easeType`, `onStep`, `onComplete`})
-```
-
 Example:
 
 ```
@@ -148,10 +128,6 @@ ease({
 ### [scrollToY](#scrollToY)
 
 `scrollToY` is built upon [`ease`](#ease) function. Mainly for vertical ease scrolling of window.
-
-```
-scrollToY({`endValue`, `duration`, `easeType`, `onComplete`})
-```
 
 Example:
 
