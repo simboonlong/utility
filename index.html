@@ -80,10 +80,10 @@
     <section>
       <div class="padding-y">
         <h3>getCookie, setCookie</h3>
-        <p>getCookie('tracker') = <b id="cookie" data-testid="cookie"></b></p>
+        <p>getCookie({ cname: 'tracker' }) = <b id="cookie" data-testid="cookie"></b></p>
         <p>
-          <button type="button" id="cookie-set" data-testid="cookie-set">setCookie('tracker', 'abc123', 0.125)</button>
-          <button type="button" id="cookie-unset" data-testid="cookie-unset">setCookie('tracker', 'abc123', 0)</button>
+          <button type="button" id="cookie-set" data-testid="cookie-set">setCookie({ cname: 'tracker', cvalue: 'abc123', exdays: 0.125 })</button>
+          <button type="button" id="cookie-unset" data-testid="cookie-unset">setCookie({ cname: 'tracker', cvalue: 'abc123', exdays: 0 })</button>
         </p>
       </div>
     </section>

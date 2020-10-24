@@ -17,7 +17,7 @@ Some web utility functions to use.
 Set browser cookie.
 
 ```
-setCookie(`name`, `value`, `days`);
+setCookie({ `cname`, `cvalue`, `exdays` });
 ```
 
 Example:
@@ -25,8 +25,8 @@ Example:
 ```
 import { setCookie } from '@simboonlong/utility'
 
-setCookie('tracker', 'abc123', 0.125); // set cookie to 3 hours expiry
-setCookie('tracker', 'abc123', 0); // delete cookie by setting expiry to 0
+setCookie({ cname: 'tracker', cvalue: 'abc123', exdays: 0.125 }); // set cookie to 3 hours expiry
+setCookie({ cname: 'tracker', cvalue: 'abc123', exdays: 0 }); // delete cookie by setting expiry to 0
 ```
 
 ### [getCookie](#getCookie)
@@ -34,7 +34,7 @@ setCookie('tracker', 'abc123', 0); // delete cookie by setting expiry to 0
 Get browser cookie.
 
 ```
-getCookie(`name`);
+getCookie({ `cname` });
 ```
 
 Example:
@@ -42,7 +42,7 @@ Example:
 ```
 import { getCookie } from '@simboonlong/utility'
 
-getCookie('tracker'); // if set = returns cookie's value, if unset = returns undefined
+getCookie({ cname: 'tracker' }); // if set = returns cookie's value, if unset = returns undefined
 ```
 
 ---
@@ -67,7 +67,7 @@ getViewport().h // returns current viewport height
 Throttled window resize event.
 
 ```
-onWindowResize(`callback`, `throtteRate`)
+onWindowResize({ `callback`, `throtteRate` })
 ```
 
 Example:
@@ -75,9 +75,12 @@ Example:
 ```
 import { onWindowResize } from '@simboonlong/utility'
 
-onWindowResize(() => {
-  console.log('window resize')
-}, 75) // throtteRate default is 50
+onWindowResize({
+  callback: () => {
+    console.log('window resize')
+  },
+  throtteRate: 75 // throtteRate default is 50
+})
 ```
 
 ### [onWindowScroll](#onWindowScroll)
@@ -85,7 +88,7 @@ onWindowResize(() => {
 Various scrolling scenario callbacks, on window scroll event.
 
 ```
-onWindowScroll(`callback`, `throtteRate`)
+onWindowScroll({ `callback`, `throtteRate` })
 ```
 
 Example:
@@ -94,22 +97,25 @@ Example:
 import { onWindowScroll } from '@simboonlong/utility'
 
 onWindowScroll({
-  scrollDown: () => {
-    console.log('scroll down')
+  callback: {
+    scrollDown: () => {
+      console.log('scroll down')
+    },
+    scrollUp: () => {
+      console.log('scroll up')
+    },
+    hitTop: () => {
+      console.log('hit top')
+    }, // optional
+    hitInBetween: (st) => {
+      console.log(`hit between - ${st}`)
+    }, // optional
+    hitBottom: () => {
+      console.log('hit bottom')
+    } // optional
   },
-  scrollUp: () => {
-    console.log('scroll up')
-  },
-  hitTop: () => {
-    console.log('hit top')
-  }, // optional
-  hitInBetween: (st) => {
-    console.log(`hit between - ${st}`)
-  }, // optional
-  hitBottom: () => {
-    console.log('hit bottom')
-  } // optional
-}, 75) // throtteRate default is 50
+  throtteRate: 75  // throtteRate default is 50
+})
 ```
 
 ---
