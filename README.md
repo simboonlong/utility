@@ -12,23 +12,6 @@ Some web utility functions to use.
 
 ---
 
-### [setCookie](#setCookie)
-
-Set browser cookie.
-
-```
-setCookie({ `cname`, `cvalue`, `exdays` });
-```
-
-Example:
-
-```
-import { setCookie } from '@simboonlong/utility'
-
-setCookie({ cname: 'tracker', cvalue: 'abc123', exdays: 0.125 }); // set cookie to 3 hours expiry
-setCookie({ cname: 'tracker', cvalue: 'abc123', exdays: 0 }); // delete cookie by setting expiry to 0
-```
-
 ### [getCookie](#getCookie)
 
 Get browser cookie.
@@ -40,9 +23,26 @@ getCookie({ `cname` });
 Example:
 
 ```
-import { getCookie } from '@simboonlong/utility'
+import { getCookie } from "@simboonlong/utility"
 
-getCookie({ cname: 'tracker' }); // if set = returns cookie's value, if unset = returns undefined
+getCookie({ cname: "tracker" }); // if set = returns cookie's value, if unset = returns undefined
+```
+
+### [setCookie](#setCookie)
+
+Set browser cookie.
+
+```
+setCookie({ `cname`, `cvalue`, `exdays` });
+```
+
+Example:
+
+```
+import { setCookie } from "@simboonlong/utility"
+
+setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 }); // set cookie to 3 hours expiry
+setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 }); // delete cookie by setting expiry to 0
 ```
 
 ---
@@ -54,7 +54,7 @@ Get accurate viewport width or height, regardless of cross-browser scrollbar wid
 Example:
 
 ```
-import { getViewport } from '@simboonlong/utility'
+import { getViewport } from "@simboonlong/utility"
 
 getViewport().w // returns current viewport width
 getViewport().h // returns current viewport height
@@ -73,7 +73,7 @@ onWindowResize({ `callback`, `throtteRate` })
 Example:
 
 ```
-import { onWindowResize } from '@simboonlong/utility'
+import { onWindowResize } from "@simboonlong/utility"
 
 onWindowResize({
   callback: () => {
@@ -94,24 +94,24 @@ onWindowScroll({ `callback`, `throtteRate` })
 Example:
 
 ```
-import { onWindowScroll } from '@simboonlong/utility'
+import { onWindowScroll } from "@simboonlong/utility"
 
 onWindowScroll({
   callback: {
     scrollDown: () => {
-      console.log('scroll down')
+      console.log("scroll down")
     },
     scrollUp: () => {
-      console.log('scroll up')
+      console.log("scroll up")
     },
     hitTop: () => {
-      console.log('hit top')
+      console.log("hit top")
     }, // optional
     hitInBetween: (st) => {
       console.log(`hit between - ${st}`)
     }, // optional
     hitBottom: () => {
-      console.log('hit bottom')
+      console.log("hit bottom")
     } // optional
   },
   throtteRate: 75  // throtteRate default is 50
@@ -131,16 +131,16 @@ ease({`startValue`, `endValue`, `duration`, `easeType`, `onStep`, `onComplete`})
 Example:
 
 ```
-import { ease, easeOutQuart } from '@simboonlong/utility'
+import { ease, easeOutQuart } from "@simboonlong/utility"
 
 ease({
   startValue: 0,
   endValue: 1000,
   duration: 500, // optional, default is 1000,
   easeType: easeOutQuart, // optional, default is easeInOutCubic
-  onStep: value => { document.getElementById('scrollable-x').scrollLeft = value },
+  onStep: value => { document.getElementById("scrollable-x").scrollLeft = value },
   onComplete: () => {
-    console.log('scroll completed')
+    console.log("scroll completed")
   } // optional
 })
 ```
@@ -156,9 +156,9 @@ scrollToY({`endValue`, `duration`, `easeType`, `onComplete`})
 Example:
 
 ```
-import { scrollToY, easeOutQuart } from '@simboonlong/utility'
+import { scrollToY, easeOutQuart } from "@simboonlong/utility"
 
-document.getElementById('someId').addEventListener('click', (event) => {
+document.getElementById('someId').addEventListener("click", (event) => {
   event.preventDefault()
 
   scrollToY({
@@ -166,7 +166,7 @@ document.getElementById('someId').addEventListener('click', (event) => {
     duration: 500, // optional, default is 1000
     easeType: easeOutQuart, // optional, default is easeInOutCubic
     onComplete: () => {
-      console.log('scroll completed')
+      console.log("scroll completed")
     } // optional
   })
 })

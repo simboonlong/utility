@@ -80,10 +80,10 @@
     <section>
       <div class="padding-y">
         <h3>getCookie, setCookie</h3>
-        <p>getCookie({ cname: 'tracker' }) = <b id="cookie" data-testid="cookie"></b></p>
+        <p>getCookie({ cname: "tracker" }) = <b id="cookie" data-testid="cookie"></b></p>
         <p>
-          <button type="button" id="cookie-set" data-testid="cookie-set">setCookie({ cname: 'tracker', cvalue: 'abc123', exdays: 0.125 })</button>
-          <button type="button" id="cookie-unset" data-testid="cookie-unset">setCookie({ cname: 'tracker', cvalue: 'abc123', exdays: 0 })</button>
+          <button type="button" id="cookie-set" data-testid="cookie-set">setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 })</button>
+          <button type="button" id="cookie-unset" data-testid="cookie-unset">setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 })</button>
         </p>
       </div>
     </section>
@@ -99,7 +99,7 @@
     <section>
       <div class="padding-y" style="position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.8);">
         <h3>ease</h3>
-        <button type="button" id="scroll-to-x" data-testid="scroll-to-x">ease({ startValue: 0, endValue: 1000, onStep: value => { document.getElementById('scrollable-x').scrollLeft = value } })</button>
+        <button type="button" id="scroll-to-x" data-testid="scroll-to-x">ease({ startValue: 0, endValue: 1000, onStep: value => { document.getElementById("scrollable-x").scrollLeft = value } })</button>
         <div id="scrollable-x" style="overflow-x: auto;">
           <div style="width: 300vw;">
             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
@@ -114,7 +114,7 @@
         <p>
           <button type="button" id="scroll-to-y" data-testid="scroll-to-y">scrollToY({ endValue: 200 })</button>
           <button type="button" id="scroll-to-y-infinity" data-testid="scroll-to-y-infinity">scrollToY({ endValue: Infinity })</button>
-          <button type="button" id="scroll-to-target" data-testid="scroll-to-target">scrollToY({ endValue: document.getElementById('target').offsetTop })</button>
+          <button type="button" id="scroll-to-target" data-testid="scroll-to-target">scrollToY({ endValue: document.getElementById("target").offsetTop })</button>
         </p>
       </div>
       <div class="padding-y" style="max-width: 300px;">
