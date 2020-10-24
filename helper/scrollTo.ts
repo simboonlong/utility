@@ -1,7 +1,14 @@
-import { getViewport } from './getViewport.js'
-import { ease } from './ease.js'
+import { getViewport } from "./getViewport.js"
+import { ease } from "./ease.js"
 
-export const scrollToY = ({ endValue, easeType, duration, onComplete }) => {
+interface scrollToYI {
+  endValue: number;
+  duration?: number;
+  easeType?: (t: number) => number;
+  onComplete?: () => void;
+}
+
+export const scrollToY = ({ endValue, easeType, duration, onComplete }: scrollToYI): void => {
   const mostBottomScrollTop = document.body.scrollHeight - getViewport().h
 
   ease({

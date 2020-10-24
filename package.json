@@ -2,14 +2,16 @@
   "name": "@simboonlong/utility",
   "version": "0.3.0",
   "description": "Some web utility functions to use.",
-  "main": "index.js",
+  "main": "dist/helper/index.js",
   "scripts": {
     "serve": "http-server",
+    "watch": "tsc-watch --onSuccess 'npm run ts'",
     "e2e": "cypress open",
     "e2e:ci": "cypress run",
-    "lint": "eslint ./helper/*.js",
-    "test": "jest ./*.test.js",
+    "lint": "eslint ./helper/*.ts",
+    "test": "jest ./test/*",
     "test:single": "jest --watch",
+    "ts": "tsc --project tsconfig.json",
     "prep": "npm run lint && npm run test && npm run e2e:ci",
     "semantic-release": "semantic-release"
   },
@@ -22,13 +24,17 @@
   "devDependencies": {
     "@babel/preset-env": "^7.11.5",
     "@testing-library/cypress": "^7.0.1",
-    "babel-jest": "^26.3.0",
+    "@types/jest": "^26.0.15",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
     "cypress": "^5.2.0",
-    "eslint": "^7.10.0",
-    "eslint-plugin-jest": "^24.0.2",
+    "eslint": "^7.12.0",
     "http-server": "^0.12.3",
-    "jest": "^26.4.2",
-    "semantic-release": "^17.2.1"
+    "jest": "^26.6.1",
+    "semantic-release": "^17.2.1",
+    "ts-jest": "^26.4.2",
+    "tsc-watch": "^4.2.9",
+    "typescript": "^4.0.3"
   },
   "repository": {
     "type": "git",
