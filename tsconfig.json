@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "ESNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "esModuleInterop": true,
+  },
+  "include": [
+    "./demo/**/*.ts",
+    "./helper/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+}

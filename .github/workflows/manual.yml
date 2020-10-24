@@ -18,6 +18,8 @@ jobs:
       run: npm ci
     - name: Lint
       run: npm run lint
+    - name: Typescript build
+      run: npm run ts
     - name: Unit test
       run: npm run test
     - name: Integration test

@@ -12,37 +12,29 @@ Some web utility functions to use.
 
 ---
 
-### [setCookie](#setCookie)
-
-Set browser cookie.
-
-```
-setCookie(`name`, `value`, `days`);
-```
-
-Example:
-
-```
-import { setCookie } from '@simboonlong/utility'
-
-setCookie('tracker', 'abc123', 0.125); // set cookie to 3 hours expiry
-setCookie('tracker', 'abc123', 0); // delete cookie by setting expiry to 0
-```
-
 ### [getCookie](#getCookie)
 
 Get browser cookie.
 
+Example:
+
 ```
-getCookie(`name`);
+import { getCookie } from "@simboonlong/utility"
+
+getCookie({ cname: "tracker" }); // if set = returns cookie's value, if unset = returns undefined
 ```
+
+### [setCookie](#setCookie)
+
+Set browser cookie.
 
 Example:
 
 ```
-import { getCookie } from '@simboonlong/utility'
+import { setCookie } from "@simboonlong/utility"
 
-getCookie('tracker'); // if set = returns cookie's value, if unset = returns undefined
+setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 }); // set cookie to 3 hours expiry
+setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 }); // delete cookie by setting expiry to 0
 ```
 
 ---
@@ -54,7 +46,7 @@ Get accurate viewport width or height, regardless of cross-browser scrollbar wid
 Example:
 
 ```
-import { getViewport } from '@simboonlong/utility'
+import { getViewport } from "@simboonlong/utility"
 
 getViewport().w // returns current viewport width
 getViewport().h // returns current viewport height
@@ -66,50 +58,48 @@ getViewport().h // returns current viewport height
 
 Throttled window resize event.
 
-```
-onWindowResize(`callback`, `throtteRate`)
-```
-
 Example:
 
 ```
-import { onWindowResize } from '@simboonlong/utility'
+import { onWindowResize } from "@simboonlong/utility"
 
-onWindowResize(() => {
-  console.log('window resize')
-}, 75) // throtteRate default is 50
+onWindowResize({
+  callback: () => {
+    console.log('window resize')
+  },
+  throtteRate: 75 // throtteRate default is 50
+})
 ```
 
 ### [onWindowScroll](#onWindowScroll)
 
 Various scrolling scenario callbacks, on window scroll event.
 
-```
-onWindowScroll(`callback`, `throtteRate`)
-```
-
 Example:
 
 ```
-import { onWindowScroll } from '@simboonlong/utility'
+import { onWindowScroll } from "@simboonlong/utility"
 
 onWindowScroll({
-  scrollDown: () => {
-    console.log('scroll down')
+  callback: {
+    scrollDown: () => {
+      console.log("scroll down")
+    },
+    scrollUp: () => {
+      console.log("scroll up")
+    },
+    hitTop: () => {
+      console.log("hit top")
+    }, // optional
+    hitInBetween: (st) => {
+      console.log(`hit between - ${st}`)
+    }, // optional
+    hitBottom: () => {
+      console.log("hit bottom")
+    } // optional
   },
-  scrollUp: () => {
-    console.log('scroll up')
-  },
-  hitTop: () => {
-    console.log('hit top')
-  }, // optional
-  hitInBetween: (st) => {
-    console.log(`hit between - ${st}`)
-  }, // optional
-  hitBottom: () => {
-    console.log('hit bottom')
-  } // optional
-}, 75) // throtteRate default is 50
+  throtteRate: 75  // throtteRate default is 50
+})
 ```
 
 ---
@@ -118,23 +108,19 @@ onWindowScroll({
 
 Set easing values on anything.
 
-```
-ease({`startValue`, `endValue`, `duration`, `easeType`, `onStep`, `onComplete`})
-```
-
 Example:
 
 ```
-import { ease, easeOutQuart } from '@simboonlong/utility'
+import { ease, easeOutQuart } from "@simboonlong/utility"
 
 ease({
   startValue: 0,
   endValue: 1000,
   duration: 500, // optional, default is 1000,
   easeType: easeOutQuart, // optional, default is easeInOutCubic
-  onStep: value => { document.getElementById('scrollable-x').scrollLeft = value },
+  onStep: value => { document.getElementById("scrollable-x").scrollLeft = value },
   onComplete: () => {
-    console.log('scroll completed')
+    console.log("scroll completed")
   } // optional
 })
 ```
@@ -143,16 +129,12 @@ ease({
 
 `scrollToY` is built upon [`ease`](#ease) function. Mainly for vertical ease scrolling of window.
 
-```
-scrollToY({`endValue`, `duration`, `easeType`, `onComplete`})
-```
-
 Example:
 
 ```
-import { scrollToY, easeOutQuart } from '@simboonlong/utility'
+import { scrollToY, easeOutQuart } from "@simboonlong/utility"
 
-document.getElementById('someId').addEventListener('click', (event) => {
+document.getElementById('someId').addEventListener("click", (event) => {
   event.preventDefault()
 
   scrollToY({
@@ -160,7 +142,7 @@ document.getElementById('someId').addEventListener('click', (event) => {
     duration: 500, // optional, default is 1000
     easeType: easeOutQuart, // optional, default is easeInOutCubic
     onComplete: () => {
-      console.log('scroll completed')
+      console.log("scroll completed")
     } // optional
   })
 })
