@@ -19,7 +19,6 @@ export const getCookie = ({ cname }: CookieI): string | undefined => {
 }
 
 interface setCookieI extends CookieI {
-  cname: string;
   cvalue: string;
   exdays: number;
 }

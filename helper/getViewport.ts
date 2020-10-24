@@ -1,5 +1,5 @@
 // - http://stackoverflow.com/questions/1766861/find-the-exact-height-and-width-of-the-viewport-in-a-cross-browser-way-no-proto
-export const getViewport = (): { w:number, h: number } => {
+export const getViewport = (): { w: number, h: number } => {
   let viewPortWidth
   let viewPortHeight
   if (typeof window.innerWidth !== "undefined") {

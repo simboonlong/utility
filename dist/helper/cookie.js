@@ -1,9 +1,8 @@
-export var getCookie = function (_a) {
-    var cname = _a.cname;
-    var name = cname + "=";
-    var ca = document.cookie.split(";");
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
+export const getCookie = ({ cname }) => {
+    const name = cname + "=";
+    const ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
         while (c.charAt(0) === " ") {
             c = c.substring(1);
         }
@@ -13,10 +12,9 @@ export var getCookie = function (_a) {
     }
     return undefined;
 };
-export var setCookie = function (_a) {
-    var cname = _a.cname, cvalue = _a.cvalue, exdays = _a.exdays;
-    var d = new Date();
+export const setCookie = ({ cname, cvalue, exdays }) => {
+    const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
+    const expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 };

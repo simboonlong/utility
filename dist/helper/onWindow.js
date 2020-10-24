@@ -1,18 +1,16 @@
 import { throttle } from "./throttle.js";
-export var onWindowResize = function (_a) {
-    var callback = _a.callback, _b = _a.throtteRate, throtteRate = _b === void 0 ? 50 : _b;
-    var onResize = function () {
+export const onWindowResize = ({ callback, throtteRate = 50 }) => {
+    const onResize = () => {
         callback();
     };
-    var throttled = throttle({ func: onResize, wait: throtteRate });
+    const throttled = throttle({ func: onResize, wait: throtteRate });
     window.addEventListener("resize", throttled);
 };
-export var onWindowScroll = function (_a) {
-    var callback = _a.callback, _b = _a.throtteRate, throtteRate = _b === void 0 ? 50 : _b;
-    var lastScrollTop = 0;
-    var onScroll = function () {
-        var st = window.pageYOffset || document.documentElement.scrollTop;
-        var mostBottomTop = document.body.scrollHeight - window.innerHeight;
+export const onWindowScroll = ({ callback, throtteRate = 50 }) => {
+    let lastScrollTop = 0;
+    const onScroll = () => {
+        const st = window.pageYOffset || document.documentElement.scrollTop;
+        const mostBottomTop = document.body.scrollHeight - window.innerHeight;
         if (callback.hitBetween) {
             callback.hitBetween(st);
         }
