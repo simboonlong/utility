@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <title>utility</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+    <meta charset="utf-8" />
+    <meta name="description" content="Some web utility functions to use." />
+    <meta name="author" content="Sim Boon Long" />
+    <meta name="keywords" content="web, utility, functions" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Utility</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <style>
       * {
         box-sizing: border-box;
@@ -17,127 +24,368 @@
       html {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 400;
-        color: #222;
         background-color: #fcfcfc;
       }
 
-      body {
-        margin: 0;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1;
+        font-weight: 700;
+        color: #333;
       }
 
-      hr {
-        border: none;
-        height: 1px;
-        color: #ddd;
-        background-color: #ddd;
+      h1 {
+        font-size: 48px;
+      }
+
+      h3 {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        color: #333;
+        margin-bottom: 16px;
+      }
+
+      button {
+        transition: background-color 0.2s ease-out;
+        padding: 8px 16px;
+        background-color: #333;
+        color: #fff;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        text-align: left;
+      }
+
+      button:hover {
+        background-color: #111;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
       }
 
       b {
         color: orange;
       }
 
-      h3 {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
+      a {
+        color: blue;
       }
 
-      p {
-        margin-top: 0.75em;
-        margin-bottom: 0.75em;
-      }
-
-      button {
-        cursor: pointer;
-        margin-bottom: 8px;
-        font-size: 16px;
-      }
-
-      .wrap {
-        margin-left: auto;
-        margin-right: auto;
-        padding: 16px;
-        max-width: 640px;
-      }
-
-      .padding-y {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
-
-      .padding-x {
-        padding-left: 8px;
-        padding-right: 8px;
-      }
-
-      @media (min-width: 1280px) {
-        .wrap {
-          max-width: 1280px;
-        }
+      a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <div class="padding-y padding-x" style="position: fixed; top: 0; right: 0; z-index: 1; text-align: right; pointer-events: none; background-color: rgba(255, 255, 255, 0.8);">
-        <h3>onWindowScroll</h3>
-        <p>scrollDown / scrollUp = <b id="scroll" data-testid="scroll"></b></p>
-        <p>hitTop = <b id="hit-top" data-testid="hit-top"></b></p>
-        <p>hitBetween = <b id="hit-between" data-testid="hit-between"></b></p>
-        <p>hitBottom = <b id="hit-bottom" data-testid="hit-bottom"></b></p>
-      </div>
-      <h1>Utility</h1>
-      <p>Some web utility functions to use.</p>
-      <hr>
-      <section>
-        <div class="padding-y">
-          <h3>getCookie, setCookie</h3>
-          <p>getCookie({ cname: "tracker" }) = <b id="cookie" data-testid="cookie"></b></p>
-          <p>
-            <button type="button" id="cookie-set" data-testid="cookie-set">setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 })</button>
-            <button type="button" id="cookie-unset" data-testid="cookie-unset">setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 })</button>
-          </p>
-        </div>
-      </section>
-      <hr>
-      <section>
-        <div class="padding-y">
-          <h3>getViewport, onWindowResize</h3>
-          <p>getViewport().w = <b id="vp-w" data-testid="vp-w"></b></p>
-          <p>getViewport().h = <b id="vp-h" data-testid="vp-h"></b></p>
-        </div>
-      </section>
-      <hr>
-      <section>
-        <div class="padding-y" style="position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.8);">
-          <h3>ease</h3>
-          <button type="button" id="scroll-to-x" data-testid="scroll-to-x">ease({ startValue: 0, endValue: 1000, onStep: value => { document.getElementById("scrollable-x").scrollLeft = value } })</button>
-          <div id="scrollable-x" style="overflow-x: auto;">
-            <div style="width: 300vw;">
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-            </div>
+    <div class="max-w-3xl mx-auto px-4">
+      <main class="py-8">
+        <div class="flex flex-wrap mb-8 items-center">
+          <div class="w-auto mr-8">
+            <svg
+              class="w-20 mb-2 xs:mb-0"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="64.065 66.135 171.871 167.73"
+              enable-background="new 64.065 66.135 171.871 167.73"
+              xml:space="preserve"
+              fill="#333"
+            >
+              <g>
+                <path
+                  d="M100.044,122.751l75.36,75.36l3.04,25.707c0.012,0.1,0.055,0.189,0.076,0.287c0.005,0.019,0.011,0.037,0.015,0.057
+            c0.191,0.785,0.678,1.449,1.367,1.859c6.086,5.055,13.783,7.844,21.742,7.844c18.908,0,34.291-15.383,34.291-34.291
+            c0-10.713-4.867-20.559-13.341-27.097L141.841,92.81c-0.599-0.592-1.417-0.911-2.259-0.86l-10.059,0.513l-25.479-25.451
+            c-0.678-0.678-1.629-0.99-2.587-0.841l-34.86,5.49c-1.115,0.176-2.036,0.962-2.385,2.035c-0.35,1.074-0.067,2.251,0.731,3.05
+            l34.222,34.222v9.662C99.166,121.425,99.482,122.188,100.044,122.751z M201.645,227.865c-5.604,0-11.039-1.689-15.631-4.77
+            l3.381-3.411c3.937,2.934,8.733,4.55,13.689,4.55c12.72,0,23.067-10.35,23.067-23.068c0-1.657-1.343-3-3-3s-3,1.343-3,3
+            c0,9.411-7.657,17.068-17.067,17.068c-3.369,0-6.615-1.051-9.379-2.898l31.348-31.623c3.145,4.61,4.883,10.078,4.883,15.861
+            C229.936,215.174,217.244,227.865,201.645,227.865z M218.143,176.514c0.021,0.023,0.027,0.056,0.051,0.079
+            c0.066,0.069,0.161,0.142,0.248,0.216l2.531,2.497l-37.301,37.629l-2.432-20.562c-0.078-0.668-0.382-1.293-0.857-1.769
+            l-75.217-75.217V99.712l33.403-1.704L218.143,176.514z M102.013,93.866c-1.595,0.081-2.848,1.397-2.848,2.996v5.622L89.052,92.37
+            l27.358-4.527l5.037,5.031L102.013,93.866z M100.885,72.335l10.301,10.29l-27.353,4.526l-10.48-10.48L100.885,72.335z"
+                />
+                <path
+                  d="M157.488,159.701c0.009,0.008,0.016,0.018,0.025,0.025l17.082,17.083c0.006,0.005,0.01,0.01,0.015,0.015l10.555,10.555
+            c0.562,0.562,1.325,0.879,2.121,0.879c0.001,0,0.003,0,0.005,0c0.798-0.002,1.561-0.321,2.123-0.887l10.662-10.732
+            c1.164-1.172,1.161-3.066-0.008-4.235l-58.337-58.336c-1.172-1.172-3.07-1.172-4.242,0l-5.652,5.652
+            c-0.012,0.013-0.026,0.024-0.038,0.038l-5.006,5.006c-1.172,1.172-1.172,3.07,0,4.242L157.488,159.701z M135.482,124.559
+            l7.077-1.179l11.887,11.887l-11.062,1.847l-10.228-10.228L135.482,124.559z M171.546,152.365l-11.065,1.845l-11.884-11.884
+            l11.062-1.847L171.546,152.365z M188.646,169.465l-11.065,1.844l-11.886-11.885l11.065-1.845L188.646,169.465z M187.279,181.008
+            l-4.486-4.485l10.716-1.786L187.279,181.008z"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="w-auto">
+            <h1 class="mb-2">Utility</h1>
+            <p>
+              Literally not your regular swiss army knife.
+              <a
+                href="https://github.com/simboonlong/utility"
+                target="_blank"
+                rel="noopener noreferrer"
+                >github</a
+              >
+            </p>
           </div>
         </div>
-      </section>
-      <hr>
-      <section>
-        <div class="padding-y" style="position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.8);">
-          <h3>scrollTo</h3>
-          <p>
-            <button type="button" id="scroll-to-y" data-testid="scroll-to-y">scrollToY({ endValue: 200 })</button>
-            <button type="button" id="scroll-to-y-infinity" data-testid="scroll-to-y-infinity">scrollToY({ endValue: Infinity })</button>
-            <button type="button" id="scroll-to-target" data-testid="scroll-to-target">scrollToY({ endValue: document.getElementById("target").offsetTop })</button>
-          </p>
-        </div>
-        <div class="padding-y" style="max-width: 300px;">
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-          <div id="target" style="color: red;">#target</div>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</p>
-        </div>
-      </section>
-      <hr>
+        <hr />
+        <section>
+          <div class="py-8">
+            <h3>getCookie, setCookie</h3>
+            <p>Get and set browser cookie.</p>
+            <div class="mb-4"></div>
+            <div class="py-4">
+              <button type="button" id="cookie-set" data-testid="cookie-set">
+                <pre>
+setCookie({
+  cname: "tracker",
+  cvalue: "abc123",
+  exdays: 0.125
+})
+</pre
+                >
+              </button>
+              <button
+                type="button"
+                id="cookie-unset"
+                data-testid="cookie-unset"
+              >
+                <pre>
+setCookie({
+  cname: "tracker",
+  cvalue: "abc123",
+  exdays: 0
+})
+</pre
+                >
+              </button>
+              <div
+                class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
+              >
+                getCookie({ cname: "tracker" }) =
+                <b id="cookie" data-testid="cookie"></b>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section>
+          <div class="py-8">
+            <h3>getViewport, onWindowResize</h3>
+            <p>Try resizing browser to see <i>getViewport</i> in action.</p>
+            <div class="mb-4"></div>
+            <div
+              class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
+            >
+              getViewport().w = <b id="vp-w" data-testid="vp-w"></b
+              ><br />getViewport().h = <b id="vp-h" data-testid="vp-h"></b>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section>
+          <div class="py-8">
+            <h3>ease</h3>
+            <p>Easing on any element, any attribute.</p>
+            <div class="mb-4"></div>
+            <div class="py-4">
+              <button type="button" id="scroll-to-x" data-testid="scroll-to-x">
+                <pre>
+ease({
+  startValue: 0,
+  endValue: 1000,
+  onStep: value => {
+    document.getElementById("scrollable-x").scrollLeft = value
+  }
+})  </pre
+                >
+              </button>
+              <div
+                id="scrollable-x"
+                style="overflow-x: auto"
+                class="bg-gray-100 border rounded text-gray-600 p-2"
+              >
+                <div style="width: 200vw">
+                  <p>
+                    I am #scrollable-x. Sed ut perspiciatis unde omnis iste
+                    natus error sit voluptatem accusantium doloremque
+                    laudantium, totam rem aperiam, eaque ipsa quae ab illo
+                    inventore veritatis et quasi architecto beatae vitae dicta
+                    sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+                    aspernatur aut odit aut fugit, sed quia consequuntur magni
+                    dolores eos qui ratione voluptatem sequi nesciunt. Neque
+                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                    consectetur, adipisci velit, sed quia non numquam eius modi
+                    tempora incidunt ut labore et dolore magnam aliquam quaerat
+                    voluptatem. Ut enim ad minima veniam, quis nostrum
+                    exercitationem ullam corporis suscipit laboriosam, nisi ut
+                    aliquid ex ea commodi consequatur? Quis autem vel eum iure
+                    reprehenderit qui in ea voluptate velit esse quam nihil
+                    molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                    voluptas nulla pariatur.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section>
+          <div
+            class="py-8"
+            style="
+              position: sticky;
+              top: 0;
+              background-color: rgba(255, 255, 255, 0.8);
+            "
+          >
+            <h3>scrollToY</h3>
+            <p>Window vertical scroll to positions.</p>
+            <div class="py-4">
+              <button type="button" id="scroll-to-y" data-testid="scroll-to-y">
+                <pre>
+scrollToY({
+  endValue: 200
+})
+</pre
+                >
+              </button>
+              <button
+                type="button"
+                id="scroll-to-y-infinity"
+                data-testid="scroll-to-y-infinity"
+              >
+                <pre>
+scrollToY({
+  endValue: Infinity
+})
+</pre
+                >
+              </button>
+              <button
+                type="button"
+                id="scroll-to-target"
+                data-testid="scroll-to-target"
+              >
+                <pre>
+scrollToY({
+  endValue: document.getElementById("target").offsetTop
+})
+</pre
+                >
+              </button>
+            </div>
+          </div>
+          <div class="w-1/2">
+            <div class="bg-gray-100 border rounded text-gray-600 p-2">
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                voluptas sit aspernatur aut odit aut fugit, sed quia
+                consequuntur magni dolores eos qui ratione voluptatem sequi
+                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+                sit amet, consectetur, adipisci velit, sed quia non numquam eius
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                voluptatem. Ut enim ad minima veniam, quis nostrum
+                exercitationem ullam corporis suscipit laboriosam, nisi ut
+                aliquid ex ea commodi consequatur? Quis autem vel eum iure
+                reprehenderit qui in ea voluptate velit esse quam nihil
+                molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                voluptas nulla pariatur.
+              </p>
+              <div id="target" style="color: red">#target</div>
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                voluptas sit aspernatur aut odit aut fugit, sed quia
+                consequuntur magni dolores eos qui ratione voluptatem sequi
+                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+                sit amet, consectetur, adipisci velit, sed quia non numquam eius
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                voluptatem. Ut enim ad minima veniam, quis nostrum
+                exercitationem ullam corporis suscipit laboriosam, nisi ut
+                aliquid ex ea commodi consequatur? Quis autem vel eum iure
+                reprehenderit qui in ea voluptate velit esse quam nihil
+                molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                voluptas nulla pariatur
+              </p>
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                voluptas sit aspernatur aut odit aut fugit, sed quia
+                consequuntur magni dolores eos qui ratione voluptatem sequi
+                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+                sit amet, consectetur, adipisci velit, sed quia non numquam eius
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                voluptatem. Ut enim ad minima veniam, quis nostrum
+                exercitationem ullam corporis suscipit laboriosam, nisi ut
+                aliquid ex ea commodi consequatur? Quis autem vel eum iure
+                reprehenderit qui in ea voluptate velit esse quam nihil
+                molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                voluptas nulla pariatur
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="py-4">
+        <p>
+          <i>
+            Author ©
+            <a
+              href="http://simboonlong.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Sim Boon Long</a
+            >.</i
+          >
+        </p>
+      </footer>
+    </div>
+    <div
+      class="p-4 shadow"
+      style="
+        position: fixed;
+        max-width: 300px;
+        bottom: 16px;
+        right: 16px;
+        z-index: 1;
+        text-align: right;
+        pointer-events: none;
+        background-color: rgba(255, 255, 255, 0.8);
+      "
+    >
+      <h3>onWindowScroll</h3>
+      <p>Various window on scroll callbacks.</p>
+      <div class="mb-4"></div>
+      <div class="inline-block bg-gray-100 border rounded text-gray-600 p-2">
+        <p>
+          scrollDown / scrollUp = <b id="scroll" data-testid="scroll"></b
+          ><br />hitTop = <b id="hit-top" data-testid="hit-top"></b>
+          <br />hitBetween = <b id="hit-between" data-testid="hit-between"></b>
+          <br />hitBottom = <b id="hit-bottom" data-testid="hit-bottom"></b>
+        </p>
+      </div>
     </div>
     <script type="module" src="./dist/demo/main.js"></script>
   </body>
