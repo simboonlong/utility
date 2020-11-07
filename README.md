@@ -1,18 +1,24 @@
 ![CI](https://github.com/simboonlong/utility/workflows/CI/badge.svg?branch=master&event=push) [![Netlify Status](https://api.netlify.com/api/v1/badges/13e83d25-b833-48e5-bc73-bac4e8e32958/deploy-status)](https://app.netlify.com/sites/lucid-ardinghelli-84074a/deploys) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-
 # utility
+
 Some web utility functions to use.
 
+## why
+
+There are often similar recurring user experience expectations. Sometimes I wish that some utilities were easier to use / customizable to my needs. Hence, the code abstraction.
+
 ## demo
-[https://lucid-ardinghelli-84074a.netlify.app/](https://lucid-ardinghelli-84074a.netlify.app/)
+
+[http://utility.simboonlong.com](http://utility.simboonlong.com)
 
 ## install
+
 `npm i @simboonlong/utility`
 
 ---
 
-### [getCookie](#getCookie)
+#### getCookie
 
 Get browser cookie.
 
@@ -24,7 +30,7 @@ import { getCookie } from "@simboonlong/utility"
 getCookie({ cname: "tracker" }); // if set = returns cookie's value, if unset = returns undefined
 ```
 
-### [setCookie](#setCookie)
+#### setCookie
 
 Set browser cookie.
 
@@ -39,7 +45,7 @@ setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 }); // delete cookie b
 
 ---
 
-### [getViewport](#getViewport)
+#### getViewport
 
 Get accurate viewport width or height, regardless of cross-browser scrollbar width or its presence.
 
@@ -54,7 +60,7 @@ getViewport().h // returns current viewport height
 
 ---
 
-### [onWindowResize](#onWindowScroll)
+#### onWindowScroll
 
 Throttled window resize event.
 
@@ -71,7 +77,7 @@ onWindowResize({
 })
 ```
 
-### [onWindowScroll](#onWindowScroll)
+#### onWindowScroll
 
 Various scrolling scenario callbacks, on window scroll event.
 
@@ -104,7 +110,7 @@ onWindowScroll({
 
 ---
 
-### [ease](#ease)
+#### ease
 
 Set easing values on anything.
 
@@ -125,7 +131,7 @@ ease({
 })
 ```
 
-### [scrollToY](#scrollToY)
+#### scrollToY
 
 `scrollToY` is built upon [`ease`](#ease) function. Mainly for vertical ease scrolling of window.
 
