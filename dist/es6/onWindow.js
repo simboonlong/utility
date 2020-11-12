@@ -11,7 +11,6 @@ export const onWindowScroll = ({ callback, throtteRate = 50 }) => {
     const onScroll = () => {
         const st = window.pageYOffset || document.documentElement.scrollTop;
         const mostBottomTop = document.body.scrollHeight - window.innerHeight;
-        console.log("local", st);
         if (callback.hitBetween) {
             callback.hitBetween(st);
         }
