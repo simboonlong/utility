@@ -3,6 +3,9 @@
   "version": "0.3.0",
   "description": "Some web utility functions to use.",
   "main": "dist/es6/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "serve": "http-server",
     "watch": "tsc-watch --onSuccess 'npm run ts'",
