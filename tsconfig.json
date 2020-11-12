@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "ESNext",
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "outDir": "dist",
     "esModuleInterop": true,
+    "target": "es6",
+    "module": "ESNext",
+    "outDir": "dist/es6",
   },
   "include": [
-    "./demo/**/*.ts",
     "./helper/**/*.ts"
   ],
   "exclude": [
