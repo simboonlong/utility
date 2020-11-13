@@ -1,7 +1,7 @@
 describe('viewport', () => {
   it('should show resize values correctly', () => {
     const user = cy
-    user.visit('/')
+    user.visit(Cypress.env('PATH'))
 
     user.viewport(1000, 600)
     user.wait(200)

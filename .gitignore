@@ -1,3 +1,4 @@
 node_modules
 cypress/videos
-dist/es6
+demo/utility.min.js
+dist

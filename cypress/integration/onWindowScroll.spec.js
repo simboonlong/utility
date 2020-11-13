@@ -1,7 +1,7 @@
 describe('scroll', () => {
   it('should show scroll direction correctly', () => {
     const user = cy
-    user.visit('/')
+    user.visit(Cypress.env('PATH'))
 
     user.scrollTo(0, 100)
     user.findByTestId('scroll').should('have.text', 'down')
@@ -11,7 +11,7 @@ describe('scroll', () => {
 
   it('should show scroll values, hit most top and bottom correctly', () => {
     const user = cy
-    user.visit('/')
+    user.visit(Cypress.env('PATH'))
 
     user.scrollTo('bottom')
     user.findByTestId('hit-bottom').should('have.text', 'true')
