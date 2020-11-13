@@ -10,7 +10,7 @@
     "outDir": "dist/es6",
   },
   "include": [
-    "./helper/**/*.ts"
+    "./src/**/*.ts"
   ],
   "exclude": [
     "node_modules"

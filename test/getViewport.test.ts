@@ -1,4 +1,4 @@
-import { getViewport } from '../helper/getViewport'
+import { getViewport } from '../src/getViewport'
 
 test('viewport should get correct width and height values', () => {
   global.innerWidth = 800

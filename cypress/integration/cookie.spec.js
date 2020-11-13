@@ -1,7 +1,7 @@
 describe('cookie', () => {
   it('should set correctly, after reload cookie should exist', () => {
     const user = cy
-    user.visit('/')
+    user.visit(Cypress.env('PATH'))
 
     user.findByTestId('cookie-set')
       .click()
@@ -13,7 +13,7 @@ describe('cookie', () => {
 
   it('should unset correctly, after reload cookie should not exist', () => {
     const user = cy
-    user.visit('/')
+    user.visit(Cypress.env('PATH'))
 
     user.findByTestId('cookie-unset')
       .click()

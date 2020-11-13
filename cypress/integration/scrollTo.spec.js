@@ -1,7 +1,7 @@
 describe('scrollTo', () => {
   it('should scroll to y correctly', () => {
     const user = cy
-    user.visit('/')
+    user.visit(Cypress.env('PATH'))
 
     user.findByTestId('scroll-to-y')
       .click()
@@ -10,7 +10,7 @@ describe('scrollTo', () => {
 
   it('should scroll to most bottom, when endValue is greater than document scroll height', () => {
     const user = cy
-    user.visit('/')
+    user.visit(Cypress.env('PATH'))
 
     let docScrollHeight
     user.findByTestId('scroll-to-y-infinity')

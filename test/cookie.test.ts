@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from '../helper/cookie'
+import { getCookie, setCookie } from '../src/cookie'
 
 test('cookie should be set and unset correctly', () => {
   expect(getCookie({ cname: 'tracker' })).toBe(undefined)
