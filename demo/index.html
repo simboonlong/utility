@@ -84,6 +84,10 @@
       a:hover {
         text-decoration: underline;
       }
+
+      .in-view {
+        box-shadow: 0 0 0 2px red;
+      }
     </style>
   </head>
   <body>
@@ -346,6 +350,23 @@ scrollToY({
               </p>
             </div>
           </div>
+        </section>
+        <hr />
+        <section>
+          <div
+            data-inview
+            style="
+              position: relative;
+              width: 300px;
+              height: 300px;
+              background-color: gold;
+            "
+          ></div>
+          <div data-inview style="height: 200vh; background-color: green"></div>
+          <div
+            data-inview
+            style="height: 200vh; background-color: orange"
+          ></div>
         </section>
       </main>
       <footer class="py-4">

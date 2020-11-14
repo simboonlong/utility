@@ -79,3 +79,6 @@ onWindowResize({ callback: updateViewport, throtteRate: 75 });
 // init
 updateCookie();
 updateViewport();
+inView({
+  elements: document.querySelectorAll('[data-inview]'),
+});
