@@ -19,7 +19,7 @@ var setFixie = () => {
   } else {
     scrollHandler = setTimeout(() => {
       fixie.classList.remove('is-active');
-    }, 2500);
+    }, 1900);
   }
 }
 
@@ -70,10 +70,10 @@ document
 onWindowScroll({
   callback: {
     scrollDown: () => {
-      document.getElementById("scroll").innerHTML = "&#10515;";
+      document.getElementById("scroll").innerHTML = "&#8609;";
     },
     scrollUp: () => {
-      document.getElementById("scroll").innerHTML = "&#10514;";
+      document.getElementById("scroll").innerHTML = "&#8607;";
     },
     hitTop: () => {
       document.getElementById("hit-top").innerHTML = "&#10003;";

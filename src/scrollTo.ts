@@ -1,5 +1,5 @@
-import { getViewport } from "./getViewport.js"
-import { ease } from "./ease.js"
+import { getViewport } from "./getViewport"
+import { ease } from "./ease"
 
 interface scrollToYI {
   endValue: number;
