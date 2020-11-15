@@ -158,4 +158,38 @@ document.getElementById('someId').addEventListener("click", (event) => {
 })
 ```
 
+---
+
+#### inView
+
+Add `.in-view` when element is scrolled into view. Customize transition in css animation to your own needs.
+
+Example:
+
+```
+import { inView } from "@simboonlong/utility"
+
+inView({
+  elements: document.querySelectorAll('[data-inview]'),
+  root: null, // optional, default is null
+  trigger: "FULL", // optional, default is `CENTER`
+  triggerY: 15, // optional, note that defining this will overwrite trigger option
+  triggerClass: "custom-name", // optional, default is `in-view`
+  thresholdSteps: 30, // optional, default is 20
+  isOnce: true // optional, default is false
+});
+```
+
+```
+Options:
+
+elements         ---   Elements selector
+root             ---   Root element in which `.in-view` elements will based their callbacks on.
+trigger          ---   "FULL" | "PARTIAL" | "CENTER". `FULL` adds `.in-view` class to element once it's fully in view, `PARTIAL` adds `.in-view` class to element as soon as it is within view, adds `.in-view` class to element only when its top hits root element's center.
+triggerY         ---   percentage value of root element in determining when elements should add `.in-view` class.
+triggerClass     ---   class name.
+thresholdSteps   ---   determines how granular the callbacks are.
+isOnce           ---   determines to remove `.in-view` after they are added.
+```
+
 Author © [Sim Boon Long](http://simboonlong.com/).

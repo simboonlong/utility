@@ -1,13 +1,16 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 // https://www.smashingmagazine.com/2018/01/deferring-lazy-loading-intersection-observer-api/
+// https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+import 'intersection-observer';
 
 interface inViewI {
-  elements: NodeListOf<HTMLElement>;
+  elements: NodeListOf<HTMLDataElement>;
   root?: null | HTMLElement;
-  triggerY?: "FULL" | "PARTIAL" | "CENTER";
-  triggerYCustom?: number; // treated as percentage
+  trigger?: "FULL" | "PARTIAL" | "CENTER";
+  triggerY?: number; // treated as percentage
+  triggerClass: string;
   thresholdSteps?: number; // how granular the callbacks are
-  isReverse?: boolean;
+  isOnce?: boolean;
 }
 
 interface inViewOptionsI {
@@ -19,10 +22,11 @@ interface inViewOptionsI {
 export const inView = ({
   elements,
   root = null,
-  triggerY = "CENTER",
-  triggerYCustom = 0,
+  trigger = "CENTER",
+  triggerY,
+  triggerClass = "in-view",
   thresholdSteps = 20,
-  isReverse = true
+  isOnce = false
 }: inViewI): void => {
   const buildThresholds = () => {
     const thresholds = [];
@@ -38,28 +42,27 @@ export const inView = ({
 
   const handleIntersect = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
-      // console.log(index, entry.intersectionRatio)
+      // console.log(entry.intersectionRatio)
       if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
+        entry.target.classList.add(triggerClass);
       } else {
-        if (isReverse) {
-          entry.target.classList.remove('in-view');
+        if (!isOnce) {
+          entry.target.classList.remove(triggerClass);
         }
       }
     });
   }
 
   elements.forEach((element) => {
-    const ElementView = {
+    const elementView = {
       FULL: `0px 0px -${element.getBoundingClientRect().height}px 0px`,
       PARTIAL: `0px 0px 0px 0px`,
       CENTER: `0px 0px -50% 0px`,
-      CUSTOM: `0px 0px -${100 - triggerYCustom}% 0px`
     }
 
     const options: inViewOptionsI = {
       root,
-      rootMargin: triggerYCustom ? ElementView.CUSTOM : ElementView[triggerY],
+      rootMargin: triggerY ? `0px 0px -${100 - triggerY}% 0px` : elementView[trigger],
       threshold: buildThresholds()
     }
 

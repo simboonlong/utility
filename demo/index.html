@@ -85,8 +85,15 @@
         text-decoration: underline;
       }
 
+      [data-inview] {
+        transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
+        transform: translateY(80px);
+        opacity: 0;
+      }
+
       .in-view {
-        box-shadow: 0 0 0 2px red;
+        transform: translateY(0);
+        opacity: 1;
       }
     </style>
   </head>
@@ -353,20 +360,77 @@ scrollToY({
         </section>
         <hr />
         <section>
-          <div
-            data-inview
-            style="
-              position: relative;
-              width: 300px;
-              height: 300px;
-              background-color: gold;
-            "
-          ></div>
-          <div data-inview style="height: 200vh; background-color: green"></div>
-          <div
-            data-inview
-            style="height: 200vh; background-color: orange"
-          ></div>
+          <div class="py-8">
+            <h3>inView</h3>
+            <p>Transition in elements when scrolled into view.</p>
+            <div
+              class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
+            >
+              <pre>
+inView({
+  elements: document.querySelectorAll('[data-inview]'),
+  trigger: "FULL"
+});
+</pre
+              >
+            </div>
+            <div class="flex flex-wrap -mx-4">
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 80px; height: 80px; background-color: orange"
+                ></div>
+              </div>
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 240px; height: 240px; background-color: orange"
+                ></div>
+              </div>
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 160px; height: 160px; background-color: orange"
+                ></div>
+              </div>
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 240px; height: 240px; background-color: orange"
+                ></div>
+              </div>
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 160px; height: 160px; background-color: orange"
+                ></div>
+              </div>
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 80px; height: 80px; background-color: orange"
+                ></div>
+              </div>
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 240px; height: 240px; background-color: orange"
+                ></div>
+              </div>
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 80px; height: 80px; background-color: orange"
+                ></div>
+              </div>
+              <div class="w-auto p-4">
+                <div
+                  data-inview
+                  style="width: 160px; height: 160px; background-color: orange"
+                ></div>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
       <footer class="py-4">

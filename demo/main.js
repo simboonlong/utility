@@ -81,4 +81,5 @@ updateCookie();
 updateViewport();
 inView({
   elements: document.querySelectorAll('[data-inview]'),
+  trigger: "FULL"
 });
