@@ -175,13 +175,26 @@ Example:
 ```
 
 ```
+[data-inview] .in-view {
+  transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
+  transform: translateY(80px);
+  opacity: 0;
+}
+
+[data-inview="true"] .in-view {
+  transform: translateY(0);
+  opacity: 1;
+}
+```
+
+```
 import { inView } from "@simboonlong/utility"
 
 inView({
   elements: document.querySelectorAll('[data-inview]'),
   root: null, // optional, default is null
   trigger: "FULL", // optional, default is `CENTER`
-  triggerY: 15, // optional, note that defining this will overwrite trigger option
+  triggerY: 15, // optional, note that defining this will overwrite `trigger` option !!!
   thresholdSteps: 30, // optional, default is 20
   isOnce: true // optional, default is false
 });
@@ -196,9 +209,9 @@ trigger          ---   "FULL" | "PARTIAL" | "CENTER".
                         `FULL` sets `[data-inview="true"]` to element once it's fully in view.
                         `PARTIAL` sets `[data-inview="true"]` to element as soon as it is within view.
                         `CENTER` sets `[data-inview="true"]` to element only when its top hits root element's center.
-triggerY         ---   percentage value of root element in determining when elements should set `[data-inview="true"]`.
-thresholdSteps   ---   determines how granular the callbacks are.
-isOnce           ---   determines if to reset back to `[data-inview]` after element exited.
+triggerY         ---   Percentage value of root element in determining when elements should set `[data-inview="true"]`.
+thresholdSteps   ---   Determines how granular the callbacks are.
+isOnce           ---   Determines if to reset back to `[data-inview]` after element exited.
 ```
 
 Author © [Sim Boon Long](http://simboonlong.com/).
