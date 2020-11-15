@@ -8,6 +8,21 @@ var updateViewport = () => {
   document.getElementById("vp-h").innerText = String(getViewport().h);
 };
 
+var fixie = document.querySelector(".on-window-scroll");
+var scrollHandler;
+
+var setFixie = () => {
+  clearTimeout(scrollHandler);
+
+  if (!fixie.classList.contains('is-active')) {
+    fixie.classList.add('is-active');
+  } else {
+    scrollHandler = setTimeout(() => {
+      fixie.classList.remove('is-active');
+    }, 2500);
+  }
+}
+
 document.getElementById("cookie-unset").addEventListener("click", () => {
   setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 });
   updateCookie();
@@ -67,6 +82,8 @@ onWindowScroll({
       document.getElementById("hit-bottom").innerText = `${false}`;
       document.getElementById("hit-top").innerText = `${false}`;
       document.getElementById("hit-between").innerText = `${st}`;
+
+      setFixie();
     },
     hitBottom: () => {
       document.getElementById("hit-bottom").innerText = `${true}`;

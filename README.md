@@ -64,7 +64,7 @@ getViewport().h // returns current viewport height
 
 ---
 
-#### onWindowScroll
+#### onWindowResize
 
 Throttled window resize event.
 
