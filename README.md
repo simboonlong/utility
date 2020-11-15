@@ -162,9 +162,17 @@ document.getElementById('someId').addEventListener("click", (event) => {
 
 #### inView
 
-Add `.in-view` when element is scrolled into view. Customize transition in css animation to your own needs.
+Sets `[data-inview="true"]` when element is scrolled into view. Customize any transition via css animation in `.in-view`.
 
 Example:
+
+```
+<div data-inview>
+  <div class="in-view">
+    ...
+  </div>
+</div>
+```
 
 ```
 import { inView } from "@simboonlong/utility"
