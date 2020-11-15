@@ -37,7 +37,7 @@ document
   .getElementById("scroll-to-y")
   .addEventListener("click", (event) => {
     event.preventDefault();
-    scrollToY({ endValue: 200 });
+    scrollToY({ endValue: 0 });
   });
 
 document
@@ -46,7 +46,7 @@ document
     event.preventDefault();
     ease({
       startValue: 0,
-      endValue: 1000,
+      endValue: 800,
       onStep: (value) => {
         document.getElementById("scrollable-x").scrollLeft = value;
       },
@@ -70,23 +70,23 @@ document
 onWindowScroll({
   callback: {
     scrollDown: () => {
-      document.getElementById("scroll").innerText = "down";
+      document.getElementById("scroll").innerHTML = "&#10515;";
     },
     scrollUp: () => {
-      document.getElementById("scroll").innerText = "up";
+      document.getElementById("scroll").innerHTML = "&#10514;";
     },
     hitTop: () => {
-      document.getElementById("hit-top").innerText = `${true}`;
+      document.getElementById("hit-top").innerHTML = "&#10003;";
     },
     hitBetween: (st) => {
-      document.getElementById("hit-bottom").innerText = `${false}`;
-      document.getElementById("hit-top").innerText = `${false}`;
+      document.getElementById("hit-bottom").innerHTML = "&#10007;";
+      document.getElementById("hit-top").innerHTML = "&#10007;";
       document.getElementById("hit-between").innerText = `${st}`;
 
       setFixie();
     },
     hitBottom: () => {
-      document.getElementById("hit-bottom").innerText = `${true}`;
+      document.getElementById("hit-bottom").innerHTML = "&#10003;";
     },
   },
   throtteRate: 75,

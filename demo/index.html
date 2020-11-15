@@ -162,201 +162,123 @@
           </div>
         </div>
         <hr />
-        <section>
-          <div class="py-6">
-            <h3>
-              <a
-                href="https://github.com/simboonlong/utility#getcookie"
-                target="_blank"
-                rel="noopener noreferrer"
-                >getCookie</a
-              >,
-              <a
-                href="https://github.com/simboonlong/utility#setcookie"
-                target="_blank"
-                rel="noopener noreferrer"
-                >setCookie</a
-              >
-            </h3>
-            <p>Get and set browser cookie.</p>
-            <div class="mb-4"></div>
-            <div class="py-4">
-              <button type="button" id="cookie-set" data-testid="cookie-set">
-                <pre>
+        <section class="py-6">
+          <h3>
+            <a
+              href="https://github.com/simboonlong/utility#getcookie"
+              target="_blank"
+              rel="noopener noreferrer"
+              >getCookie</a
+            >,
+            <a
+              href="https://github.com/simboonlong/utility#setcookie"
+              target="_blank"
+              rel="noopener noreferrer"
+              >setCookie</a
+            >
+          </h3>
+          <p>Get and set browser cookie.</p>
+          <div class="py-4">
+            <button type="button" id="cookie-set" data-testid="cookie-set">
+              <pre>
 setCookie({
   cname: "tracker",
   cvalue: "abc123",
   exdays: 0.125
 })
 </pre
-                >
-              </button>
-              <button
-                type="button"
-                id="cookie-unset"
-                data-testid="cookie-unset"
               >
-                <pre>
+            </button>
+            <button type="button" id="cookie-unset" data-testid="cookie-unset">
+              <pre>
 setCookie({
   cname: "tracker",
   cvalue: "abc123",
   exdays: 0
 })
 </pre
-                >
-              </button>
-              <div
-                class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
               >
-                getCookie({ cname: "tracker" }) =
-                <b id="cookie" data-testid="cookie"></b>
-              </div>
+            </button>
+            <div
+              class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
+            >
+              getCookie({ cname: "tracker" }) =
+              <b id="cookie" data-testid="cookie"></b>
             </div>
           </div>
         </section>
         <hr />
-        <section>
-          <div class="py-6">
-            <h3>
-              <a
-                href="https://github.com/simboonlong/utility#getviewport"
-                target="_blank"
-                rel="noopener noreferrer"
-                >getViewport</a
-              >,
-              <a
-                href="https://github.com/simboonlong/utility#onwindowresize"
-                target="_blank"
-                rel="noopener noreferrer"
-                >onWindowResize</a
-              >
-            </h3>
-            <p>Try resizing browser to see <i>getViewport</i> in action.</p>
-            <div class="mb-4"></div>
-            <div class="py-4">
-              <div
-                class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
-              >
-                getViewport().w = <b id="vp-w" data-testid="vp-w"></b
-                ><br />getViewport().h = <b id="vp-h" data-testid="vp-h"></b>
-              </div>
+        <section class="py-6">
+          <h3>
+            <a
+              href="https://github.com/simboonlong/utility#getviewport"
+              target="_blank"
+              rel="noopener noreferrer"
+              >getViewport</a
+            >,
+            <a
+              href="https://github.com/simboonlong/utility#onwindowresize"
+              target="_blank"
+              rel="noopener noreferrer"
+              >onWindowResize</a
+            >
+          </h3>
+          <p>Try resizing browser to see <i>getViewport</i> in action.</p>
+          <div class="py-4">
+            <div
+              class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
+            >
+              getViewport().w = <b id="vp-w" data-testid="vp-w"></b
+              ><br />getViewport().h = <b id="vp-h" data-testid="vp-h"></b>
             </div>
           </div>
         </section>
         <hr />
-        <section>
-          <div class="py-6">
-            <h3>
-              <a
-                href="https://github.com/simboonlong/utility#ease"
-                target="_blank"
-                rel="noopener noreferrer"
-                >ease</a
-              >
-            </h3>
-            <p>Easing on any element, any attribute.</p>
-            <div class="mb-4"></div>
-            <div class="py-4">
-              <button type="button" id="scroll-to-x" data-testid="scroll-to-x">
-                <pre>
+        <section class="py-6">
+          <h3>
+            <a
+              href="https://github.com/simboonlong/utility#ease"
+              target="_blank"
+              rel="noopener noreferrer"
+              >ease</a
+            >
+          </h3>
+          <p>Easing on any numerical attribute, of any element.</p>
+          <div class="py-4">
+            <button type="button" id="scroll-to-x" data-testid="scroll-to-x">
+              <pre>
 ease({
   startValue: 0,
-  endValue: 1000,
+  endValue: 800,
   onStep: value => {
     document.getElementById("scrollable-x").scrollLeft = value
   }
 })  </pre
-                >
-              </button>
-              <div
-                id="scrollable-x"
-                style="overflow-x: auto"
-                class="bg-gray-100 border rounded text-gray-600 p-2"
               >
-                <div style="width: 200vw">
-                  <p>
-                    I am #scrollable-x. Sed ut perspiciatis unde omnis iste
-                    natus error sit voluptatem accusantium doloremque
-                    laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                    inventore veritatis et quasi architecto beatae vitae dicta
-                    sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                    aspernatur aut odit aut fugit, sed quia consequuntur magni
-                    dolores eos qui ratione voluptatem sequi nesciunt. Neque
-                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                    consectetur, adipisci velit, sed quia non numquam eius modi
-                    tempora incidunt ut labore et dolore magnam aliquam quaerat
-                    voluptatem. Ut enim ad minima veniam, quis nostrum
-                    exercitationem ullam corporis suscipit laboriosam, nisi ut
-                    aliquid ex ea commodi consequatur? Quis autem vel eum iure
-                    reprehenderit qui in ea voluptate velit esse quam nihil
-                    molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                    voluptas nulla pariatur.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <hr />
-        <section>
-          <div
-            class="py-6"
-            style="
-              position: sticky;
-              top: 0;
-              background-color: rgba(255, 255, 255, 0.8);
-            "
-          >
-            <h3>
-              <a
-                href="https://github.com/simboonlong/utility#scrolltoy"
-                target="_blank"
-                rel="noopener noreferrer"
-                >scrollToY</a
-              >
-            </h3>
-            <p>Window vertical scroll to positions.</p>
-            <div class="py-4">
-              <button type="button" id="scroll-to-y" data-testid="scroll-to-y">
-                <pre>
-scrollToY({
-  endValue: 200
-})
-</pre
-                >
-              </button>
-              <button
-                type="button"
-                id="scroll-to-y-infinity"
-                data-testid="scroll-to-y-infinity"
-              >
-                <pre>
-scrollToY({
-  endValue: Infinity
-})
-</pre
-                >
-              </button>
-              <button
-                class="mb-0"
-                type="button"
-                id="scroll-to-target"
-                data-testid="scroll-to-target"
-              >
-                <pre>
-scrollToY({
-  endValue: document.getElementById("target").offsetTop
-})
-</pre
-                >
-              </button>
-            </div>
-          </div>
-          <div class="py-6">
-            <div class="w-1/2">
-              <div class="bg-gray-100 border rounded text-gray-600 p-2">
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            </button>
+            <div
+              id="scrollable-x"
+              style="overflow-x: auto"
+              class="bg-gray-100 border rounded text-gray-600 p-2"
+            >
+              <div style="width: 400vw">
+                <p class="mb-0">
+                  I am #scrollable-x. Sed ut perspiciatis unde omnis iste natus
+                  error sit voluptatem accusantium doloremque laudantium, totam
+                  rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                  quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+                  ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+                  fugit, sed quia consequuntur magni dolores eos qui ratione
+                  voluptatem sequi nesciunt. Neque porro quisquam est, qui
+                  dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                  velit, sed quia non numquam eius modi tempora incidunt ut
+                  labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad
+                  minima veniam, quis nostrum exercitationem ullam corporis
+                  suscipit laboriosam, nisi ut aliquid ex ea commodi
+                  consequatur? Quis autem vel eum iure reprehenderit qui in ea
+                  voluptate velit esse quam nihil molestiae consequatur, vel
+                  illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed
+                  ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque
                   ipsa quae ab illo inventore veritatis et quasi architecto
                   beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
@@ -372,69 +294,107 @@ scrollToY({
                   molestiae consequatur, vel illum qui dolorem eum fugiat quo
                   voluptas nulla pariatur.
                 </p>
-                <p id="target" style="color: orange"><b>#target</b></p>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni dolores eos qui ratione voluptatem sequi
-                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-                  dolor sit amet, consectetur, adipisci velit, sed quia non
-                  numquam eius modi tempora incidunt ut labore et dolore magnam
-                  aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-                  nostrum exercitationem ullam corporis suscipit laboriosam,
-                  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
-                  iure reprehenderit qui in ea voluptate velit esse quam nihil
-                  molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                  voluptas nulla pariatur
-                </p>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni dolores eos qui ratione voluptatem sequi
-                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-                  dolor sit amet, consectetur, adipisci velit, sed quia non
-                  numquam eius modi tempora incidunt ut labore et dolore magnam
-                  aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-                  nostrum exercitationem ullam corporis suscipit laboriosam,
-                  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
-                  iure reprehenderit qui in ea voluptate velit esse quam nihil
-                  molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                  voluptas nulla pariatur
-                </p>
               </div>
             </div>
           </div>
         </section>
         <hr />
-        <section>
-          <div class="py-6">
-            <h3>
-              <a
-                href="https://github.com/simboonlong/utility#inview"
-                target="_blank"
-                rel="noopener noreferrer"
-                >inView</a
+        <section class="py-6">
+          <h3>
+            <a
+              href="https://github.com/simboonlong/utility#scrolltoy"
+              target="_blank"
+              rel="noopener noreferrer"
+              >scrollToY</a
+            >
+          </h3>
+          <p>Window vertical scroll to positions.</p>
+          <div class="py-4">
+            <button type="button" id="scroll-to-y" data-testid="scroll-to-y">
+              <pre>
+scrollToY({
+  endValue: 0
+})
+</pre
               >
-            </h3>
-            <p>Transition in elements when scrolled into view.</p>
-            <div class="py-4">
-              <div
-                class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
+            </button>
+            <button
+              type="button"
+              id="scroll-to-y-infinity"
+              data-testid="scroll-to-y-infinity"
+            >
+              <pre>
+scrollToY({
+  endValue: Infinity
+})
+</pre
               >
-                <pre>
+            </button>
+            <button
+              type="button"
+              id="scroll-to-target"
+              data-testid="scroll-to-target"
+            >
+              <pre>
+scrollToY({
+  endValue: document.getElementById("target").offsetTop
+})
+</pre
+              >
+            </button>
+            <div class="bg-gray-100 border rounded text-gray-600 p-2">
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                voluptas sit aspernatur aut odit aut fugit.
+              </p>
+              <p id="target" style="color: orange"><b>#target</b></p>
+              <p>
+                Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+                esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+                fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde
+                omnis iste natus error sit voluptatem accusantium doloremque
+                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
+                ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+                non numquam eius modi tempora incidunt ut labore et dolore
+                magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+                quis nostrum exercitationem ullam corporis suscipit laboriosam,
+                nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
+                iure reprehenderit qui in ea voluptate velit esse quam nihil
+                molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                voluptas nulla pariatur.
+              </p>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section class="py-6">
+          <h3>
+            <a
+              href="https://github.com/simboonlong/utility#inview"
+              target="_blank"
+              rel="noopener noreferrer"
+              >inView</a
+            >
+          </h3>
+          <p>Transition in elements when scrolled into view.</p>
+          <div class="py-4">
+            <div
+              class="inline-block bg-gray-100 border rounded text-gray-600 p-2"
+            >
+              <pre>
 inView({
   elements: document.querySelectorAll('[data-inview]'),
   trigger: "FULL"
 });
 </pre
-                >
-              </div>
+              >
             </div>
             <div class="flex flex-wrap -mx-4">
               <div class="w-auto p-4">
