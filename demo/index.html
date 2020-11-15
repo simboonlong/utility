@@ -85,13 +85,13 @@
         text-decoration: underline;
       }
 
-      [data-inview] {
+      [data-inview] .in-view {
         transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
         transform: translateY(80px);
         opacity: 0;
       }
 
-      .in-view {
+      [data-inview="true"] .in-view {
         transform: translateY(0);
         opacity: 1;
       }
@@ -376,58 +376,100 @@ inView({
             </div>
             <div class="flex flex-wrap -mx-4">
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 80px; height: 80px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="width: 80px; height: 80px; background-color: orange"
+                  ></div>
+                </div>
               </div>
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 240px; height: 240px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="
+                      width: 240px;
+                      height: 240px;
+                      background-color: orange;
+                    "
+                  ></div>
+                </div>
               </div>
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 160px; height: 160px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="
+                      width: 160px;
+                      height: 160px;
+                      background-color: orange;
+                    "
+                  ></div>
+                </div>
               </div>
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 240px; height: 240px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="
+                      width: 240px;
+                      height: 240px;
+                      background-color: orange;
+                    "
+                  ></div>
+                </div>
               </div>
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 160px; height: 160px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="
+                      width: 160px;
+                      height: 160px;
+                      background-color: orange;
+                    "
+                  ></div>
+                </div>
               </div>
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 80px; height: 80px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="width: 80px; height: 80px; background-color: orange"
+                  ></div>
+                </div>
               </div>
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 240px; height: 240px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="
+                      width: 240px;
+                      height: 240px;
+                      background-color: orange;
+                    "
+                  ></div>
+                </div>
               </div>
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 80px; height: 80px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="width: 80px; height: 80px; background-color: orange"
+                  ></div>
+                </div>
               </div>
               <div class="w-auto p-4">
-                <div
-                  data-inview
-                  style="width: 160px; height: 160px; background-color: orange"
-                ></div>
+                <div data-inview>
+                  <div
+                    class="in-view"
+                    style="
+                      width: 160px;
+                      height: 160px;
+                      background-color: orange;
+                    "
+                  ></div>
+                </div>
               </div>
             </div>
           </div>

@@ -8,7 +8,6 @@ interface inViewI {
   root?: null | HTMLElement;
   trigger?: "FULL" | "PARTIAL" | "CENTER";
   triggerY?: number; // treated as percentage
-  triggerClass: string;
   thresholdSteps?: number; // how granular the callbacks are
   isOnce?: boolean;
 }
@@ -24,7 +23,6 @@ export const inView = ({
   root = null,
   trigger = "CENTER",
   triggerY,
-  triggerClass = "in-view",
   thresholdSteps = 20,
   isOnce = false
 }: inViewI): void => {
@@ -44,10 +42,10 @@ export const inView = ({
     entries.forEach((entry: IntersectionObserverEntry) => {
       // console.log(entry.intersectionRatio)
       if (entry.isIntersecting) {
-        entry.target.classList.add(triggerClass);
+        entry.target.setAttribute("data-inview", "true");
       } else {
         if (!isOnce) {
-          entry.target.classList.remove(triggerClass);
+          entry.target.setAttribute("data-inview", "");
         }
       }
     });

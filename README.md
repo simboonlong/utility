@@ -174,7 +174,6 @@ inView({
   root: null, // optional, default is null
   trigger: "FULL", // optional, default is `CENTER`
   triggerY: 15, // optional, note that defining this will overwrite trigger option
-  triggerClass: "custom-name", // optional, default is `in-view`
   thresholdSteps: 30, // optional, default is 20
   isOnce: true // optional, default is false
 });
@@ -184,12 +183,14 @@ inView({
 Options:
 
 elements         ---   Elements selector
-root             ---   Root element in which `.in-view` elements will based their callbacks on.
-trigger          ---   "FULL" | "PARTIAL" | "CENTER". `FULL` adds `.in-view` class to element once it's fully in view, `PARTIAL` adds `.in-view` class to element as soon as it is within view, adds `.in-view` class to element only when its top hits root element's center.
-triggerY         ---   percentage value of root element in determining when elements should add `.in-view` class.
-triggerClass     ---   class name.
+root             ---   Root element in which `[data-inview]` elements will based their callbacks on.
+trigger          ---   "FULL" | "PARTIAL" | "CENTER".
+                        `FULL` sets `[data-inview="true"]` to element once it's fully in view.
+                        `PARTIAL` sets `[data-inview="true"]` to element as soon as it is within view.
+                        `CENTER` sets `[data-inview="true"]` to element only when its top hits root element's center.
+triggerY         ---   percentage value of root element in determining when elements should set `[data-inview="true"]`.
 thresholdSteps   ---   determines how granular the callbacks are.
-isOnce           ---   determines to remove `.in-view` after they are added.
+isOnce           ---   determines if to reset back to `[data-inview]` after element exited.
 ```
 
 Author © [Sim Boon Long](http://simboonlong.com/).
