@@ -15,10 +15,12 @@ interface throttleI {
 }
 
 interface throttledI {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (): any;
   cancel: () => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const throttle = ({
   func,
   wait,
@@ -27,21 +29,23 @@ export const throttle = ({
     trailing: true
   }
 }: throttleI) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let timeout: any, context: null, args: any, result: void;
   let previous = 0;
 
-  let later = () => {
+  const later = () => {
     previous = options.leading === false ? 0 : now();
     timeout = null;
     result = func.apply(context, args);
     if (!timeout) context = args = null;
   };
 
-  let throttled = <throttledI>function() {
-    let _now = now();
+  const throttled = <throttledI>function() {
+    const _now = now();
     if (!previous && options.leading === false) previous = _now;
-    let remaining = wait - (_now - previous);
+    const remaining = wait - (_now - previous);
     context = this;
+    // eslint-disable-next-line prefer-rest-params
     args = arguments;
     if (remaining <= 0 || remaining > wait) {
       if (timeout) {
