@@ -5,6 +5,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "noImplicitThis": false,
     "target": "es6",
     "module": "ESNext",
     "outDir": "dist/es6",

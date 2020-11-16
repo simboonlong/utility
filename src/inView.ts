@@ -1,7 +1,6 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 // https://www.smashingmagazine.com/2018/01/deferring-lazy-loading-intersection-observer-api/
 // https://github.com/w3c/IntersectionObserver/tree/master/polyfill
-import 'intersection-observer';
 
 interface inViewI {
   elements: NodeListOf<HTMLDataElement>;
@@ -21,7 +20,7 @@ interface inViewOptionsI {
 export const inView = ({
   elements,
   root = null,
-  trigger = "CENTER",
+  trigger = "FULL",
   triggerY,
   thresholdSteps = 20,
   isOnce = false

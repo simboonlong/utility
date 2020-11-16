@@ -1,54 +1,48 @@
 import { throttle } from "./throttle"
 
 interface onWindowResizeI {
-  callback: () => void;
+  resize: () => void;
   throtteRate: number;
 }
 
-export const onWindowResize = ({ callback, throtteRate = 50 }: onWindowResizeI): void => {
-  const onResize = () => {
-    callback()
-  }
-
-  const throttled = throttle({ func: onResize, wait: throtteRate })
+export const onWindowResize = ({ resize, throtteRate = 50 }: onWindowResizeI): void => {
+  const throttled = throttle({ func: resize, wait: throtteRate })
   window.addEventListener("resize", throttled)
 }
 
 interface onWindowScrollI {
-  callback: {
-    hitBetween: (st: number) => void;
-    hitTop: () => void;
-    hitBottom: () => void;
-    scrollDown: () => void;
-    scrollUp: () => void;
-  };
+  up: () => void;
+  down: () => void;
+  top?: () => void;
+  between?: (st: number) => void;
+  bottom?: () => void;
   throtteRate: number;
 }
 
-export const onWindowScroll = ({ callback, throtteRate = 50 }: onWindowScrollI ): void => {
+export const onWindowScroll = ({ up, down, top, between, bottom, throtteRate = 50 }: onWindowScrollI ): void => {
   let lastScrollTop = 0
 
   const onScroll = () => {
     const st = window.pageYOffset || document.documentElement.scrollTop
     const mostBottomTop = document.body.scrollHeight - window.innerHeight
 
-    if (callback.hitBetween) {
-      callback.hitBetween(st)
+    if (between) {
+      between(st)
     }
 
-    if (callback.hitTop && st <= 0) {
-      callback.hitTop()
+    if (top && st <= 0) {
+      top()
     }
 
-    if (callback.hitBottom && st >= mostBottomTop) {
-      callback.hitBottom()
+    if (bottom && st >= mostBottomTop) {
+      bottom()
     }
 
     try {
       if (st > lastScrollTop) {
-        callback.scrollDown()
+        down()
       } else {
-        callback.scrollUp()
+        up()
       }
     } catch (error) {
       throw Error(error)

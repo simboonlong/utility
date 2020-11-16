@@ -68,35 +68,32 @@ document
   });
 
 onWindowScroll({
-  callback: {
-    scrollDown: () => {
-      document.getElementById("scroll").innerHTML = "&#8609;";
-    },
-    scrollUp: () => {
-      document.getElementById("scroll").innerHTML = "&#8607;";
-    },
-    hitTop: () => {
-      document.getElementById("hit-top").innerHTML = "&#10003;";
-    },
-    hitBetween: (st) => {
-      document.getElementById("hit-bottom").innerHTML = "&#10007;";
-      document.getElementById("hit-top").innerHTML = "&#10007;";
-      document.getElementById("hit-between").innerText = `${st}`;
+  up: () => {
+    document.getElementById("scroll").innerHTML = "&#8607;";
+  },
+  down: () => {
+    document.getElementById("scroll").innerHTML = "&#8609;";
+  },
+  top: () => {
+    document.getElementById("hit-top").innerHTML = "&#10003;";
+  },
+  between: (st) => {
+    document.getElementById("hit-bottom").innerHTML = "&#10007;";
+    document.getElementById("hit-top").innerHTML = "&#10007;";
+    document.getElementById("hit-between").innerText = `${st}`;
 
-      setFixie();
-    },
-    hitBottom: () => {
-      document.getElementById("hit-bottom").innerHTML = "&#10003;";
-    },
+    setFixie();
+  },
+  bottom: () => {
+    document.getElementById("hit-bottom").innerHTML = "&#10003;";
   },
   throtteRate: 75,
 });
-onWindowResize({ callback: updateViewport, throtteRate: 75 });
+onWindowResize({ resize: updateViewport, throtteRate: 75 });
 
 // init
 updateCookie();
 updateViewport();
 inView({
-  elements: document.querySelectorAll('[data-inview]'),
-  trigger: "FULL"
+  elements: document.querySelectorAll('[data-inview]')
 });

@@ -390,8 +390,7 @@ scrollToY({
             >
               <pre>
 inView({
-  elements: document.querySelectorAll('[data-inview]'),
-  trigger: "FULL"
+  elements: document.querySelectorAll('[data-inview]')
 });
 </pre
               >
@@ -536,12 +535,15 @@ inView({
       <div class="mb-4"></div>
       <div class="py-4">
         <div class="inline-block bg-gray-100 border rounded text-gray-600 p-2">
-          <p>
-            scrollDirection:
-            <b id="scroll" data-testid="scroll"></b><br />hitTop:
-            <b id="hit-top" data-testid="hit-top"></b> <br />hitBetween:
-            <b id="hit-between" data-testid="hit-between"></b> <br />hitBottom:
-            <b id="hit-bottom" data-testid="hit-bottom"></b>
+          <p class="mb-0">top: <b id="hit-top" data-testid="hit-top"></b></p>
+          <p class="mb-0">
+            bottom: <b id="hit-bottom" data-testid="hit-bottom"></b>
+          </p>
+          <p class="mb-0">
+            direction: <b id="scroll" data-testid="scroll"></b>
+          </p>
+          <p class="mb-0">
+            scrollTop: <b id="hit-between" data-testid="hit-between"></b>
           </p>
         </div>
       </div>
