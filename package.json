@@ -18,7 +18,7 @@
     "webpack:bundle": "webpack --config webpack.config.js",
     "ts": "tsc --project tsconfig.json",
     "build": "run-s ts webpack:bundle",
-    "precommit": "run-s lint test e2e:ci",
+    "prep": "run-s lint test e2e:ci",
     "semantic-release": "semantic-release"
   },
   "author": "Sim Boon Long",
