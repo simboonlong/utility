@@ -1,4 +1,4 @@
-import { throttle } from "./throttle.js"
+import { throttle } from "./throttle"
 
 interface onWindowResizeI {
   callback: () => void;

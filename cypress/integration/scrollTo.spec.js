@@ -5,7 +5,7 @@ describe('scrollTo', () => {
 
     user.findByTestId('scroll-to-y')
       .click()
-    user.findByTestId('hit-between').should('have.text', '200')
+    user.findByTestId('hit-between').should('have.text', '0')
   })
 
   it('should scroll to most bottom, when endValue is greater than document scroll height', () => {
