@@ -1,44 +1,71 @@
 // extracted from underscore.js
+// https://github.com/jashkenas/underscore/blob/master/underscore.js
+
+const now = Date.now || function() {
+  return new Date().getTime();
+}
+
 interface throttleI {
   func: () => void;
   wait: number;
   options?: {
-    leading?: boolean;
-    trailing?: boolean;
+    leading: boolean;
+    trailing: boolean;
   }
 }
 
-export const throttle = ({ func, wait, options }: throttleI): () => void => {
+interface throttledI {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let context: any, args: any, result: any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let timeout: any = null
-  let previous = 0
-  if (!options) options = {}
-  const later = function () {
-    previous = options?.leading === false ? 0 : Date.now()
-    timeout = null
-    result = func.apply(context, args)
-    if (!timeout) context = args = null
+  (): any;
+  cancel: () => void;
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const throttle = ({
+  func,
+  wait,
+  options = {
+    leading: true,
+    trailing: true
   }
-  return function () {
-    const now = Date.now()
-    if (!previous && options?.leading === false) previous = now
-    const remaining = wait - (now - previous)
-    context = func
+}: throttleI) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let timeout: any, context: null, args: any, result: void;
+  let previous = 0;
+
+  const later = () => {
+    previous = options.leading === false ? 0 : now();
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
+
+  const throttled = <throttledI>function() {
+    const _now = now();
+    if (!previous && options.leading === false) previous = _now;
+    const remaining = wait - (_now - previous);
+    context = this;
     // eslint-disable-next-line prefer-rest-params
-    args = arguments
+    args = arguments;
     if (remaining <= 0 || remaining > wait) {
       if (timeout) {
-        clearTimeout(timeout)
-        timeout = null
+        clearTimeout(timeout);
+        timeout = null;
       }
-      previous = now
-      result = func.apply(context, args)
-      if (!timeout) context = args = null
-    } else if (!timeout && options?.trailing !== false) {
-      timeout = setTimeout(later, remaining)
+      previous = _now;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    } else if (!timeout && options.trailing !== false) {
+      timeout = setTimeout(later, remaining);
     }
-    return result
-  }
+    return result;
+  };
+
+  throttled.cancel = () => {
+    clearTimeout(timeout);
+    previous = 0;
+    timeout = context = args = null;
+  };
+
+  return throttled;
 }

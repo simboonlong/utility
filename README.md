@@ -74,7 +74,7 @@ Example:
 import { onWindowResize } from "@simboonlong/utility"
 
 onWindowResize({
-  callback: () => {
+  resize: () => {
     console.log('window resize')
   },
   throtteRate: 75 // throtteRate default is 50
@@ -91,23 +91,21 @@ Example:
 import { onWindowScroll } from "@simboonlong/utility"
 
 onWindowScroll({
-  callback: {
-    scrollDown: () => {
-      console.log("scroll down")
-    },
-    scrollUp: () => {
-      console.log("scroll up")
-    },
-    hitTop: () => {
-      console.log("hit top")
-    }, // optional
-    hitInBetween: (st) => {
-      console.log(`hit between - ${st}`)
-    }, // optional
-    hitBottom: () => {
-      console.log("hit bottom")
-    } // optional
+  up: () => {
+    console.log("scroll up")
   },
+  down: () => {
+    console.log("scroll down")
+  },
+  top: () => {
+    console.log("hit top")
+  }, // optional
+  between: (st) => {
+    console.log(`hit between - ${st}`)
+  }, // optional
+  bottom: () => {
+    console.log("hit bottom")
+  } // optional
   throtteRate: 75  // throtteRate default is 50
 })
 ```
@@ -193,7 +191,7 @@ import { inView } from "@simboonlong/utility"
 inView({
   elements: document.querySelectorAll('[data-inview]'),
   root: null, // optional, default is null
-  trigger: "FULL", // optional, default is `CENTER`
+  trigger: "CENTER", // optional, default is `FULL`
   triggerY: 15, // optional, note that defining this will overwrite `trigger` option!
   thresholdSteps: 30, // optional, default is 20
   isOnce: true // optional, default is false
