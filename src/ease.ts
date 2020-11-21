@@ -70,7 +70,7 @@ export const ease = ({
   endValue,
   decimal = 0,
   duration = 1000,
-  easeType = easeOutCubic,
+  easeType = easeInOutCubic,
   onStep,
   onComplete = () => { return; },
 }: easeI): void => {

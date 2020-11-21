@@ -12,7 +12,7 @@ export const scrollToY = ({ endValue, easeType, duration, onComplete }: scrollTo
   const mostBottomScrollTop = document.body.scrollHeight - getViewport().h
 
   ease({
-    startValue: window.scrollY,
+    startValue: document.body.scrollTop || document.documentElement.scrollTop,
     endValue: endValue >= mostBottomScrollTop ? mostBottomScrollTop : endValue,
     duration,
     easeType,

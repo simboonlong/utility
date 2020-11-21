@@ -23,7 +23,7 @@ export const onWindowScroll = ({ up, down, top, between, bottom, throtteRate = 5
   let lastScrollTop = 0
 
   const onScroll = () => {
-    const st = window.pageYOffset || document.documentElement.scrollTop
+    const st = document.body.scrollTop || document.documentElement.scrollTop
     const mostBottomTop = document.body.scrollHeight - window.innerHeight
 
     if (between) {
