@@ -49,7 +49,7 @@ document
       endValue: 800,
       onStep: (value) => {
         document.getElementById("on-step-scroll").innerText = value;
-        document.getElementById("ease-1").scrollLeft = value;
+        document.getElementById("ease-scroll").scrollLeft = value;
       },
     });
   });
@@ -64,7 +64,7 @@ document
       decimal: 2,
       onStep: (value) => {
         document.getElementById("on-step-opacity").innerText = value;
-        document.getElementById("ease-2").style.opacity = value;
+        document.getElementById("ease-opacity").style.opacity = value;
       },
     });
   });
