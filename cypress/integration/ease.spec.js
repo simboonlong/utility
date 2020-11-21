@@ -1,5 +1,5 @@
 describe('ease', () => {
-  it('should ease with decimal values', () => {
+  it.skip('should ease with decimal values', () => {
     const user = cy
     user.visit(Cypress.env('PATH'))
 
