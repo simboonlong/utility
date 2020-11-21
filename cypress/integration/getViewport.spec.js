@@ -1,4 +1,4 @@
-describe('viewport', () => {
+describe('getViewport', () => {
   it('should show resize values correctly', () => {
     const user = cy
     user.visit(Cypress.env('PATH'))
