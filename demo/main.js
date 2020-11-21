@@ -48,7 +48,23 @@ document
       startValue: 0,
       endValue: 800,
       onStep: (value) => {
-        document.getElementById("scrollable-x").scrollLeft = value;
+        document.getElementById("on-step-scroll").innerText = value;
+        document.getElementById("ease-1").scrollLeft = value;
+      },
+    });
+  });
+
+document
+  .getElementById("ease-to-opacity")
+  .addEventListener("click", (event) => {
+    event.preventDefault();
+    ease({
+      startValue: 0,
+      endValue: 1,
+      decimal: 2,
+      onStep: (value) => {
+        document.getElementById("on-step-opacity").innerText = value;
+        document.getElementById("ease-2").style.opacity = value;
       },
     });
   });

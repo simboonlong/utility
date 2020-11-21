@@ -124,6 +124,7 @@ import { ease, easeOutQuart } from "@simboonlong/utility"
 ease({
   startValue: 0,
   endValue: 1000,
+  decimal: 2, // optional, default is 0,
   duration: 500, // optional, default is 1000,
   easeType: easeOutQuart, // optional, default is easeInOutCubic
   onStep: value => { document.getElementById("scrollable-x").scrollLeft = value },

@@ -14,9 +14,9 @@ export const scrollToY = ({ endValue, easeType, duration, onComplete }: scrollTo
   ease({
     startValue: window.scrollY,
     endValue: endValue >= mostBottomScrollTop ? mostBottomScrollTop : endValue,
-    duration: duration,
-    easeType: easeType,
+    duration,
+    easeType,
     onStep: value => window.scroll(0, value),
-    onComplete: onComplete
+    onComplete
   })
 }

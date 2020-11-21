@@ -27,6 +27,7 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 400;
         background-color: #fcfcfc;
+        color: #333;
       }
 
       h1,
@@ -50,7 +51,6 @@
       }
 
       p {
-        color: #333;
         margin-bottom: 16px;
       }
 
@@ -251,24 +251,44 @@ ease({
   startValue: 0,
   endValue: 800,
   onStep: value => {
-    document.getElementById("scrollable-x").scrollLeft = value
+    document.getElementById("ease-1").scrollLeft = value
   }
 })  </pre
               >
             </button>
             <div
-              id="scrollable-x"
+              id="ease-1"
               style="overflow-x: auto"
-              class="bg-gray-100 border rounded text-gray-600 p-2"
+              class="relative bg-gray-100 border rounded text-gray-600 p-2 mb-4"
             >
+              <div class="sticky top-0 left-0">
+                <p class="mb-0">
+                  scrollLeft:
+                  <b id="on-step-scroll" style="color: orange">0</b>
+                </p>
+              </div>
               <div style="width: 400vw">
                 <p class="mb-0">
-                  I am #scrollable-x. Sed ut perspiciatis unde omnis iste natus
-                  error sit voluptatem accusantium doloremque laudantium, totam
-                  rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-                  quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                  ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                  fugit, sed quia consequuntur magni dolores eos qui ratione
+                  I am #ease-1. Sed ut perspiciatis unde omnis iste natus error
+                  sit voluptatem accusantium doloremque laudantium, totam rem
+                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                  architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                  voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                  sed quia consequuntur magni dolores eos qui ratione voluptatem
+                  sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+                  quia dolor sit amet, consectetur, adipisci velit, sed quia non
+                  numquam eius modi tempora incidunt ut labore et dolore magnam
+                  aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+                  nostrum exercitationem ullam corporis suscipit laboriosam,
+                  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
+                  iure reprehenderit qui in ea voluptate velit esse quam nihil
+                  molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                  voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste
+                  natus error sit voluptatem accusantium doloremque laudantium,
+                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
+                  et quasi architecto beatae vitae dicta sunt explicabo. Nemo
+                  enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                  aut fugit, sed quia consequuntur magni dolores eos qui ratione
                   voluptatem sequi nesciunt. Neque porro quisquam est, qui
                   dolorem ipsum quia dolor sit amet, consectetur, adipisci
                   velit, sed quia non numquam eius modi tempora incidunt ut
@@ -277,22 +297,27 @@ ease({
                   suscipit laboriosam, nisi ut aliquid ex ea commodi
                   consequatur? Quis autem vel eum iure reprehenderit qui in ea
                   voluptate velit esse quam nihil molestiae consequatur, vel
-                  illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed
-                  ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni dolores eos qui ratione voluptatem sequi
-                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-                  dolor sit amet, consectetur, adipisci velit, sed quia non
-                  numquam eius modi tempora incidunt ut labore et dolore magnam
-                  aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-                  nostrum exercitationem ullam corporis suscipit laboriosam,
-                  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
-                  iure reprehenderit qui in ea voluptate velit esse quam nihil
-                  molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                  voluptas nulla pariatur.
+                  illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+                </p>
+              </div>
+            </div>
+            <button type="button" id="ease-to-opacity">
+              <pre>
+ease({
+  startValue: 0,
+  endValue: 1,
+  decimal: 2,
+  onStep: value => {
+    document.getElementById("ease-2").style.opacity = value
+  }
+})  </pre
+              >
+            </button>
+            <div class="relative bg-gray-100 border rounded text-gray-600 p-2">
+              <div class="sticky top-0 left-0">
+                <p id="ease-2" class="mb-0">
+                  opacity:
+                  <b id="on-step-opacity" style="color: orange">0</b>
                 </p>
               </div>
             </div>
