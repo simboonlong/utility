@@ -1,4 +1,4 @@
-describe('scroll', () => {
+describe('onWindowScroll', () => {
   it('should show scroll direction correctly', () => {
     const user = cy
     user.visit(Cypress.env('PATH'))
