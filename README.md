@@ -22,6 +22,30 @@ Get the umd minified version directly at [utility.min.js](https://utility.simboo
 
 ---
 
+#### ease
+
+Set easing values on anything.
+
+Example:
+
+```
+import { ease, easeOutQuart } from "@simboonlong/utility"
+
+ease({
+  startValue: 0,
+  endValue: 1000,
+  decimal: 2, // optional, default is 0,
+  duration: 500, // optional, default is 1000,
+  easeType: easeOutQuart, // optional, default is easeInOutCubic
+  onStep: value => { document.getElementById("scrollable-x").scrollLeft = value },
+  onComplete: () => {
+    console.log("scroll completed")
+  } // optional
+})
+```
+
+---
+
 #### getCookie
 
 Get browser cookie.
@@ -60,101 +84,6 @@ import { getViewport } from "@simboonlong/utility"
 
 getViewport().w // returns current viewport width
 getViewport().h // returns current viewport height
-```
-
----
-
-#### onWindowResize
-
-Throttled window resize event.
-
-Example:
-
-```
-import { onWindowResize } from "@simboonlong/utility"
-
-onWindowResize({
-  resize: () => {
-    console.log('window resize')
-  },
-  throtteRate: 75 // throtteRate default is 50
-})
-```
-
-#### onWindowScroll
-
-Various scrolling scenario callbacks, on window scroll event.
-
-Example:
-
-```
-import { onWindowScroll } from "@simboonlong/utility"
-
-onWindowScroll({
-  up: () => {
-    console.log("scroll up")
-  },
-  down: () => {
-    console.log("scroll down")
-  },
-  top: () => {
-    console.log("hit top")
-  }, // optional
-  between: (st) => {
-    console.log(`hit between - ${st}`)
-  }, // optional
-  bottom: () => {
-    console.log("hit bottom")
-  } // optional
-  throtteRate: 75  // throtteRate default is 50
-})
-```
-
----
-
-#### ease
-
-Set easing values on anything.
-
-Example:
-
-```
-import { ease, easeOutQuart } from "@simboonlong/utility"
-
-ease({
-  startValue: 0,
-  endValue: 1000,
-  decimal: 2, // optional, default is 0,
-  duration: 500, // optional, default is 1000,
-  easeType: easeOutQuart, // optional, default is easeInOutCubic
-  onStep: value => { document.getElementById("scrollable-x").scrollLeft = value },
-  onComplete: () => {
-    console.log("scroll completed")
-  } // optional
-})
-```
-
-#### scrollToY
-
-`scrollToY` is built upon [`ease`](#ease) function. Mainly for vertical ease scrolling of window.
-
-Example:
-
-```
-import { scrollToY, easeOutQuart } from "@simboonlong/utility"
-
-document.getElementById('someId').addEventListener("click", (event) => {
-  event.preventDefault()
-
-  scrollToY({
-    endValue: 200,
-    duration: 500, // optional, default is 1000
-    easeType: easeOutQuart, // optional, default is easeInOutCubic
-    onComplete: () => {
-      console.log("scroll completed")
-    } // optional
-  })
-})
 ```
 
 ---
@@ -212,6 +141,79 @@ trigger          ---   "FULL" | "PARTIAL" | "CENTER".
 triggerY         ---   Percentage value of root element in determining when should set `[data-inview="true"]`.
 thresholdSteps   ---   Determines how granular the callbacks are.
 isOnce           ---   Determines if to reset back to `[data-inview]` after elements exited.
+```
+
+---
+
+#### onWindowResize
+
+Throttled window resize event.
+
+Example:
+
+```
+import { onWindowResize } from "@simboonlong/utility"
+
+onWindowResize({
+  resize: () => {
+    console.log('window resize')
+  },
+  throtteRate: 75 // throtteRate default is 50
+})
+```
+
+#### onWindowScroll
+
+Various scrolling scenario callbacks, on window scroll event.
+
+Example:
+
+```
+import { onWindowScroll } from "@simboonlong/utility"
+
+onWindowScroll({
+  up: () => {
+    console.log("scroll up")
+  },
+  down: () => {
+    console.log("scroll down")
+  },
+  top: () => {
+    console.log("hit top")
+  }, // optional
+  between: (st) => {
+    console.log(`hit between - ${st}`)
+  }, // optional
+  bottom: () => {
+    console.log("hit bottom")
+  } // optional
+  throtteRate: 75  // throtteRate default is 50
+})
+```
+
+---
+
+#### scrollToY
+
+`scrollToY` is built upon [`ease`](#ease) function. Mainly for vertical ease scrolling of window.
+
+Example:
+
+```
+import { scrollToY, easeOutQuart } from "@simboonlong/utility"
+
+document.getElementById('someId').addEventListener("click", (event) => {
+  event.preventDefault()
+
+  scrollToY({
+    endValue: 200,
+    duration: 500, // optional, default is 1000
+    easeType: easeOutQuart, // optional, default is easeInOutCubic
+    onComplete: () => {
+      console.log("scroll completed")
+    } // optional
+  })
+})
 ```
 
 Author © [Sim Boon Long](http://simboonlong.com/).
