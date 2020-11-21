@@ -5,9 +5,9 @@ describe('ease', () => {
 
     user.findByTestId('opacity').should('have.text', '0')
     user.findByTestId('ease-to-opacity').click()
-    user.wait(300)
-    user.findByTestId('opacity').invoke('text').then(parseFloat).should('be.gt', 0.1)
-    user.wait(700)
+    user.wait(400)
+    user.findByTestId('opacity').invoke('text').then(parseFloat).should('be.gt', 0.05)
+    user.wait(600)
     user.findByTestId('opacity').should('have.text', '1')
   })
 })
