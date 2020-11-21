@@ -58,6 +58,7 @@ const PI = Math.PI
 interface easeI {
   startValue: number;
   endValue: number;
+  decimal?: number;
   duration?: number;
   easeType?: (t: number) => number;
   onStep: (endValue: number) => void;
@@ -67,8 +68,9 @@ interface easeI {
 export const ease = ({
   startValue,
   endValue,
+  decimal = 0,
   duration = 1000,
-  easeType = easeInOutCubic,
+  easeType = easeOutCubic,
   onStep,
   onComplete = () => { return; },
 }: easeI): void => {
@@ -79,7 +81,7 @@ export const ease = ({
   const step = (timestamp: number) => {
     const timePassed = timestamp - now
     currentSinValue = PI / (duration / timePassed)
-    currentValue = parseInt((startValue + (easeType(timePassed / duration) * (endValue - startValue))).toFixed(0))
+    currentValue = parseFloat((startValue + (easeType(timePassed / duration) * (endValue - startValue))).toFixed(decimal))
 
     if (currentSinValue < PI) {
       onStep(currentValue)
