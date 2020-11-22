@@ -23,6 +23,28 @@ var setFixie = () => {
   }
 }
 
+// scrolling vars
+var scrollDirection = document.getElementById("scroll")
+var hitBottom = document.getElementById("hit-bottom");
+var hitTop = document.getElementById("hit-top");
+var hitBetween = document.getElementById("hit-between");
+var spItem = document.getElementById("sp-item");
+var spBody = document.getElementById("sp-body");
+var thumb = document.querySelector(".progress-thumb");
+var progressingItem = (scrollTopCurr) => {
+  const progress = scrollProgressItem({
+    element: spItem,
+    scrollTopCurr
+  });
+  thumb.style.width = `${progress}%`;
+}
+var progressingBody = (scrollTopCurr) => {
+  const progress = scrollProgressBody({
+    scrollTopCurr
+  });
+  spBody.innerText = `${progress}%`;
+}
+
 document.getElementById("cookie-unset").addEventListener("click", () => {
   setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 });
   updateCookie();
@@ -85,25 +107,27 @@ document
 
 onWindowScroll({
   up: () => {
-    document.getElementById("scroll").innerHTML = "&#8607;";
+    scrollDirection.innerHTML = "&#8607;";
   },
   down: () => {
-    document.getElementById("scroll").innerHTML = "&#8609;";
+    scrollDirection.innerHTML = "&#8609;";
   },
   top: () => {
-    document.getElementById("hit-top").innerHTML = "&#10003;";
+    hitTop.innerHTML = "&#10003;";
   },
-  between: (st) => {
-    document.getElementById("hit-bottom").innerHTML = "&#10007;";
-    document.getElementById("hit-top").innerHTML = "&#10007;";
-    document.getElementById("hit-between").innerText = `${st}`;
+  between: (scrollTopCurr) => {
+    hitBottom.innerHTML = "&#10007;";
+    hitTop.innerHTML = "&#10007;";
+    hitBetween.innerText = `${scrollTopCurr}`;
 
+    progressingItem(scrollTopCurr);
+    progressingBody(scrollTopCurr);
     setFixie();
   },
   bottom: () => {
-    document.getElementById("hit-bottom").innerHTML = "&#10003;";
+    hitBottom.innerHTML = "&#10003;";
   },
-  throtteRate: 75,
+  throtteRate: 1,
 });
 onWindowResize({ resize: updateViewport, throtteRate: 75 });
 
@@ -113,3 +137,5 @@ updateViewport();
 inView({
   elements: document.querySelectorAll('[data-inview]')
 });
+progressingItem(document.body.scrollTop || document.documentElement.scrollTop);
+progressingBody(document.body.scrollTop || document.documentElement.scrollTop);

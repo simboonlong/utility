@@ -181,8 +181,8 @@ onWindowScroll({
   top: () => {
     console.log("hit top")
   }, // optional
-  between: (st) => {
-    console.log(`hit between - ${st}`)
+  between: (scrollTopCurr) => {
+    console.log(`hit between - ${scrollTopCurr}`)
   }, // optional
   bottom: () => {
     console.log("hit bottom")
