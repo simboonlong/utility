@@ -181,14 +181,49 @@ onWindowScroll({
   top: () => {
     console.log("hit top")
   }, // optional
-  between: (st) => {
-    console.log(`hit between - ${st}`)
+  between: (scrollTopCurr) => {
+    console.log(`hit between - ${scrollTopCurr}`)
   }, // optional
   bottom: () => {
     console.log("hit bottom")
   } // optional
   throtteRate: 75  // throtteRate default is 50
 })
+```
+
+---
+
+#### scrollProgressBody
+
+Returns scroll progress based on document.
+
+Example:
+
+```
+import { scrollProgressBody } from "@simboonlong/utility"
+
+const progress = scrollProgressBody({
+  scrollTopCurr: document.body.scrollTop || document.documentElement.scrollTop
+});
+
+console.log(`${progress}%`);
+```
+
+#### scrollProgressItem
+
+Returns scroll progress based on item against document.
+
+Example:
+
+```
+import { scrollProgressItem } from "@simboonlong/utility"
+
+const progress = scrollProgressItem({
+  element: document.getElementById("tracker-example"),
+  scrollTopCurr: document.body.scrollTop || document.documentElement.scrollTop
+});
+
+console.log(`${progress}%`);
 ```
 
 ---

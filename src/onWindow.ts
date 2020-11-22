@@ -20,26 +20,26 @@ interface onWindowScrollI {
 }
 
 export const onWindowScroll = ({ up, down, top, between, bottom, throtteRate = 50 }: onWindowScrollI ): void => {
-  let lastScrollTop = 0
+  let scrollTopPrev = 0
 
   const onScroll = () => {
-    const st = document.body.scrollTop || document.documentElement.scrollTop
+    const scrollTopCurr = document.body.scrollTop || document.documentElement.scrollTop
     const mostBottomTop = document.body.scrollHeight - window.innerHeight
 
     if (between) {
-      between(st)
+      between(scrollTopCurr)
     }
 
-    if (top && st <= 0) {
+    if (top && scrollTopCurr <= 0) {
       top()
     }
 
-    if (bottom && st >= mostBottomTop) {
+    if (bottom && scrollTopCurr >= mostBottomTop) {
       bottom()
     }
 
     try {
-      if (st > lastScrollTop) {
+      if (scrollTopCurr > scrollTopPrev) {
         down()
       } else {
         up()
@@ -48,7 +48,7 @@ export const onWindowScroll = ({ up, down, top, between, bottom, throtteRate = 5
       throw Error(error)
     }
 
-    lastScrollTop = st < 0 ? 0 : st
+    scrollTopPrev = scrollTopCurr < 0 ? 0 : scrollTopCurr
   }
 
   window.addEventListener("scroll", throttle({ func: onScroll, wait: throtteRate }))
