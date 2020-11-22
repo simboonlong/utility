@@ -470,20 +470,28 @@ inView({
           <section class="py-8">
             <h3>
               <a
-                href="https://github.com/simboonlong/utility#scrollprogressitem"
-                target="_blank"
-                rel="noopener noreferrer"
-                >scrollProgressItem</a
-              >,
-              <a
                 href="https://github.com/simboonlong/utility#scrollprogressbody"
                 target="_blank"
                 rel="noopener noreferrer"
                 >scrollProgressBody</a
+              >,
+              <a
+                href="https://github.com/simboonlong/utility#scrollprogressitem"
+                target="_blank"
+                rel="noopener noreferrer"
+                >scrollProgressItem</a
               >
             </h3>
             <p>Indication of scroll progress.</p>
             <div class="py-5">
+              <pre class="bg-gray-900 text-white p-4 mb-2">
+const progress = scrollProgressBody({
+  scrollTopCurr
+});
+
+document.getElementById("sp-body").innerText = `${progress}%`;
+</pre
+              >
               <pre class="bg-gray-900 text-white p-4 mb-2">
 const progress = scrollProgressItem({
   element: document.getElementById("sp-item"),
@@ -493,14 +501,6 @@ const progress = scrollProgressItem({
 document.querySelector(".progress-thumb").style.width = `${progress}%`;
 </pre
               >
-              <pre class="bg-gray-900 text-white p-4 mb-2">
-const progress = scrollProgressBody({
-  scrollTopCurr
-});
-
-document.getElementById("sp-body").innerText = `${progress}%`;
-</pre
-              >
               <div class="py-4">
                 <div
                   class="relative bg-gray-100 border rounded text-gray-600 px-4 pt-4 pb-2"
@@ -508,11 +508,14 @@ document.getElementById("sp-body").innerText = `${progress}%`;
                 >
                   <div class="progress">
                     <div class="progress-track">
-                      <div class="progress-thumb"></div>
+                      <div
+                        class="progress-thumb"
+                        data-testid="progress-thumb"
+                      ></div>
                     </div>
                   </div>
                   <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit
+                    #sp-item Sed ut perspiciatis unde omnis iste natus error sit
                     voluptatem accusantium doloremque laudantium, totam rem
                     aperiam, eaque ipsa quae ab illo inventore veritatis et
                     quasi architecto beatae vitae dicta sunt explicabo. Nemo

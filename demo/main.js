@@ -31,18 +31,18 @@ var hitBetween = document.getElementById("hit-between");
 var spItem = document.getElementById("sp-item");
 var spBody = document.getElementById("sp-body");
 var thumb = document.querySelector(".progress-thumb");
+var progressingBody = (scrollTopCurr) => {
+  const progress = scrollProgressBody({
+    scrollTopCurr
+  });
+  spBody.innerText = `${progress}%`;
+}
 var progressingItem = (scrollTopCurr) => {
   const progress = scrollProgressItem({
     element: spItem,
     scrollTopCurr
   });
   thumb.style.width = `${progress}%`;
-}
-var progressingBody = (scrollTopCurr) => {
-  const progress = scrollProgressBody({
-    scrollTopCurr
-  });
-  spBody.innerText = `${progress}%`;
 }
 
 document.getElementById("cookie-unset").addEventListener("click", () => {

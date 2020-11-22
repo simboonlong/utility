@@ -1,13 +1,13 @@
-interface scrollProgressI {
+interface scrollProgressBodyI {
   scrollTopCurr: number;
   decimal?: number;
 }
 
-interface scrollProgressItemI extends scrollProgressI {
+interface scrollProgressItemI extends scrollProgressBodyI {
   element: HTMLElement;
 }
 
-export const scrollProgressBody = ({ scrollTopCurr, decimal = 0 }: scrollProgressI): number => {
+export const scrollProgressBody = ({ scrollTopCurr, decimal = 0 }: scrollProgressBodyI): number => {
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const percent = (scrollTopCurr / height) * 100;
   const progress = parseFloat(percent.toFixed(decimal));
@@ -26,5 +26,5 @@ export const scrollProgressItem = ({ element, scrollTopCurr, decimal = 0 }: scro
       return 100;
     default:
       return progress;
-  };
+  }
 }

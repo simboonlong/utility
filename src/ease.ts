@@ -1,4 +1,3 @@
-
 // inspired from https://github.com/davidgilbertson/easy-ease
 // added extra easing functions from https://gist.github.com/gre/1650294#gistcomment-3141432
 export const linear = (t: number): number => {

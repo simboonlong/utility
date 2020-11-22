@@ -193,6 +193,41 @@ onWindowScroll({
 
 ---
 
+#### scrollProgressBody
+
+Returns scroll progress based on document.
+
+Example:
+
+```
+import { scrollProgressBody } from "@simboonlong/utility"
+
+const progress = scrollProgressBody({
+  scrollTopCurr: document.body.scrollTop || document.documentElement.scrollTop
+});
+
+console.log(`${progress}%`);
+```
+
+#### scrollProgressItem
+
+Returns scroll progress based on item against document.
+
+Example:
+
+```
+import { scrollProgressItem } from "@simboonlong/utility"
+
+const progress = scrollProgressItem({
+  element: document.getElementById("tracker-example"),
+  scrollTopCurr: document.body.scrollTop || document.documentElement.scrollTop
+});
+
+console.log(`${progress}%`);
+```
+
+---
+
 #### scrollToY
 
 `scrollToY` is built upon [`ease`](#ease) function. Mainly for vertical ease scrolling of window.
