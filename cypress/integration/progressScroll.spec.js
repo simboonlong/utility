@@ -4,7 +4,7 @@ describe('progressScroll', () => {
     user.visit(Cypress.env('PATH'))
 
     user.scrollTo('center')
-    user.findByTestId('sp-body').should('have.text', '50%')
+    user.findByTestId('sp-body').should('have.text', '0.5')
   })
 
   it('should show full scroll progress on item correctly', () => {

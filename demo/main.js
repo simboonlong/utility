@@ -35,14 +35,14 @@ var progressingBody = (scrollTopCurr) => {
   const progress = scrollProgressBody({
     scrollTopCurr
   });
-  spBody.innerText = `${progress}%`;
+  spBody.innerText = `${progress}`;
 }
 var progressingItem = (scrollTopCurr) => {
   const progress = scrollProgressItem({
     element: spItem,
     scrollTopCurr
   });
-  thumb.style.width = `${progress}%`;
+  thumb.style.width = `${(progress * 100).toFixed(0)}%`;
 }
 
 document.getElementById("cookie-unset").addEventListener("click", () => {

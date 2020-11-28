@@ -498,7 +498,7 @@ const progress = scrollProgressItem({
   scrollTopCurr
 });
 
-document.querySelector(".progress-thumb").style.width = `${progress}%`;
+document.querySelector(".progress-thumb").style.width = `${(progress * 100).toFixed(0)}%`;
 </pre
               >
               <div class="py-4">
