@@ -203,7 +203,8 @@ Example:
 import { scrollProgressBody } from "@simboonlong/utility"
 
 const progress = scrollProgressBody({
-  scrollTopCurr: document.body.scrollTop || document.documentElement.scrollTop
+  scrollTopCurr: document.body.scrollTop || document.documentElement.scrollTop,
+  decimal: 1, // optional, default is 2
 });
 
 console.log(`${progress}%`);
@@ -220,7 +221,8 @@ import { scrollProgressItem } from "@simboonlong/utility"
 
 const progress = scrollProgressItem({
   element: document.getElementById("tracker-example"),
-  scrollTopCurr: document.body.scrollTop || document.documentElement.scrollTop
+  scrollTopCurr: document.body.scrollTop || document.documentElement.scrollTop,
+  decimal: 1, // optional, default is 2
 });
 
 console.log(`${progress}%`);
