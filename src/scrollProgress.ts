@@ -15,8 +15,9 @@ export const scrollProgressBody = ({ scrollTopCurr, decimal = 0 }: scrollProgres
 }
 
 export const scrollProgressItem = ({ element, scrollTopCurr, decimal = 0 }: scrollProgressItemI): number => {
-  const height = element.offsetTop - document.documentElement.clientHeight;
-  const percent = ((scrollTopCurr - height) / element.scrollHeight) * 100;
+  const offsetTop = element.getBoundingClientRect().top + scrollTopCurr;
+  const enterTop = scrollTopCurr + document.documentElement.clientHeight;
+  const percent = ((enterTop - offsetTop) / element.scrollHeight) * 100;
   const progress = parseFloat(percent.toFixed(decimal));
 
   switch (true) {
