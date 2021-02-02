@@ -186,7 +186,7 @@ onWindowScroll({
   }, // optional
   bottom: () => {
     console.log("hit bottom")
-  } // optional
+  }, // optional
   throtteRate: 75  // throtteRate default is 50
 })
 ```
