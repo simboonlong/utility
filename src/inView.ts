@@ -23,7 +23,7 @@ export const inView = ({
   trigger = "FULL",
   triggerY,
   thresholdSteps = 20,
-  isOnce = false
+  isOnce = false,
 }: inViewI): void => {
   const buildThresholds = () => {
     const thresholds = [];
@@ -35,7 +35,7 @@ export const inView = ({
 
     thresholds.push(0);
     return thresholds;
-  }
+  };
 
   const handleIntersect = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
@@ -48,22 +48,24 @@ export const inView = ({
         }
       }
     });
-  }
+  };
 
   elements.forEach((element) => {
     const elementView = {
-      FULL: `0px 0px -${element.getBoundingClientRect().height}px 0px`,
+      FULL: `0px 0px -${~~element.getBoundingClientRect().height}px 0px`,
       PARTIAL: `0px 0px 0px 0px`,
       CENTER: `0px 0px -50% 0px`,
-    }
+    };
 
     const options: inViewOptionsI = {
       root,
-      rootMargin: triggerY ? `0px 0px -${100 - triggerY}% 0px` : elementView[trigger],
-      threshold: buildThresholds()
-    }
+      rootMargin: triggerY
+        ? `0px 0px -${100 - triggerY}% 0px`
+        : elementView[trigger],
+      threshold: buildThresholds(),
+    };
 
-    const observer = new IntersectionObserver(handleIntersect, options)
+    const observer = new IntersectionObserver(handleIntersect, options);
     observer.observe(element);
   });
-}
+};
