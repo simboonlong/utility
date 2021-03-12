@@ -1,31 +1,32 @@
 // w3s examples
-interface CookieI {
+interface GetCookie {
   cname: string;
 }
 
-export const getCookie = ({ cname }: CookieI): string | undefined => {
-  const name = cname + "="
-  const ca = document.cookie.split(";")
+export const getCookie = ({ cname }: GetCookie): string | undefined => {
+  const name = cname + "=";
+  const ca = document.cookie.split(";");
   for (let i = 0; i < ca.length; i++) {
-    let c = ca[i]
+    let c = ca[i];
     while (c.charAt(0) === " ") {
-      c = c.substring(1)
+      c = c.substring(1);
     }
     if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length)
+      return c.substring(name.length, c.length);
     }
   }
-  return undefined
-}
+  return undefined;
+};
 
-interface setCookieI extends CookieI {
+interface SetCookie {
+  cname: string;
   cvalue: string;
   exdays: number;
 }
 
-export const setCookie = ({ cname, cvalue, exdays }: setCookieI): void => {
-  const d = new Date()
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
-  const expires = "expires=" + d.toUTCString()
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"
-}
+export const setCookie = ({ cname, cvalue, exdays }: SetCookie): void => {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+};

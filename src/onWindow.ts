@@ -1,16 +1,19 @@
-import { throttle } from "./throttle"
+import { throttle } from "./throttle";
 
-interface onWindowResizeI {
+interface OnWindowResize {
   resize: () => void;
   throtteRate: number;
 }
 
-export const onWindowResize = ({ resize, throtteRate = 50 }: onWindowResizeI): void => {
-  const throttled = throttle({ func: resize, wait: throtteRate })
-  window.addEventListener("resize", throttled)
-}
+export const onWindowResize = ({
+  resize,
+  throtteRate = 50,
+}: OnWindowResize): void => {
+  const throttled = throttle({ func: resize, wait: throtteRate });
+  window.addEventListener("resize", throttled);
+};
 
-interface onWindowScrollI {
+interface OnWindowScroll {
   up: () => void;
   down: () => void;
   top?: () => void;
@@ -19,37 +22,48 @@ interface onWindowScrollI {
   throtteRate: number;
 }
 
-export const onWindowScroll = ({ up, down, top, between, bottom, throtteRate = 50 }: onWindowScrollI ): void => {
-  let scrollTopPrev = 0
+export const onWindowScroll = ({
+  up,
+  down,
+  top,
+  between,
+  bottom,
+  throtteRate = 50,
+}: OnWindowScroll): void => {
+  let scrollTopPrev = 0;
 
   const onScroll = () => {
-    const scrollTopCurr = document.body.scrollTop || document.documentElement.scrollTop
-    const mostBottomTop = document.body.scrollHeight - window.innerHeight
+    const scrollTopCurr =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const mostBottomTop = document.body.scrollHeight - window.innerHeight;
 
     if (between) {
-      between(scrollTopCurr)
+      between(scrollTopCurr);
     }
 
     if (top && scrollTopCurr <= 0) {
-      top()
+      top();
     }
 
     if (bottom && scrollTopCurr >= mostBottomTop) {
-      bottom()
+      bottom();
     }
 
     try {
       if (scrollTopCurr > scrollTopPrev) {
-        down()
+        down();
       } else {
-        up()
+        up();
       }
     } catch (error) {
-      throw Error(error)
+      throw Error(error);
     }
 
-    scrollTopPrev = scrollTopCurr < 0 ? 0 : scrollTopCurr
-  }
+    scrollTopPrev = scrollTopCurr < 0 ? 0 : scrollTopCurr;
+  };
 
-  window.addEventListener("scroll", throttle({ func: onScroll, wait: throtteRate }))
-}
+  window.addEventListener(
+    "scroll",
+    throttle({ func: onScroll, wait: throtteRate })
+  );
+};
