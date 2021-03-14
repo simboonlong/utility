@@ -1,20 +1,22 @@
 // extracted from underscore.js
 // https://github.com/jashkenas/underscore/blob/master/underscore.js
 
-const now = Date.now || function() {
-  return new Date().getTime();
-}
+const now =
+  Date.now ||
+  function () {
+    return new Date().getTime();
+  };
 
-interface throttleI {
+interface Throttle {
   func: () => void;
   wait: number;
   options?: {
     leading: boolean;
     trailing: boolean;
-  }
+  };
 }
 
-interface throttledI {
+interface Throttled {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (): any;
   cancel: () => void;
@@ -26,9 +28,9 @@ export const throttle = ({
   wait,
   options = {
     leading: true,
-    trailing: true
-  }
-}: throttleI) => {
+    trailing: true,
+  },
+}: Throttle) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let timeout: any, context: null, args: any, result: void;
   let previous = 0;
@@ -40,7 +42,7 @@ export const throttle = ({
     if (!timeout) context = args = null;
   };
 
-  const throttled = <throttledI>function() {
+  const throttled = <Throttled>function () {
     const _now = now();
     if (!previous && options.leading === false) previous = _now;
     const remaining = wait - (_now - previous);
@@ -68,4 +70,4 @@ export const throttle = ({
   };
 
   return throttled;
-}
+};

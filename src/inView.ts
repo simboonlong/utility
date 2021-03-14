@@ -2,7 +2,7 @@
 // https://www.smashingmagazine.com/2018/01/deferring-lazy-loading-intersection-observer-api/
 // https://github.com/w3c/IntersectionObserver/tree/master/polyfill
 
-interface inViewI {
+interface InView {
   elements: NodeListOf<HTMLDataElement>;
   root?: null | HTMLElement;
   trigger?: "FULL" | "PARTIAL" | "CENTER";
@@ -11,7 +11,7 @@ interface inViewI {
   isOnce?: boolean;
 }
 
-interface inViewOptionsI {
+interface InViewOptions {
   root: null | HTMLElement;
   rootMargin: string;
   threshold: number[];
@@ -24,7 +24,7 @@ export const inView = ({
   triggerY,
   thresholdSteps = 20,
   isOnce = false,
-}: inViewI): void => {
+}: InView): void => {
   const buildThresholds = () => {
     const thresholds = [];
 
@@ -57,7 +57,7 @@ export const inView = ({
       CENTER: `0px 0px -50% 0px`,
     };
 
-    const options: inViewOptionsI = {
+    const options: InViewOptions = {
       root,
       rootMargin: triggerY
         ? `0px 0px -${100 - triggerY}% 0px`
