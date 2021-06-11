@@ -86,7 +86,7 @@ export const ease = ({
       (
         startValue +
         easeType(timePassed / duration) * (endValue - startValue)
-      ).toFixed(decimal)
+      ).toFixed(decimal),
     );
 
     if (currentSinValue < PI) {

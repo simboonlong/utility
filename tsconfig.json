@@ -8,12 +8,8 @@
     "noImplicitThis": false,
     "target": "es6",
     "module": "ESNext",
-    "outDir": "dist/es6",
+    "outDir": "dist/es6"
   },
-  "include": [
-    "./src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
