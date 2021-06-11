@@ -2,6 +2,13 @@
   "name": "@simboonlong/utility",
   "version": "0.3.0",
   "description": "Some web utility functions to use.",
+  "homepage": "https://github.com/simboonlong/utility",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simboonlong/utility.git"
+  },
+  "license": "MIT",
+  "author": "Sim Boon Long",
   "main": "dist/es6/index.js",
   "files": [
     "dist"
@@ -21,32 +28,25 @@
     "prep": "run-s lint test e2e:ci",
     "semantic-release": "semantic-release"
   },
-  "author": "Sim Boon Long",
-  "license": "MIT",
-  "homepage": "https://github.com/simboonlong/utility",
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.5",
+    "@testing-library/cypress": "^7.0.6",
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
+    "cypress": "^7.5.0",
+    "eslint": "^7.28.0",
+    "http-server": "^0.12.3",
+    "jest": "^27.0.4",
+    "npm-run-all": "^4.1.5",
+    "semantic-release": "^17.4.3",
+    "ts-jest": "^27.0.3",
+    "tsc-watch": "^4.4.0",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.11.5",
-    "@testing-library/cypress": "^7.0.1",
-    "@types/jest": "^26.0.15",
-    "@typescript-eslint/eslint-plugin": "^4.5.0",
-    "@typescript-eslint/parser": "^4.5.0",
-    "cypress": "^5.2.0",
-    "eslint": "^7.12.0",
-    "http-server": "^0.12.3",
-    "jest": "^26.6.1",
-    "npm-run-all": "^4.1.5",
-    "semantic-release": "^17.2.1",
-    "ts-jest": "^26.4.2",
-    "tsc-watch": "^4.2.9",
-    "typescript": "^4.0.3",
-    "webpack": "^5.4.0",
-    "webpack-cli": "^4.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/simboonlong/utility.git"
   }
 }

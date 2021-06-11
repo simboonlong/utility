@@ -64,6 +64,6 @@ export const onWindowScroll = ({
 
   window.addEventListener(
     "scroll",
-    throttle({ func: onScroll, wait: throtteRate })
+    throttle({ func: onScroll, wait: throtteRate }),
   );
 };
