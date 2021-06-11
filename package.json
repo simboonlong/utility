@@ -1,6 +1,6 @@
 {
   "name": "@simboonlong/utility",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "description": "Some web utility functions to use.",
   "homepage": "https://github.com/simboonlong/utility",
   "repository": {
@@ -47,6 +47,6 @@
     "webpack-cli": "^4.7.2"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   }
 }
