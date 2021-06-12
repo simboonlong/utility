@@ -1,18 +1,18 @@
 ![CI](https://github.com/simboonlong/utility/workflows/CI/badge.svg?branch=master&event=push) [![Netlify Status](https://api.netlify.com/api/v1/badges/13e83d25-b833-48e5-bc73-bac4e8e32958/deploy-status)](https://app.netlify.com/sites/lucid-ardinghelli-84074a/deploys) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# utility
+# Utility
 
 Some web utility functions to use.
 
-## why
+## Why?
 
 There are often similar recurring user experience expectations. Sometimes I wish that some utilities were easier to use / customizable to my needs. Hence, the code abstraction.
 
-## demo
+## Demo
 
 [http://utility.simboonlong.com](http://utility.simboonlong.com)
 
-## install
+## Install
 
 `npm i @simboonlong/utility`
 
