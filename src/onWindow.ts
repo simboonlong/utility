@@ -14,8 +14,8 @@ export const onWindowResize = ({
 };
 
 interface OnWindowScroll {
-  up: () => void;
-  down: () => void;
+  up: (st?: number) => void;
+  down: (st?: number) => void;
   top?: () => void;
   between?: (st: number) => void;
   bottom?: () => void;
@@ -51,12 +51,12 @@ export const onWindowScroll = ({
 
     try {
       if (scrollTopCurr > scrollTopPrev) {
-        down();
+        down(scrollTopCurr);
       } else {
-        up();
+        up(scrollTopCurr);
       }
     } catch (error) {
-      throw Error(error);
+      console.error(error);
     }
 
     scrollTopPrev = scrollTopCurr < 0 ? 0 : scrollTopCurr;

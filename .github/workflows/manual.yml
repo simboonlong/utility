@@ -1,25 +1,27 @@
-name: Github Actions
+name: CI/CD
 on: [push]
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
+      - name: checkout v2
+        uses: actions/checkout@v2
+      - name: setup node v2
+        uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
-      - name: Install node dependancies
+          node-version: "14"
+      - name: clean install
         run: npm ci
-      - name: Lint
+      - name: lint
         run: npm run lint
-      - name: Build js
+      - name: build app
         run: npm run build
-      - name: Unit test
+      - name: unit test
         run: npm run test
-      - name: Integration test
+      - name: end to end tests
         run: npm run e2e:ci
-      - name: Semantic release
+      - name: semantic release
+        if: ${{ !env.ACT }}
         run: npx semantic-release --branches master
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
