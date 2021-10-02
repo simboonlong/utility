@@ -18,6 +18,8 @@ jobs:
         run: npm run build
       - name: Unit Test
         run: npm run test
+      - name: Build Demo
+        run: npm run demo
       - name: Integration tests
         run: npm run e2e:ci
       - name: Release
