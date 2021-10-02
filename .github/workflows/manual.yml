@@ -4,23 +4,23 @@ jobs:
   test:
     runs-on: ubuntu-18.04
     steps:
-      - name: checkout v2
+      - name: Checkout V2
         uses: actions/checkout@v2
-      - name: setup node v2
+      - name: Setup Node V2
         uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - name: clean install
+      - name: Clean Install
         run: npm ci
-      - name: lint
+      - name: Lint
         run: npm run lint
-      - name: build app
+      - name: Build Scripts
         run: npm run build
-      - name: unit test
+      - name: Unit Test
         run: npm run test
-      - name: end to end tests
+      - name: Integration tests
         run: npm run e2e:ci
-      - name: semantic release
+      - name: Release
         if: ${{ !env.ACT }}
         run: npx semantic-release --branches master
         env:
