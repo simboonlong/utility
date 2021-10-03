@@ -1,6 +1,6 @@
 {
   "video": false,
   "env": {
-    "PATH": "./demo"
+    "PATH": "./public"
   }
 }

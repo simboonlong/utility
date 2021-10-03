@@ -15,7 +15,7 @@ module.exports = [
   {
     entry: "./dist/es6/index.js",
     output: {
-      path: path.resolve(__dirname, "demo"),
+      path: path.resolve(__dirname, "public"),
       filename: "utility.min.js",
       library: {
         type: "umd",

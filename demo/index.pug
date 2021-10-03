@@ -1,0 +1,488 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title #{meta.title} - #{meta.description}
+    meta(name="description", content=meta.description)
+    meta(name="author", content=meta.author)
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    link(rel="icon", type="image/png", sizes="32x32", href="./images/favicon.png")
+    link(href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", rel="stylesheet")
+    style.
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 400;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1;
+        font-weight: 600;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      h3 {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        margin-bottom: 16px;
+      }
+
+      button {
+        transition: background-color 0.2s ease-out;
+        font-weight: 700;
+        padding: 8px 16px;
+        background-color: orange;
+        color: #fff;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        text-align: left;
+      }
+
+      button:hover {
+        background-color: #ad7100;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      b {
+        color: orange;
+      }
+
+      a {
+        color: #6f6fff;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .on-window-scroll {
+        transition: transform 0.6s ease-in-out;
+        position: fixed;
+        z-index: 1;
+        transform: translateX(calc(100% + 16px));
+        max-width: 300px;
+        bottom: 16px;
+        right: 16px;
+        text-align: right;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .on-window-scroll.is-active {
+        transform: translateX(0);
+      }
+
+      [data-inview] .in-view {
+        transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
+        transform: translateY(24px);
+        opacity: 0;
+
+        background-color: orange;
+      }
+
+      [data-inview="true"] .in-view {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .progress-track {
+        position: relative;
+        width: 100%;
+        height: 8px;
+        background-color: #eee;
+      }
+
+      .progress-thumb {
+        transition: width 0.1s ease-out;
+        will-change: width;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: orange;
+        height: 100%;
+      }
+  body.text-gray-800
+    .flex.flex-col.h-screen.px-4
+      main.flex-grow
+        .container.mx-auto.py-8
+          .flex.flex-wrap.items-center
+            .w-16.mr-6
+              img.w-full(src="./images/utility.svg", alt="utility")
+            .flex-grow
+              h1.text-4xl.font-semibold Utility
+              p.text-xl.font-medium.mb-0 Literally not your regular swiss army knife.
+          hr.my-8
+          .max-w-2xl
+            section.pb-8
+              h3
+                a(href='https://github.com/simboonlong/utility#ease', target='_blank', rel='noopener noreferrer') ease
+              p Easing on any numerical attribute, of any element.
+              .py-5
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  ease({
+                    startValue: 0,
+                    endValue: 1,
+                    decimal: 2,
+                    onStep: value => {
+                      document.getElementById("ease-opacity").style.opacity = value
+                    }
+                  })
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  ease({
+                    startValue: 0,
+                    endValue: 800,
+                    onStep: value => {
+                      document.getElementById("ease-scroll").scrollLeft = value
+                    }
+                  })
+                .py-4
+                  button#ease-to-opacity(type='button', data-testid='ease-to-opacity') ease (opacity)
+                  button#scroll-to-x(type='button', data-testid='scroll-to-x') ease (scrollLeft)
+                  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2.mb-2
+                    p.mb-0 opacity:&nbsp;
+                      b#on-step-opacity(style='color: orange', data-testid='opacity') 0
+                    p#ease-opacity.mb-0 #ease-opacity
+                  #ease-scroll.relative.bg-gray-100.border.rounded.text-gray-600.px-4.py-2(style='overflow-x: auto')
+                    .sticky.top-0.left-0
+                      p.mb-0 scrollLeft:&nbsp;
+                        b#on-step-scroll(style='color: orange') 0
+                    div(style='width: 400vw')
+                      p.mb-0 #ease-scroll Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+            hr
+            section.py-8
+              h3
+                a(href='https://github.com/simboonlong/utility#getcookie', target='_blank', rel='noopener noreferrer') getCookie
+                | ,&nbsp;
+                a(href='https://github.com/simboonlong/utility#setcookie', target='_blank', rel='noopener noreferrer') setCookie
+              p Get and set browser cookie.
+              .py-5
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  setCookie({
+                    cname: "tracker",
+                    cvalue: "abc123",
+                    exdays: 0.125
+                  })
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  setCookie({
+                    cname: "tracker",
+                    cvalue: "abc123",
+                    exdays: 0
+                  })
+                .py-4
+                  button#cookie-set(type='button', data-testid='cookie-set') setCookie (3 hours expiry)
+                  button#cookie-unset(type='button', data-testid='cookie-unset') setCookie (0 hour expiry)
+                  br
+                  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2 getCookie({ cname: &quot;tracker&quot; }):&nbsp;
+                    b#cookie(data-testid='cookie')
+            hr
+            section.py-8
+              h3
+                a(href='https://github.com/simboonlong/utility#getviewport', target='_blank', rel='noopener noreferrer') getViewport
+                | ,&nbsp;
+                a(href='https://github.com/simboonlong/utility#onwindowresize', target='_blank', rel='noopener noreferrer') onWindowResize
+              p Try resizing browser to see&nbsp;
+                i getViewport
+                |  in action.
+              .py-5
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  onWindowResize({
+                    resize: () => {
+                      document.getElementById("vp-w").innerText = getViewport().w
+                      document.getElementById("vp-h").innerText = getViewport().h
+                    },
+                    throtteRate: 75
+                  });
+                .py-4
+                  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2.mb-2 getViewport().w:&nbsp;
+                    b#vp-w(data-testid='vp-w')
+                    br
+                    | getViewport().h:&nbsp;
+                    b#vp-h(data-testid='vp-h')
+            hr
+            section.py-8
+              h3
+                a(href='https://github.com/simboonlong/utility#inview', target='_blank', rel='noopener noreferrer') inView
+              p Transition in elements when scrolled into view.
+              .py-5
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  inView({
+                    elements: document.querySelectorAll("[data-inview]")
+                  })
+                .py-4
+                  .flex.flex-wrap.-mx-4
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-32.h-32(data-testid='inview')
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-72.h-72
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-48.h-48
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-72.h-72
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-48.h-48
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-32.h-32
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-48.h-48
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-32.h-32
+                    .w-auto.p-4
+                      div(data-inview)
+                        .in-view.w-72.h-72
+            hr
+            section.py-8
+              h3
+                a(href='https://github.com/simboonlong/utility#scrollprogressbody', target='_blank', rel='noopener noreferrer') scrollProgressBody
+                | ,&nbsp;
+                a(href='https://github.com/simboonlong/utility#scrollprogressitem', target='_blank', rel='noopener noreferrer') scrollProgressItem
+              p Indication of scroll progress.
+              .py-5
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  const progress = scrollProgressBody({
+                    scrollTopCurr
+                  });
+
+                  document.getElementById("sp-body").innerText = `${progress}%`;
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  const progress = scrollProgressItem({
+                    element: document.getElementById("sp-item"),
+                    scrollTopCurr
+                  });
+
+                  document.querySelector(".progress-thumb").style.width = `${(progress * 100).toFixed(0)}%`;
+                .py-4
+                  #sp-item.relative.bg-gray-100.border.rounded.text-gray-600.px-4.pt-4.pb-2
+                    .progress
+                      .progress-track
+                        .progress-thumb(data-testid='progress-thumb')
+                    p #sp-item Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+                    p Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Quis autem vel eum iure reprehenderit qui. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+            hr
+            section.py-8
+              h3
+                a(href='https://github.com/simboonlong/utility#scrolltoy', target='_blank', rel='noopener noreferrer') scrollToY
+              p Window vertical scroll to positions.
+              .py-5
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  scrollToY({
+                    endValue: 0
+                  })
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  scrollToY({
+                    endValue: Infinity
+                  })
+                pre.bg-gray-900.text-white.p-4.mb-2.
+                  scrollToY({
+                    endValue: document.getElementById("target").offsetTop
+                  })
+                .py-4
+                  button#scroll-to-y(type='button', data-testid='scroll-to-y') scrollToY (0)
+                  button#scroll-to-y-infinity(type='button', data-testid='scroll-to-y-infinity') scrollToY (Infinity)
+                  button#scroll-to-target(type='button', data-testid='scroll-to-target') scrollToY (#target)
+                  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2
+                    p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+                    p
+                      b#target(style='color: orange') #target
+                    p Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Quis autem vel eum iure reprehenderit qui. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+                    p Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid. Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+      footer.flex-shrink-0.py-5
+        .container.mx-auto
+          p
+            i Author &copy;&nbsp;
+              a(href="http://simboonlong.com", target="_blank", rel="noopener noreferrer") Sim Boon Long.
+    .p-6.rounded-md.shadow.on-window-scroll
+      h3
+        a(href='https://github.com/simboonlong/utility#onwindowscroll', target='_blank', rel='noopener noreferrer') onWindowScroll
+      p Various scrolling callbacks.
+      .bg-gray-100.border.rounded.text-gray-600.px-4.py-2
+        p.mb-0 top:&nbsp;
+          b#hit-top(data-testid='hit-top')
+        p.mb-0 bottom:&nbsp;
+          b#hit-bottom(data-testid='hit-bottom')
+        p.mb-0 direction:&nbsp;
+          b#scroll(data-testid='scroll')
+        p.mb-0 scrollTopCurr:&nbsp;
+          b#hit-between(data-testid='hit-between')
+        p.mb-0 scrollProgressBody:&nbsp;
+          b#sp-body(data-testid='sp-body')
+  script(src=`./utility.min.js`)
+  script.
+    var updateCookie = () => {
+      document.getElementById("cookie").innerText =
+        getCookie({ cname: "tracker" }) ?? "undefined";
+    };
+
+    var updateViewport = () => {
+      document.getElementById("vp-w").innerText = String(getViewport().w);
+      document.getElementById("vp-h").innerText = String(getViewport().h);
+    };
+
+    var fixie = document.querySelector(".on-window-scroll");
+    var scrollHandler;
+
+    var setFixie = () => {
+      clearTimeout(scrollHandler);
+
+      if (!fixie.classList.contains('is-active')) {
+        fixie.classList.add('is-active');
+      } else {
+        scrollHandler = setTimeout(() => {
+          fixie.classList.remove('is-active');
+        }, 1900);
+      }
+    }
+
+    // scrolling vars
+    var scrollDirection = document.getElementById("scroll")
+    var hitBottom = document.getElementById("hit-bottom");
+    var hitTop = document.getElementById("hit-top");
+    var hitBetween = document.getElementById("hit-between");
+    var spItem = document.getElementById("sp-item");
+    var spBody = document.getElementById("sp-body");
+    var thumb = document.querySelector(".progress-thumb");
+    var progressingBody = (scrollTopCurr) => {
+      const progress = scrollProgressBody({
+        scrollTopCurr
+      });
+      spBody.innerText = `${progress}`;
+    }
+    var progressingItem = (scrollTopCurr) => {
+      const progress = scrollProgressItem({
+        element: spItem,
+        scrollTopCurr
+      });
+      thumb.style.width = `${(progress * 100).toFixed(0)}%`;
+    }
+
+    document.getElementById("cookie-unset").addEventListener("click", () => {
+      setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 });
+      updateCookie();
+    });
+
+    document.getElementById("cookie-set").addEventListener("click", () => {
+      setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 });
+      updateCookie();
+    });
+
+    document
+      .getElementById("scroll-to-y")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        scrollToY({ endValue: 0 });
+      });
+
+    document
+      .getElementById("scroll-to-x")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        ease({
+          startValue: 0,
+          endValue: 800,
+          onStep: (value) => {
+            document.getElementById("on-step-scroll").innerText = value;
+            document.getElementById("ease-scroll").scrollLeft = value;
+          },
+        });
+      });
+
+    document
+      .getElementById("ease-to-opacity")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        ease({
+          startValue: 0,
+          endValue: 1,
+          decimal: 2,
+          onStep: (value) => {
+            document.getElementById("on-step-opacity").innerText = value;
+            document.getElementById("ease-opacity").style.opacity = value;
+          },
+        });
+      });
+
+    document
+      .getElementById("scroll-to-y-infinity")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        scrollToY({ endValue: Infinity });
+      });
+
+    document
+      .getElementById("scroll-to-target")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        scrollToY({ endValue: document.getElementById("target").offsetTop });
+      });
+
+    onWindowScroll({
+      up: () => {
+        scrollDirection.innerHTML = "&#8607;";
+      },
+      down: () => {
+        scrollDirection.innerHTML = "&#8609;";
+      },
+      top: () => {
+        hitTop.innerHTML = "&#10003;";
+      },
+      between: (scrollTopCurr) => {
+        hitBottom.innerHTML = "&#10007;";
+        hitTop.innerHTML = "&#10007;";
+        hitBetween.innerText = `${scrollTopCurr}`;
+
+        progressingItem(scrollTopCurr);
+        progressingBody(scrollTopCurr);
+        setFixie();
+      },
+      bottom: () => {
+        hitBottom.innerHTML = "&#10003;";
+      },
+      throtteRate: 1,
+    });
+    onWindowResize({ resize: updateViewport, throtteRate: 75 });
+
+    // init
+    updateCookie();
+    updateViewport();
+    inView({
+      elements: document.querySelectorAll('[data-inview]')
+    });
+    progressingItem(document.body.scrollTop || document.documentElement.scrollTop);
+    progressingBody(document.body.scrollTop || document.documentElement.scrollTop);
