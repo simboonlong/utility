@@ -1,45 +1,78 @@
-// https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-// https://www.smashingmagazine.com/2018/01/deferring-lazy-loading-intersection-observer-api/
-// https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+import { getViewport } from "./getViewport";
+
+interface IntersectionObserverOptions {
+  root: null | HTMLElement;
+  rootMargin: string;
+  threshold: number | number[];
+}
+
+enum Trigger {
+  PARTIAL = "PARTIAL",
+  FULL = "FULL",
+  WITHIN = "WITHIN",
+  CENTER = "CENTER",
+}
 
 interface InView {
   elements: NodeListOf<HTMLDataElement>;
-  root?: null | HTMLElement;
-  trigger?: "FULL" | "PARTIAL" | "CENTER";
-  triggerY?: number; // treated as percentage
-  thresholdSteps?: number; // how granular the callbacks are
+  trigger?: Trigger;
   isOnce?: boolean;
+  isGuides?: boolean;
 }
 
-interface InViewOptions {
-  root: null | HTMLElement;
-  rootMargin: string;
-  threshold: number[];
-}
+const getValue = (value: string, total: number) => {
+  return value.includes("px")
+    ? parseInt(value)
+    : (parseInt(value) / 100) * total;
+};
+
+const getValueInverse = (value: string, total: number) => {
+  return value.includes("px")
+    ? parseInt(value) > 0
+      ? -Math.abs(parseInt(value))
+      : Math.abs(parseInt(value))
+    : (parseInt(value) / 100) * total > 0
+    ? -Math.abs((parseInt(value) / 100) * total)
+    : Math.abs((parseInt(value) / 100) * total);
+};
+
+const initGuides = (index: number, rootMargin: string) => {
+  const rootMarginArray = rootMargin.split(" ");
+  const top = rootMarginArray[0];
+  const right = rootMarginArray[1];
+  const bottom = rootMarginArray[2];
+  const left = rootMarginArray[3];
+
+  const trueTop = getValueInverse(top, getViewport().h);
+  const trueLeft = getValueInverse(left, getViewport().w);
+
+  const width =
+    getViewport().w +
+    getValue(left, getViewport().w) +
+    getValue(right, getViewport().w);
+
+  const height =
+    getViewport().h +
+    getValue(top, getViewport().h) +
+    getValue(bottom, getViewport().h);
+
+  const guide = document.createElement("div");
+  guide.setAttribute("data-inview-guide", `${index}`);
+  guide.setAttribute(
+    "style",
+    `pointer-events: none; position: fixed; z-index: 100; border: dashed 2px red; top: ${trueTop}px; left: ${trueLeft}px; width: ${width}px; height: ${height}px;`,
+  );
+  document.body.appendChild(guide);
+};
 
 export const inView = ({
   elements,
-  root = null,
-  trigger = "FULL",
-  triggerY,
-  thresholdSteps = 20,
+  trigger = Trigger.FULL,
   isOnce = false,
+  isGuides = false,
 }: InView): void => {
-  const buildThresholds = () => {
-    const thresholds = [];
-
-    for (let i = 1; i <= thresholdSteps; i++) {
-      const ratio = i / thresholdSteps;
-      thresholds.push(ratio);
-    }
-
-    thresholds.push(0);
-    return thresholds;
-  };
-
   const handleIntersect = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
-      // console.log(entry.intersectionRatio)
       if (entry.isIntersecting) {
         entry.target.setAttribute("data-inview", "true");
       } else {
@@ -50,22 +83,32 @@ export const inView = ({
     });
   };
 
-  elements.forEach((element) => {
-    const elementView = {
-      FULL: `0px 0px -${~~element.getBoundingClientRect().height}px 0px`,
+  elements.forEach((element, index) => {
+    const rootMargin = {
       PARTIAL: `0px 0px 0px 0px`,
-      CENTER: `0px 0px -50% 0px`,
+      FULL: `${~~element.getBoundingClientRect().height}px 0px 0px 0px`,
+      WITHIN: `0px 0px 0px 0px`,
+      CENTER: `${~~element.getBoundingClientRect().height / 2}px 0px -50% 0px`,
     };
 
-    const options: InViewOptions = {
-      root,
-      rootMargin: triggerY
-        ? `0px 0px -${100 - triggerY}% 0px`
-        : elementView[trigger],
-      threshold: buildThresholds(),
+    const threshold = {
+      PARTIAL: 0,
+      FULL: 1,
+      WITHIN: 1,
+      CENTER: 0.5,
+    };
+
+    const options: IntersectionObserverOptions = {
+      root: null,
+      rootMargin: rootMargin[trigger],
+      threshold: threshold[trigger],
     };
 
     const observer = new IntersectionObserver(handleIntersect, options);
     observer.observe(element);
+
+    if (isGuides) {
+      initGuides(index, rootMargin[trigger]); // helper only works on init, not responsive
+    }
   });
 };
