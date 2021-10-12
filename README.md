@@ -120,10 +120,7 @@ import { inView } from "@simboonlong/utility"
 
 inView({
   elements: document.querySelectorAll('[data-inview]'),
-  root: null, // optional, default is null
   trigger: "CENTER", // optional, default is `FULL`
-  triggerY: 15, // optional, note that defining this will overwrite `trigger` option!
-  thresholdSteps: 30, // optional, default is 20
   isOnce: true // optional, default is false
 });
 ```
@@ -132,14 +129,11 @@ inView({
 Options:
 
 elements         ---   Elements selector
-root             ---   Root element in which `[data-inview]` elements will based their callbacks on.
-                       Defaults to the browser viewport.
-trigger          ---   "FULL" | "PARTIAL" | "CENTER".
-                       `FULL` sets `[data-inview="true"]` once it's fully in view.
+trigger          ---   "PARTIAL" | "FULL" | "WITHIN" | "CENTER".
                        `PARTIAL` sets `[data-inview="true"]` as soon as it is within view.
-                       `CENTER` sets `[data-inview="true"]` only when its top hits root element's center.
-triggerY         ---   Percentage value of root element in determining when should set `[data-inview="true"]`.
-thresholdSteps   ---   Determines how granular the callbacks are.
+                       `FULL` sets `[data-inview="true"]` once it is fully in view.
+                       `WITHIN` sets `[data-inview="true"]` once it is fully in view and as soon as exit view.
+                       `CENTER` sets `[data-inview="true"]` once it's center is in root center.
 isOnce           ---   Determines if to reset back to `[data-inview]` after elements exited.
 ```
 
