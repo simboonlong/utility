@@ -95,7 +95,7 @@ html
         transform: translateX(0);
       }
 
-      [data-inview] .in-view {
+      .hide {
         transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
         transform: translateY(24px);
         opacity: 0;
@@ -103,7 +103,7 @@ html
         background-color: orange;
       }
 
-      [data-inview="true"] .in-view {
+      [data-inview="true"] .hide {
         transform: translateY(0);
         opacity: 1;
       }
@@ -210,9 +210,7 @@ html
                 a(href='https://github.com/simboonlong/utility#getviewport', target='_blank', rel='noopener noreferrer') getViewport
                 | ,&nbsp;
                 a(href='https://github.com/simboonlong/utility#onwindowresize', target='_blank', rel='noopener noreferrer') onWindowResize
-              p Try resizing browser to see&nbsp;
-                i getViewport
-                |  in action.
+              p Try resizing browser to see getViewport in action.
               .py-5
                 pre.bg-gray-900.text-white.p-4.mb-2.
                   onWindowResize({
@@ -232,41 +230,41 @@ html
             section.py-8(data-testid='section-inview')
               h3
                 a(href='https://github.com/simboonlong/utility#inview', target='_blank', rel='noopener noreferrer') inView
-              p Transition in elements when scrolled into view.
+              p Sets attribute [data-inview="true"] when element is scrolled into view.
               .py-5
                 pre.bg-gray-900.text-white.p-4.mb-2.
                   inView({
-                    elements: document.querySelectorAll("[data-inview]")
+                    elements: document.querySelectorAll(".foo")
                   })
                 .py-4
                   .flex.flex-wrap.-mx-4
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-32.h-32(data-testid='inview')
+                      .foo
+                        .hide.w-32.h-32(data-testid='inview')
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-72.h-72
+                      .foo
+                        .hide.w-72.h-72
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-48.h-48
+                      .foo
+                        .hide.w-48.h-48
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-72.h-72
+                      .foo
+                        .hide.w-72.h-72
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-48.h-48
+                      .foo
+                        .hide.w-48.h-48
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-32.h-32
+                      .foo
+                        .hide.w-32.h-32
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-48.h-48
+                      .foo
+                        .hide.w-48.h-48
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-32.h-32
+                      .foo
+                        .hide.w-32.h-32
                     .w-auto.p-4
-                      div(data-inview)
-                        .in-view.w-72.h-72
+                      .foo
+                        .hide.w-72.h-72
             hr
             section.py-8
               h3
@@ -373,7 +371,6 @@ html
       }
     }
 
-    // scrolling vars
     var scrollDirection = document.getElementById("scroll")
     var hitBottom = document.getElementById("hit-bottom");
     var hitTop = document.getElementById("hit-top");
@@ -481,11 +478,10 @@ html
     });
     onWindowResize({ resize: updateViewport, throtteRate: 75 });
 
-    // init
     updateCookie();
     updateViewport();
     inView({
-      elements: document.querySelectorAll('[data-inview]')
+      elements: document.querySelectorAll('.foo')
     });
     progressingItem(document.body.scrollTop || document.documentElement.scrollTop);
     progressingBody(document.body.scrollTop || document.documentElement.scrollTop);

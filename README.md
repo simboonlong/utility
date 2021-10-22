@@ -90,36 +90,15 @@ getViewport().h // returns current viewport height
 
 #### inView
 
-Sets `[data-inview="true"]` when element is scrolled into view. Customize any transition via css animation in child `.in-view`.
+Sets `[data-inview="true"]` when element is scrolled into view.
 
 Example:
-
-```
-<div data-inview>
-  <div class="in-view">
-    ...
-  </div>
-</div>
-```
-
-```
-[data-inview] .in-view {
-  transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
-  transform: translateY(24px);
-  opacity: 0;
-}
-
-[data-inview="true"] .in-view {
-  transform: translateY(0);
-  opacity: 1;
-}
-```
 
 ```
 import { inView } from "@simboonlong/utility"
 
 inView({
-  elements: document.querySelectorAll('[data-inview]'),
+  elements: document.querySelectorAll(".foo"),
   trigger: "CENTER", // optional, default is `FULL`
   isOnce: true // optional, default is false
 });
@@ -128,13 +107,36 @@ inView({
 ```
 Options:
 
-elements         ---   Elements selector
-trigger          ---   "PARTIAL" | "FULL" | "WITHIN" | "CENTER".
-                       `PARTIAL` sets `[data-inview="true"]` as soon as it is within view.
-                       `FULL` sets `[data-inview="true"]` once it is fully in view.
-                       `WITHIN` sets `[data-inview="true"]` once it is fully in view and as soon as exit view.
-                       `CENTER` sets `[data-inview="true"]` once it's center is in root center.
-isOnce           ---   Determines if to reset back to `[data-inview]` after elements exited.
+elements  ---   Elements selector
+trigger   ---   "PARTIAL" | "FULL" | "WITHIN" | "CENTER".
+                `PARTIAL` sets `[data-inview="true"]` as soon as it is within view.
+                `FULL` sets `[data-inview="true"]` once it is fully in view.
+                `WITHIN` sets `[data-inview="true"]` once it is fully in view and as soon as exit view.
+                `CENTER` sets `[data-inview="true"]` once it's center is in root center.
+isOnce    ---   Determines if to reset back to `[data-inview]` after elements exited.
+```
+
+1 use case is to have a customised css transition when element is in view:
+
+```
+<div class="foo">
+  <div class="hide">
+    ...
+  </div>
+</div>
+```
+
+```
+.hide {
+  transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+[data-inview="true"] .hide {
+  transform: translateY(0);
+  opacity: 1;
+}
 ```
 
 ---
@@ -246,5 +248,12 @@ document.getElementById('someId').addEventListener("click", (event) => {
   })
 })
 ```
+
+<!--
+TODO: common breakpoints
+TODO: window resize change to resize observer
+TODO: media query event callback
+TODO: history updates with urlSearchParams
+-->
 
 Author © [Sim Boon Long](http://simboonlong.com/).

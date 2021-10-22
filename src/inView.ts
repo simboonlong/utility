@@ -77,13 +77,15 @@ export const inView = ({
         entry.target.setAttribute("data-inview", "true");
       } else {
         if (!isOnce) {
-          entry.target.setAttribute("data-inview", "");
+          entry.target.setAttribute("data-inview", "false");
         }
       }
     });
   };
 
   elements.forEach((element, index) => {
+    element.setAttribute("data-inview", "false");
+
     const rootMargin = {
       PARTIAL: `0px 0px 0px 0px`,
       FULL: `${~~element.getBoundingClientRect().height}px 0px 0px 0px`,
