@@ -10,7 +10,7 @@ There are often similar recurring user experience expectations. Sometimes I wish
 
 ## Demo
 
-[http://utility.simboonlong.com](http://utility.simboonlong.com)
+[https://utility.simboonlong.com](https://utility.simboonlong.com)
 
 ## Install
 
@@ -256,4 +256,4 @@ TODO: media query event callback
 TODO: history updates with urlSearchParams
 -->
 
-Author © [Sim Boon Long](http://simboonlong.com/).
+Author © [Sim Boon Long](https://simboonlong.com).
