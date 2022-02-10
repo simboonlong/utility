@@ -3,7 +3,7 @@ export * from "./cookie";
 export * from "./ease";
 export * from "./getViewport";
 export * from "./inView";
-export * from "./onMediaQuery";
+export * from "./onMediaQueryWidth";
 export * from "./onWindow";
 export * from "./scrollProgress";
 export * from "./scrollTo";
