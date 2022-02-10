@@ -3,6 +3,7 @@ const path = require("path");
 
 module.exports = [
   {
+    mode: "production",
     entry: "./dist/es6/index.js",
     output: {
       path: path.resolve(__dirname, "dist/umd"),
@@ -13,6 +14,7 @@ module.exports = [
     },
   },
   {
+    mode: "production",
     entry: "./dist/es6/index.js",
     output: {
       path: path.resolve(__dirname, "public"),
