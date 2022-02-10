@@ -141,7 +141,7 @@ isOnce    ---   Determines if to reset back to `[data-inview]` after elements ex
 
 ---
 
-#### onMediaQuery
+#### onMediaQueryWidth
 
 Breakpoint callbacks with matchMedia, based on min-width and max-width conditions.
 
