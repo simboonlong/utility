@@ -141,6 +141,45 @@ isOnce    ---   Determines if to reset back to `[data-inview]` after elements ex
 
 ---
 
+#### onMediaQuery
+
+Breakpoint callbacks with matchMedia, based on min-width and max-width conditions.
+
+Example:
+
+```
+import { onMediaQueryWidth } from "@simboonlong/utility"
+
+const mq = onMediaQueryWidth({
+  onInit: true, // optional, default is false
+  breakpoint: {
+    0: () => {
+      console.log("xs");
+    },
+    640: () => {
+      console.log("sm");
+    },
+    768: () => {
+      console.log("md");
+    },
+    1024: () => {
+      console.log("lg");
+    },
+    1280: () => {
+      console.log("xl");
+    },
+    1536: () => {
+      console.log("xxl");
+    }
+  }
+});
+
+mq.update(); // callback based on current viewport width
+mq.updateAll(); // fire all callbacks
+```
+
+---
+
 #### onWindowResize
 
 Throttled window resize event.

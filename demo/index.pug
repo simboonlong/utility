@@ -321,6 +321,37 @@ html
                       b#target(style='color: orange') #target
                     p Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Quis autem vel eum iure reprehenderit qui. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
                     p Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid. Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            hr
+            section.py-8
+              h3
+                a(href='https://github.com/simboonlong/utility#onmediaquery', target='_blank', rel='noopener noreferrer') onMediaQuery
+              p Breakpoint callbacks with matchMedia, based on min-width and max-width conditions.
+              .py-5
+                pre.bg-gray-900.text-white.p-4.
+                  onMediaQueryWidth({
+                    breakpoint: {
+                      0: () => {
+                        document.getElementById("mq").innerText = "xs - 0";
+                      },
+                      640: () => {
+                        document.getElementById("mq").innerText = "sm - 640";
+                      },
+                      768: () => {
+                        document.getElementById("mq").innerText = "md - 768";
+                      },
+                      1024: () => {
+                        document.getElementById("mq").innerText = "lg - 1024";
+                      },
+                      1280: () => {
+                        document.getElementById("mq").innerText = "xl - 1280";
+                      },
+                      1536: () => {
+                        document.getElementById("mq").innerText = "xxl - 1536";
+                      }
+                    }
+                  });
+              .bg-gray-100.border.rounded.text-gray-600.px-4.py-2
+                b#mq(data-testid="mq")
       footer.flex-shrink-0.py-5
         .container.mx-auto
           p.mb-0
@@ -485,3 +516,27 @@ html
     });
     progressingItem(document.body.scrollTop || document.documentElement.scrollTop);
     progressingBody(document.body.scrollTop || document.documentElement.scrollTop);
+
+    onMediaQueryWidth({
+      onInit: true,
+      breakpoint: {
+        0: () => {
+          document.getElementById("mq").innerText = "xs - 0";
+        },
+        640: () => {
+          document.getElementById("mq").innerText = "sm - 640";
+        },
+        768: () => {
+          document.getElementById("mq").innerText = "md - 768";
+        },
+        1024: () => {
+          document.getElementById("mq").innerText = "lg - 1024";
+        },
+        1280: () => {
+          document.getElementById("mq").innerText = "xl - 1280";
+        },
+        1536: () => {
+          document.getElementById("mq").innerText = "xxl - 1536";
+        },
+      }
+    });
