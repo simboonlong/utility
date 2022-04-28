@@ -288,11 +288,33 @@ document.getElementById('someId').addEventListener("click", (event) => {
 })
 ```
 
-<!--
-TODO: common breakpoints
-TODO: window resize change to resize observer
-TODO: media query event callback
-TODO: history updates with urlSearchParams
--->
+---
+
+#### searchParams
+
+Update browser history by search params.
+
+Example:
+
+```
+import { searchParams } from "@simboonlong/utility"
+
+const SearchParams = searchParams();
+
+SearchParams.update({ key: "foo", value: "a" });
+// https://example.com/?foo=a
+
+SearchParams.update({ key: "foo", value: "b" });
+// https://example.com/?foo=a&foo=b
+
+SearchParams.update({ key: "foo", value: "c" });
+// https://example.com/?foo=a&foo=b&foo=c
+
+SearchParams.remove({ key: "foo", value: "b" });
+// https://example.com/?foo=a&foo=c
+
+SearchParams.removeAll({ key: "foo" });
+// https://example.com/
+```
 
 Author © [Sim Boon Long](https://simboonlong.com).
