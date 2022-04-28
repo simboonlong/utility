@@ -7,4 +7,5 @@ export * from "./onMediaQueryWidth";
 export * from "./onWindow";
 export * from "./scrollProgress";
 export * from "./scrollTo";
+export * from "./searchParams";
 export * from "./throttle";

@@ -19,8 +19,9 @@ describe("scrollTo", () => {
     });
 
     user.window().then((window) => {
-      console.log(window.scrollY, docScrollHeight - window.innerHeight);
-      expect(window.scrollY).equal(docScrollHeight - window.innerHeight);
+      expect(Math.round(window.scrollY)).equal(
+        docScrollHeight - window.innerHeight,
+      );
     });
   });
 });
