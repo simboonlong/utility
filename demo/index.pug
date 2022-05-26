@@ -359,8 +359,8 @@ html
               p Update browser history by search params.
               .py-5
                 .py-4
-                  button(type='button', data-testid='searchparams-update-a') update({ key: "foo", value: "a" })
-                  button(type='button', data-testid='searchparams-update-b') update({ key: "foo", value: "b" })
+                  button(type='button', data-testid='searchparams-set-a') set({ key: "foo", value: "a" })
+                  button(type='button', data-testid='searchparams-append-b') append({ key: "foo", value: "b" })
                   button(type='button', data-testid='searchparams-remove-a') remove({ key: "foo", value: "a" })
                   button(type='button', data-testid='searchparams-remove-all') removeAll({ key: "foo" })
 
@@ -554,11 +554,11 @@ html
     });
 
     const SearchParams = searchParams();
-    document.querySelector('[data-testid="searchparams-update-a"]').addEventListener("click", () => {
-      SearchParams.update({ key: "foo", value: "a" });
+    document.querySelector('[data-testid="searchparams-set-a"]').addEventListener("click", () => {
+      SearchParams.set({ key: "foo", value: "a" });
     });
-    document.querySelector('[data-testid="searchparams-update-b"]').addEventListener("click", () => {
-      SearchParams.update({ key: "foo", value: "b" });
+    document.querySelector('[data-testid="searchparams-append-b"]').addEventListener("click", () => {
+      SearchParams.append({ key: "foo", value: "b" });
     });
     document.querySelector('[data-testid="searchparams-remove-a"]').addEventListener("click", () => {
       SearchParams.remove({ key: "foo", value: "a" });

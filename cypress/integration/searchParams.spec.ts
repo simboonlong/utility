@@ -3,12 +3,12 @@ describe("search", () => {
     const user = cy;
     user.visit(Cypress.env("PATH"));
 
-    user.findByTestId("searchparams-update-a").click();
+    user.findByTestId("searchparams-set-a").click();
     cy.location().should((loc) => {
       expect(loc.search).to.equal("?foo=a");
     });
 
-    user.findByTestId("searchparams-update-b").click();
+    user.findByTestId("searchparams-append-b").click();
     cy.location().should((loc) => {
       expect(loc.search).to.equal("?foo=b&foo=a");
     });
