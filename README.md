@@ -301,13 +301,13 @@ import { searchParams } from "@simboonlong/utility"
 
 const SearchParams = searchParams();
 
-SearchParams.update({ key: "foo", value: "a" });
+SearchParams.set({ key: "foo", value: "a" });
 // https://example.com/?foo=a
 
-SearchParams.update({ key: "foo", value: "b" });
+SearchParams.append({ key: "foo", value: "b" });
 // https://example.com/?foo=a&foo=b
 
-SearchParams.update({ key: "foo", value: "c" });
+SearchParams.append({ key: "foo", value: "c" });
 // https://example.com/?foo=a&foo=b&foo=c
 
 SearchParams.remove({ key: "foo", value: "b" });
