@@ -1,20 +1,29 @@
-interface Params {
+interface PostParams {
   key: string;
   value: string;
 }
 
+interface GetParams {
+  key: string;
+  search?: string;
+}
+
+interface DeleteParams {
+  key: string;
+}
+
 interface SearchParams {
-  append: (args: Params) => void;
-  set: (args: Params) => void;
-  remove: (args: Params) => void;
-  removeAll: (args: { key: string }) => void;
-  get: (args: { key: string; search?: string }) => string | null;
-  getAll: (args: { key: string }) => string[];
-  has: (args: { key: string }) => boolean;
+  append: (args: PostParams) => void;
+  set: (args: PostParams) => void;
+  remove: (args: PostParams) => void;
+  removeAll: (args: DeleteParams) => void;
+  get: (args: GetParams) => string | null;
+  getAll: (args: GetParams) => string[];
+  has: (args: GetParams) => boolean;
 }
 
 export const searchParams = (): SearchParams => {
-  const append = ({ key, value }: Params, state = {}) => {
+  const append = ({ key, value }: PostParams, state = {}) => {
     const url = new URL(location.toString());
     if (url.search.toString().includes(`${key}=${value}`)) return;
 
@@ -29,7 +38,7 @@ export const searchParams = (): SearchParams => {
     history.pushState(state, "", url.toString());
   };
 
-  const set = ({ key, value }: Params, state = {}) => {
+  const set = ({ key, value }: PostParams, state = {}) => {
     const url = new URL(location.toString());
     if (url.search.toString().includes(`${key}=${value}`)) return;
 
@@ -37,7 +46,7 @@ export const searchParams = (): SearchParams => {
     history.pushState(state, "", url.toString());
   };
 
-  const remove = ({ key, value }: Params, state = {}) => {
+  const remove = ({ key, value }: PostParams, state = {}) => {
     const url = new URL(location.toString());
     if (!url.search.toString().includes(`${key}=${value}`)) return;
 
@@ -51,24 +60,24 @@ export const searchParams = (): SearchParams => {
     history.pushState(state, "", url.toString());
   };
 
-  const removeAll = ({ key }: { key: string }, state = {}) => {
+  const removeAll = ({ key }: DeleteParams, state = {}) => {
     const url = new URL(location.toString());
     url.searchParams.delete(key);
     history.pushState(state, "", url.toString());
   };
 
-  const get = ({ key, search }: { key: string; search?: string }) => {
+  const get = ({ key, search }: GetParams) => {
     const params = new URLSearchParams(search || location.search);
     return params.get(key);
   };
 
-  const getAll = ({ key }: { key: string }) => {
-    const params = new URLSearchParams(location.search);
+  const getAll = ({ key, search }: GetParams) => {
+    const params = new URLSearchParams(search || location.search);
     return params.getAll(key);
   };
 
-  const has = ({ key }: { key: string }) => {
-    const params = new URLSearchParams(location.search);
+  const has = ({ key, search }: GetParams) => {
+    const params = new URLSearchParams(search || location.search);
     return params.has(key);
   };
 
