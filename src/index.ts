@@ -9,3 +9,4 @@ export * from "./scrollProgress";
 export * from "./scrollTo";
 export * from "./searchParams";
 export * from "./throttle";
+export * from "./urlLinkMatched";
