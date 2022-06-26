@@ -317,4 +317,21 @@ SearchParams.removeAll({ key: "foo" });
 // https://example.com/
 ```
 
+---
+
+#### urlLinkMatched
+
+Scan links and update, when `location.href` URL matched link's href.
+
+Example:
+
+```
+import { urlLinkMatched } from "@simboonlong/utility"
+
+urlLinkMatched({
+  links: document.querySelectorAll("a"),
+  callback: (link) => link.classList.add("active"),
+});
+```
+
 Author © [Sim Boon Long](https://simboonlong.com).
