@@ -18,7 +18,9 @@ There are often similar recurring user experience expectations. Sometimes I wish
 
 or
 
-Get the umd minified version directly at [utility.min.js](https://utility.simboonlong.com/utility.min.js). You can save + download the script and host it within your application. Do note that this umd version utilises the global namespace, so there's a chance of name collisions if any :)
+`https://unpkg.com/@simboonlong/utility@<VERSION_NUMBER>/dist/umd/utility.min.js`
+
+> Do note that umd version utilises the global namespace, so there's a chance of name collisions if any.
 
 ---
 
