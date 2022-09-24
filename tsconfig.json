@@ -3,12 +3,10 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
-    "noImplicitThis": false,
-    "target": "es6",
-    "module": "ESNext",
-    "outDir": "dist/es6"
+    "noImplicitThis": false, // for skipping throtte function
+    "rootDir": "src"
   },
   "include": ["./src/**/*.ts"],
   "exclude": ["node_modules"]
