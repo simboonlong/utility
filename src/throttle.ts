@@ -46,6 +46,7 @@ export const throttle = ({
     const _now = now();
     if (!previous && options.leading === false) previous = _now;
     const remaining = wait - (_now - previous);
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     context = this;
     // eslint-disable-next-line prefer-rest-params
     args = arguments;
