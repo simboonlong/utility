@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = [
   {
     mode: "production",
-    entry: "./dist/es6/index.js",
+    entry: "./dist/esm/index.js",
     output: {
       path: path.resolve(__dirname, "dist/umd"),
       filename: "utility.min.js",
@@ -15,7 +15,7 @@ module.exports = [
   },
   {
     mode: "production",
-    entry: "./dist/es6/index.js",
+    entry: "./dist/esm/index.js",
     output: {
       path: path.resolve(__dirname, "public"),
       filename: "utility.min.js",
