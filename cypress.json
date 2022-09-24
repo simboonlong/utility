@@ -1,6 +1,0 @@
-{
-  "video": false,
-  "env": {
-    "PATH": "./public"
-  }
-}
