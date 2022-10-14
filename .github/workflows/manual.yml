@@ -2,14 +2,12 @@ name: CI/CD
 on: [push]
 jobs:
   test:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout V2
-        uses: actions/checkout@v2
-      - name: Setup Node V2
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "14"
+          node-version: 16
       - name: Clean Install
         run: npm ci
       - name: Lint
