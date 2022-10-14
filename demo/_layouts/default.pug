@@ -1,0 +1,334 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title #{meta.title} - #{meta.description}
+    meta(name="description", content=meta.description)
+    meta(name="author", content=meta.author)
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    link(rel="icon", type="image/png", sizes="32x32", href="./images/favicon.png")
+    link(href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", rel="stylesheet")
+    style.
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 400;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1;
+        font-weight: 600;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      h3 {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        margin-bottom: 16px;
+      }
+
+      button {
+        transition: background-color 0.2s ease-out;
+        font-weight: 700;
+        padding: 8px 16px;
+        background-color: orange;
+        color: #fff;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        text-align: left;
+      }
+
+      button:hover {
+        background-color: #ad7100;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      b {
+        color: orange;
+      }
+
+      a {
+        color: #6f6fff;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .on-window-scroll {
+        transition: transform 0.6s ease-in-out;
+        position: fixed;
+        z-index: 1;
+        transform: translateX(calc(100% + 16px));
+        max-width: 300px;
+        bottom: 16px;
+        right: 16px;
+        text-align: right;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .on-window-scroll.is-active {
+        transform: translateX(0);
+      }
+
+      .hide {
+        transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
+        transform: translateY(24px);
+        opacity: 0;
+
+        background-color: orange;
+      }
+
+      [data-inview="true"] .hide {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .progress-track {
+        position: relative;
+        width: 100%;
+        height: 8px;
+        background-color: #eee;
+      }
+
+      .progress-thumb {
+        transition: width 0.1s ease-out;
+        will-change: width;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: orange;
+        height: 100%;
+      }
+  body.text-gray-800
+    .flex.flex-col.h-screen.px-4
+      main.flex-grow
+        block content
+      footer.flex-shrink-0.py-5
+        include /_includes/footer.pug
+    .p-6.rounded-md.shadow.on-window-scroll
+      h3
+        a(href='https://github.com/simboonlong/utility#onwindowscroll', target='_blank', rel='noopener noreferrer') onWindowScroll
+      p Various scrolling callbacks.
+      .bg-gray-100.border.rounded.text-gray-600.px-4.py-2
+        p.mb-0 top:&nbsp;
+          b#hit-top(data-testid='hit-top')
+        p.mb-0 bottom:&nbsp;
+          b#hit-bottom(data-testid='hit-bottom')
+        p.mb-0 direction:&nbsp;
+          b#scroll(data-testid='scroll')
+        p.mb-0 scrollTopCurr:&nbsp;
+          b#hit-between(data-testid='hit-between')
+        p.mb-0 scrollProgressBody:&nbsp;
+          b#sp-body(data-testid='sp-body')
+    script(src=`./utility.min.js`)
+    script.
+      var updateCookie = () => {
+        document.getElementById("cookie").innerText =
+          getCookie({ cname: "tracker" }) ?? "undefined";
+      };
+
+      var updateViewport = () => {
+        document.getElementById("vp-w").innerText = String(getViewport().w);
+        document.getElementById("vp-h").innerText = String(getViewport().h);
+      };
+
+      var fixie = document.querySelector(".on-window-scroll");
+      var scrollHandler;
+
+      var setFixie = () => {
+        clearTimeout(scrollHandler);
+
+        if (!fixie.classList.contains('is-active')) {
+          fixie.classList.add('is-active');
+        } else {
+          scrollHandler = setTimeout(() => {
+            fixie.classList.remove('is-active');
+          }, 1900);
+        }
+      }
+
+      var scrollDirection = document.getElementById("scroll")
+      var hitBottom = document.getElementById("hit-bottom");
+      var hitTop = document.getElementById("hit-top");
+      var hitBetween = document.getElementById("hit-between");
+      var spItem = document.getElementById("sp-item");
+      var spBody = document.getElementById("sp-body");
+      var thumb = document.querySelector(".progress-thumb");
+      var progressingBody = (scrollTopCurr) => {
+        const progress = scrollProgressBody({
+          scrollTopCurr
+        });
+        spBody.innerText = `${progress}`;
+      }
+      var progressingItem = (scrollTopCurr) => {
+        const progress = scrollProgressItem({
+          element: spItem,
+          scrollTopCurr
+        });
+        thumb.style.width = `${(progress * 100).toFixed(0)}%`;
+      }
+
+      document.getElementById("cookie-unset").addEventListener("click", () => {
+        setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 });
+        updateCookie();
+      });
+
+      document.getElementById("cookie-set").addEventListener("click", () => {
+        setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 });
+        updateCookie();
+      });
+
+      document
+        .getElementById("scroll-to-y")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          scrollToY({ endValue: 0 });
+        });
+
+      document
+        .getElementById("scroll-to-x")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          ease({
+            startValue: 0,
+            endValue: 800,
+            onStep: (value) => {
+              document.getElementById("on-step-scroll").innerText = value;
+              document.getElementById("ease-scroll").scrollLeft = value;
+            },
+          });
+        });
+
+      document
+        .getElementById("ease-to-opacity")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          ease({
+            startValue: 0,
+            endValue: 1,
+            decimal: 2,
+            onStep: (value) => {
+              document.getElementById("on-step-opacity").innerText = value;
+              document.getElementById("ease-opacity").style.opacity = value;
+            },
+          });
+        });
+
+      document
+        .getElementById("scroll-to-y-infinity")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          scrollToY({ endValue: Infinity });
+        });
+
+      document
+        .getElementById("scroll-to-target")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          scrollToY({ endValue: document.getElementById("target").offsetTop });
+        });
+
+      onWindowScroll({
+        up: () => {
+          scrollDirection.innerHTML = "&#8607;";
+        },
+        down: () => {
+          scrollDirection.innerHTML = "&#8609;";
+        },
+        top: () => {
+          hitTop.innerHTML = "&#10003;";
+        },
+        between: (scrollTopCurr) => {
+          hitBottom.innerHTML = "&#10007;";
+          hitTop.innerHTML = "&#10007;";
+          hitBetween.innerText = `${scrollTopCurr}`;
+
+          progressingItem(scrollTopCurr);
+          progressingBody(scrollTopCurr);
+          setFixie();
+        },
+        bottom: () => {
+          hitBottom.innerHTML = "&#10003;";
+        },
+        throtteRate: 1,
+      });
+      onWindowResize({ resize: updateViewport, throtteRate: 75 });
+
+      updateCookie();
+      updateViewport();
+      inView({
+        elements: document.querySelectorAll('.foo')
+      });
+      progressingItem(document.body.scrollTop || document.documentElement.scrollTop);
+      progressingBody(document.body.scrollTop || document.documentElement.scrollTop);
+
+      onMediaQueryWidth({
+        onInit: true,
+        breakpoint: {
+          0: () => {
+            document.getElementById("mq").innerText = "xs - 0";
+          },
+          640: () => {
+            document.getElementById("mq").innerText = "sm - 640";
+          },
+          768: () => {
+            document.getElementById("mq").innerText = "md - 768";
+          },
+          1024: () => {
+            document.getElementById("mq").innerText = "lg - 1024";
+          },
+          1280: () => {
+            document.getElementById("mq").innerText = "xl - 1280";
+          },
+          1536: () => {
+            document.getElementById("mq").innerText = "xxl - 1536";
+          },
+        }
+      });
+
+      const SearchParams = searchParams();
+      document.querySelector('[data-testid="searchparams-set-a"]').addEventListener("click", () => {
+        SearchParams.set({ key: "foo", value: "a" });
+      });
+      document.querySelector('[data-testid="searchparams-append-b"]').addEventListener("click", () => {
+        SearchParams.append({ key: "foo", value: "b" });
+      });
+      document.querySelector('[data-testid="searchparams-remove-a"]').addEventListener("click", () => {
+        SearchParams.remove({ key: "foo", value: "a" });
+      });
+      document.querySelector('[data-testid="searchparams-remove-all"]').addEventListener("click", () => {
+        SearchParams.removeAll({ key: "foo" });
+      });
+    block scripts
