@@ -1,0 +1,25 @@
+h3
+  a(href='https://github.com/simboonlong/utility#searchParams', target='_blank', rel='noopener noreferrer') searchParams
+p Update browser history by search params.
+.py-5
+  .py-4
+    button(type='button', data-testid='searchparams-set-a') set({ key: "foo", value: "a" })
+    button(type='button', data-testid='searchparams-append-b') append({ key: "foo", value: "b" })
+    button(type='button', data-testid='searchparams-remove-a') remove({ key: "foo", value: "a" })
+    button(type='button', data-testid='searchparams-remove-all') removeAll({ key: "foo" })
+
++block("script-search-params")
+  script.
+    const SearchParams = searchParams();
+      document.querySelector('[data-testid="searchparams-set-a"]').addEventListener("click", () => {
+        SearchParams.set({ key: "foo", value: "a" });
+      });
+      document.querySelector('[data-testid="searchparams-append-b"]').addEventListener("click", () => {
+        SearchParams.append({ key: "foo", value: "b" });
+      });
+      document.querySelector('[data-testid="searchparams-remove-a"]').addEventListener("click", () => {
+        SearchParams.remove({ key: "foo", value: "a" });
+      });
+      document.querySelector('[data-testid="searchparams-remove-all"]').addEventListener("click", () => {
+        SearchParams.removeAll({ key: "foo" });
+      });

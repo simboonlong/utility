@@ -11,224 +11,35 @@ block content
     hr.my-8
     .max-w-2xl
       section.pb-8
-        h3
-          a(href='https://github.com/simboonlong/utility#ease', target='_blank', rel='noopener noreferrer') ease
-        p Easing on any numerical attribute, of any element.
-        .py-5
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            ease({
-              startValue: 0,
-              endValue: 1,
-              decimal: 2,
-              onStep: value => {
-                document.getElementById("ease-opacity").style.opacity = value
-              }
-            })
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            ease({
-              startValue: 0,
-              endValue: 800,
-              onStep: value => {
-                document.getElementById("ease-scroll").scrollLeft = value
-              }
-            })
-          .py-4
-            button#ease-to-opacity(type='button', data-testid='ease-to-opacity') ease (opacity)
-            button#scroll-to-x(type='button', data-testid='scroll-to-x') ease (scrollLeft)
-            .bg-gray-100.border.rounded.text-gray-600.px-4.py-2.mb-2
-              p.mb-0 opacity:&nbsp;
-                b#on-step-opacity(style='color: orange', data-testid='opacity') 0
-              p#ease-opacity.mb-0 #ease-opacity
-            #ease-scroll.relative.bg-gray-100.border.rounded.text-gray-600.px-4.py-2(style='overflow-x: auto')
-              .sticky.top-0.left-0
-                p.mb-0 scrollLeft:&nbsp;
-                  b#on-step-scroll(style='color: orange') 0
-              div(style='width: 400vw')
-                p.mb-0 #ease-scroll Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+        include /_components/ease.pug
       hr
       section.py-8
-        h3
-          a(href='https://github.com/simboonlong/utility#getcookie', target='_blank', rel='noopener noreferrer') getCookie
-          | ,&nbsp;
-          a(href='https://github.com/simboonlong/utility#setcookie', target='_blank', rel='noopener noreferrer') setCookie
-        p Get and set browser cookie.
-        .py-5
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            setCookie({
-              cname: "tracker",
-              cvalue: "abc123",
-              exdays: 0.125
-            })
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            setCookie({
-              cname: "tracker",
-              cvalue: "abc123",
-              exdays: 0
-            })
-          .py-4
-            button#cookie-set(type='button', data-testid='cookie-set') setCookie (3 hours expiry)
-            button#cookie-unset(type='button', data-testid='cookie-unset') setCookie (0 hour expiry)
-            br
-            .bg-gray-100.border.rounded.text-gray-600.px-4.py-2 getCookie({ cname: &quot;tracker&quot; }):&nbsp;
-              b#cookie(data-testid='cookie')
+        include /_components/cookie.pug
       hr
       section.py-8
-        h3
-          a(href='https://github.com/simboonlong/utility#getviewport', target='_blank', rel='noopener noreferrer') getViewport
-          | ,&nbsp;
-          a(href='https://github.com/simboonlong/utility#onwindowresize', target='_blank', rel='noopener noreferrer') onWindowResize
-        p Try resizing browser to see getViewport in action.
-        .py-5
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            onWindowResize({
-              resize: () => {
-                document.getElementById("vp-w").innerText = getViewport().w
-                document.getElementById("vp-h").innerText = getViewport().h
-              },
-              throtteRate: 75
-            });
-          .py-4
-            .bg-gray-100.border.rounded.text-gray-600.px-4.py-2.mb-2 getViewport().w:&nbsp;
-              b#vp-w(data-testid='vp-w')
-              br
-              | getViewport().h:&nbsp;
-              b#vp-h(data-testid='vp-h')
+        include /_components/getViewport.pug
       hr
       section.py-8(data-testid='section-inview')
-        h3
-          a(href='https://github.com/simboonlong/utility#inview', target='_blank', rel='noopener noreferrer') inView
-        p Sets attribute [data-inview="true"] when element is scrolled into view.
-        .py-5
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            inView({
-              elements: document.querySelectorAll(".foo")
-            })
-          .py-4
-            .flex.flex-wrap.-mx-4
-              .w-auto.p-4
-                .foo
-                  .hide.w-32.h-32(data-testid='inview')
-              .w-auto.p-4
-                .foo
-                  .hide.w-72.h-72
-              .w-auto.p-4
-                .foo
-                  .hide.w-48.h-48
-              .w-auto.p-4
-                .foo
-                  .hide.w-72.h-72
-              .w-auto.p-4
-                .foo
-                  .hide.w-48.h-48
-              .w-auto.p-4
-                .foo
-                  .hide.w-32.h-32
-              .w-auto.p-4
-                .foo
-                  .hide.w-48.h-48
-              .w-auto.p-4
-                .foo
-                  .hide.w-32.h-32
-              .w-auto.p-4
-                .foo
-                  .hide.w-72.h-72
+        include /_components/inView.pug
       hr
       section.py-8
-        h3
-          a(href='https://github.com/simboonlong/utility#onmediaquerywidth', target='_blank', rel='noopener noreferrer') onMediaQueryWidth
-        p Breakpoint callbacks with matchMedia, based on min-width and max-width conditions.
-        .py-5
-          pre.bg-gray-900.text-white.p-4.
-            onMediaQueryWidth({
-              breakpoint: {
-                0: () => {
-                  document.getElementById("mq").innerText = "xs - 0";
-                },
-                640: () => {
-                  document.getElementById("mq").innerText = "sm - 640";
-                },
-                768: () => {
-                  document.getElementById("mq").innerText = "md - 768";
-                },
-                1024: () => {
-                  document.getElementById("mq").innerText = "lg - 1024";
-                },
-                1280: () => {
-                  document.getElementById("mq").innerText = "xl - 1280";
-                },
-                1536: () => {
-                  document.getElementById("mq").innerText = "xxl - 1536";
-                }
-              }
-            });
-        .bg-gray-100.border.rounded.text-gray-600.px-4.py-2
-          b#mq(data-testid="mq")
+        include /_components/onMediaQueryWidth.pug
       hr
       section.py-8
-        h3
-          a(href='https://github.com/simboonlong/utility#scrollprogressbody', target='_blank', rel='noopener noreferrer') scrollProgressBody
-          | ,&nbsp;
-          a(href='https://github.com/simboonlong/utility#scrollprogressitem', target='_blank', rel='noopener noreferrer') scrollProgressItem
-        p Indication of scroll progress.
-        .py-5
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            const progress = scrollProgressBody({
-              scrollTopCurr
-            });
-
-            document.getElementById("sp-body").innerText = `${progress}%`;
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            const progress = scrollProgressItem({
-              element: document.getElementById("sp-item"),
-              scrollTopCurr
-            });
-
-            document.querySelector(".progress-thumb").style.width = `${(progress * 100).toFixed(0)}%`;
-          .py-4
-            #sp-item.relative.bg-gray-100.border.rounded.text-gray-600.px-4.pt-4.pb-2
-              .progress
-                .progress-track
-                  .progress-thumb(data-testid='progress-thumb')
-              p #sp-item Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-              p Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Quis autem vel eum iure reprehenderit qui. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+        include /_components/scrollProgress.pug
       hr
       section.py-8
-        h3
-          a(href='https://github.com/simboonlong/utility#scrolltoy', target='_blank', rel='noopener noreferrer') scrollToY
-        p Window vertical scroll to positions.
-        .py-5
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            scrollToY({
-              endValue: 0
-            })
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            scrollToY({
-              endValue: Infinity
-            })
-          pre.bg-gray-900.text-white.p-4.mb-2.
-            scrollToY({
-              endValue: document.getElementById("target").offsetTop
-            })
-          .py-4
-            button#scroll-to-y(type='button', data-testid='scroll-to-y') scrollToY (0)
-            button#scroll-to-y-infinity(type='button', data-testid='scroll-to-y-infinity') scrollToY (Infinity)
-            button#scroll-to-target(type='button', data-testid='scroll-to-target') scrollToY (#target)
-            .bg-gray-100.border.rounded.text-gray-600.px-4.py-2
-              p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-              p
-                b#target(style='color: orange') #target
-              p Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Quis autem vel eum iure reprehenderit qui. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
-              p Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid. Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        include /_components/scrollTo.pug
       hr
       section.py-8
-        h3
-          a(href='https://github.com/simboonlong/utility#searchParams', target='_blank', rel='noopener noreferrer') searchParams
-        p Update browser history by search params.
-        .py-5
-          .py-4
-            button(type='button', data-testid='searchparams-set-a') set({ key: "foo", value: "a" })
-            button(type='button', data-testid='searchparams-append-b') append({ key: "foo", value: "b" })
-            button(type='button', data-testid='searchparams-remove-a') remove({ key: "foo", value: "a" })
-            button(type='button', data-testid='searchparams-remove-all') removeAll({ key: "foo" })
+        include /_components/searchParams.pug
 
 block scripts
+  +block("script-ease")
+  +block("script-cookie")
+  +block("script-get-viewport")
+  +block("script-in-view")
+  +block("script-on-media-query-width")
+  +block("script-scroll-progress")
+  +block("script-scroll-to")
+  +block("script-search-params")
