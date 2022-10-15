@@ -1,3 +1,5 @@
+include ../mixin.pug
+
 doctype html
 html
   head
@@ -79,6 +81,19 @@ html
         text-decoration: underline;
       }
 
+      .hide {
+        transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
+        transform: translateY(24px);
+        opacity: 0;
+
+        background-color: orange;
+      }
+
+      [data-inview="true"] .hide {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
       .on-window-scroll {
         transition: transform 0.6s ease-in-out;
         position: fixed;
@@ -93,19 +108,6 @@ html
 
       .on-window-scroll.is-active {
         transform: translateX(0);
-      }
-
-      .hide {
-        transition: opacity 0.3s ease-out, transform 0.7s ease-in-out;
-        transform: translateY(24px);
-        opacity: 0;
-
-        background-color: orange;
-      }
-
-      [data-inview="true"] .hide {
-        transform: translateY(0);
-        opacity: 1;
       }
 
       .progress {
@@ -137,198 +139,5 @@ html
         block content
       footer.flex-shrink-0.py-5
         include /_includes/footer.pug
-    .p-6.rounded-md.shadow.on-window-scroll
-      h3
-        a(href='https://github.com/simboonlong/utility#onwindowscroll', target='_blank', rel='noopener noreferrer') onWindowScroll
-      p Various scrolling callbacks.
-      .bg-gray-100.border.rounded.text-gray-600.px-4.py-2
-        p.mb-0 top:&nbsp;
-          b#hit-top(data-testid='hit-top')
-        p.mb-0 bottom:&nbsp;
-          b#hit-bottom(data-testid='hit-bottom')
-        p.mb-0 direction:&nbsp;
-          b#scroll(data-testid='scroll')
-        p.mb-0 scrollTopCurr:&nbsp;
-          b#hit-between(data-testid='hit-between')
-        p.mb-0 scrollProgressBody:&nbsp;
-          b#sp-body(data-testid='sp-body')
     script(src=`./utility.min.js`)
-    script.
-      var updateCookie = () => {
-        document.getElementById("cookie").innerText =
-          getCookie({ cname: "tracker" }) ?? "undefined";
-      };
-
-      var updateViewport = () => {
-        document.getElementById("vp-w").innerText = String(getViewport().w);
-        document.getElementById("vp-h").innerText = String(getViewport().h);
-      };
-
-      var fixie = document.querySelector(".on-window-scroll");
-      var scrollHandler;
-
-      var setFixie = () => {
-        clearTimeout(scrollHandler);
-
-        if (!fixie.classList.contains('is-active')) {
-          fixie.classList.add('is-active');
-        } else {
-          scrollHandler = setTimeout(() => {
-            fixie.classList.remove('is-active');
-          }, 1900);
-        }
-      }
-
-      var scrollDirection = document.getElementById("scroll")
-      var hitBottom = document.getElementById("hit-bottom");
-      var hitTop = document.getElementById("hit-top");
-      var hitBetween = document.getElementById("hit-between");
-      var spItem = document.getElementById("sp-item");
-      var spBody = document.getElementById("sp-body");
-      var thumb = document.querySelector(".progress-thumb");
-      var progressingBody = (scrollTopCurr) => {
-        const progress = scrollProgressBody({
-          scrollTopCurr
-        });
-        spBody.innerText = `${progress}`;
-      }
-      var progressingItem = (scrollTopCurr) => {
-        const progress = scrollProgressItem({
-          element: spItem,
-          scrollTopCurr
-        });
-        thumb.style.width = `${(progress * 100).toFixed(0)}%`;
-      }
-
-      document.getElementById("cookie-unset").addEventListener("click", () => {
-        setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 });
-        updateCookie();
-      });
-
-      document.getElementById("cookie-set").addEventListener("click", () => {
-        setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 });
-        updateCookie();
-      });
-
-      document
-        .getElementById("scroll-to-y")
-        .addEventListener("click", (event) => {
-          event.preventDefault();
-          scrollToY({ endValue: 0 });
-        });
-
-      document
-        .getElementById("scroll-to-x")
-        .addEventListener("click", (event) => {
-          event.preventDefault();
-          ease({
-            startValue: 0,
-            endValue: 800,
-            onStep: (value) => {
-              document.getElementById("on-step-scroll").innerText = value;
-              document.getElementById("ease-scroll").scrollLeft = value;
-            },
-          });
-        });
-
-      document
-        .getElementById("ease-to-opacity")
-        .addEventListener("click", (event) => {
-          event.preventDefault();
-          ease({
-            startValue: 0,
-            endValue: 1,
-            decimal: 2,
-            onStep: (value) => {
-              document.getElementById("on-step-opacity").innerText = value;
-              document.getElementById("ease-opacity").style.opacity = value;
-            },
-          });
-        });
-
-      document
-        .getElementById("scroll-to-y-infinity")
-        .addEventListener("click", (event) => {
-          event.preventDefault();
-          scrollToY({ endValue: Infinity });
-        });
-
-      document
-        .getElementById("scroll-to-target")
-        .addEventListener("click", (event) => {
-          event.preventDefault();
-          scrollToY({ endValue: document.getElementById("target").offsetTop });
-        });
-
-      onWindowScroll({
-        up: () => {
-          scrollDirection.innerHTML = "&#8607;";
-        },
-        down: () => {
-          scrollDirection.innerHTML = "&#8609;";
-        },
-        top: () => {
-          hitTop.innerHTML = "&#10003;";
-        },
-        between: (scrollTopCurr) => {
-          hitBottom.innerHTML = "&#10007;";
-          hitTop.innerHTML = "&#10007;";
-          hitBetween.innerText = `${scrollTopCurr}`;
-
-          progressingItem(scrollTopCurr);
-          progressingBody(scrollTopCurr);
-          setFixie();
-        },
-        bottom: () => {
-          hitBottom.innerHTML = "&#10003;";
-        },
-        throtteRate: 1,
-      });
-      onWindowResize({ resize: updateViewport, throtteRate: 75 });
-
-      updateCookie();
-      updateViewport();
-      inView({
-        elements: document.querySelectorAll('.foo')
-      });
-      progressingItem(document.body.scrollTop || document.documentElement.scrollTop);
-      progressingBody(document.body.scrollTop || document.documentElement.scrollTop);
-
-      onMediaQueryWidth({
-        onInit: true,
-        breakpoint: {
-          0: () => {
-            document.getElementById("mq").innerText = "xs - 0";
-          },
-          640: () => {
-            document.getElementById("mq").innerText = "sm - 640";
-          },
-          768: () => {
-            document.getElementById("mq").innerText = "md - 768";
-          },
-          1024: () => {
-            document.getElementById("mq").innerText = "lg - 1024";
-          },
-          1280: () => {
-            document.getElementById("mq").innerText = "xl - 1280";
-          },
-          1536: () => {
-            document.getElementById("mq").innerText = "xxl - 1536";
-          },
-        }
-      });
-
-      const SearchParams = searchParams();
-      document.querySelector('[data-testid="searchparams-set-a"]').addEventListener("click", () => {
-        SearchParams.set({ key: "foo", value: "a" });
-      });
-      document.querySelector('[data-testid="searchparams-append-b"]').addEventListener("click", () => {
-        SearchParams.append({ key: "foo", value: "b" });
-      });
-      document.querySelector('[data-testid="searchparams-remove-a"]').addEventListener("click", () => {
-        SearchParams.remove({ key: "foo", value: "a" });
-      });
-      document.querySelector('[data-testid="searchparams-remove-all"]').addEventListener("click", () => {
-        SearchParams.removeAll({ key: "foo" });
-      });
     block scripts

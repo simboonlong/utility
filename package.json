@@ -18,7 +18,7 @@
     "serve": "npx browser-sync start --server public --files public",
     "images": "cpy './demo/**/*.(jpg|png|svg)' './public'",
     "pug": "node demo.js",
-    "pug:watch": "npx nodemon --watch ./demo/index.pug -e pug ./demo.js",
+    "pug:watch": "npx nodemon --watch ./demo/ -e pug ./demo.js",
     "demo": "run-s images build pug",
     "e2e": "cypress open",
     "e2e:ci": "cypress run",

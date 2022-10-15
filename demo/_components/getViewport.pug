@@ -1,0 +1,31 @@
+h3
+  a(href='https://github.com/simboonlong/utility#getviewport', target='_blank', rel='noopener noreferrer') getViewport
+  | ,&nbsp;
+  a(href='https://github.com/simboonlong/utility#onwindowresize', target='_blank', rel='noopener noreferrer') onWindowResize
+p Try resizing browser to see getViewport in action.
+.py-5
+  pre.bg-gray-900.text-white.p-4.mb-2.
+    onWindowResize({
+      resize: () => {
+        document.getElementById("vp-w").innerText = getViewport().w
+        document.getElementById("vp-h").innerText = getViewport().h
+      },
+      throtteRate: 75
+    });
+  .py-4
+    .bg-gray-100.border.rounded.text-gray-600.px-4.py-2.mb-2 getViewport().w:&nbsp;
+      b#vp-w(data-testid='vp-w')
+      br
+      | getViewport().h:&nbsp;
+      b#vp-h(data-testid='vp-h')
+
++block("script-get-viewport")
+  script.
+    const updateViewport = () => {
+      document.getElementById("vp-w").innerText = String(getViewport().w);
+      document.getElementById("vp-h").innerText = String(getViewport().h);
+    };
+
+    onWindowResize({ resize: updateViewport, throtteRate: 75 });
+
+    updateViewport();

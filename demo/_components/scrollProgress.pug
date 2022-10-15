@@ -1,0 +1,109 @@
+h3
+  a(href='https://github.com/simboonlong/utility#scrollprogressbody', target='_blank', rel='noopener noreferrer') scrollProgressBody
+  | ,&nbsp;
+  a(href='https://github.com/simboonlong/utility#scrollprogressitem', target='_blank', rel='noopener noreferrer') scrollProgressItem
+p Indication of scroll progress.
+.py-5
+  pre.bg-gray-900.text-white.p-4.mb-2.
+    const progress = scrollProgressBody({
+      scrollTopCurr
+    });
+
+    document.getElementById("sp-body").innerText = `${progress}%`;
+  pre.bg-gray-900.text-white.p-4.mb-2.
+    const progress = scrollProgressItem({
+      element: document.getElementById("sp-item"),
+      scrollTopCurr
+    });
+
+    document.querySelector(".progress-thumb").style.width = `${(progress * 100).toFixed(0)}%`;
+  .py-4
+    #sp-item.relative.bg-gray-100.border.rounded.text-gray-600.px-4.pt-4.pb-2
+      .progress
+        .progress-track
+          .progress-thumb(data-testid='progress-thumb')
+      p #sp-item Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+      p Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Quis autem vel eum iure reprehenderit qui. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+
+.p-6.rounded-md.shadow.on-window-scroll
+  h3
+    a(href='https://github.com/simboonlong/utility#onwindowscroll', target='_blank', rel='noopener noreferrer') onWindowScroll
+  p Various scrolling callbacks.
+  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2
+    p.mb-0 top:&nbsp;
+      b#hit-top(data-testid='hit-top')
+    p.mb-0 bottom:&nbsp;
+      b#hit-bottom(data-testid='hit-bottom')
+    p.mb-0 direction:&nbsp;
+      b#scroll(data-testid='scroll')
+    p.mb-0 scrollTopCurr:&nbsp;
+      b#hit-between(data-testid='hit-between')
+    p.mb-0 scrollProgressBody:&nbsp;
+      b#sp-body(data-testid='sp-body')
+
++block("script-scroll-progress")
+  script.
+    const fixie = document.querySelector(".on-window-scroll");
+    let scrollHandler;
+
+    const setFixie = () => {
+      clearTimeout(scrollHandler);
+
+      if (!fixie.classList.contains('is-active')) {
+        fixie.classList.add('is-active');
+      } else {
+        scrollHandler = setTimeout(() => {
+          fixie.classList.remove('is-active');
+        }, 1900);
+      }
+    }
+
+    const scrollDirection = document.getElementById("scroll")
+    const hitBottom = document.getElementById("hit-bottom");
+    const hitTop = document.getElementById("hit-top");
+    const hitBetween = document.getElementById("hit-between");
+    const spItem = document.getElementById("sp-item");
+    const spBody = document.getElementById("sp-body");
+    const thumb = document.querySelector(".progress-thumb");
+
+    const progressingBody = (scrollTopCurr) => {
+      const progress = scrollProgressBody({
+        scrollTopCurr
+      });
+      spBody.innerText = `${progress}`;
+    }
+    const progressingItem = (scrollTopCurr) => {
+      const progress = scrollProgressItem({
+        element: spItem,
+        scrollTopCurr
+      });
+      thumb.style.width = `${(progress * 100).toFixed(0)}%`;
+    }
+
+    onWindowScroll({
+      up: () => {
+        scrollDirection.innerHTML = "&#8607;";
+      },
+      down: () => {
+        scrollDirection.innerHTML = "&#8609;";
+      },
+      top: () => {
+        hitTop.innerHTML = "&#10003;";
+      },
+      between: (scrollTopCurr) => {
+        hitBottom.innerHTML = "&#10007;";
+        hitTop.innerHTML = "&#10007;";
+        hitBetween.innerText = `${scrollTopCurr}`;
+
+        progressingItem(scrollTopCurr);
+        progressingBody(scrollTopCurr);
+        setFixie();
+      },
+      bottom: () => {
+        hitBottom.innerHTML = "&#10003;";
+      },
+      throtteRate: 1,
+    });
+
+    progressingItem(document.body.scrollTop || document.documentElement.scrollTop);
+    progressingBody(document.body.scrollTop || document.documentElement.scrollTop);

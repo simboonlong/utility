@@ -1,0 +1,55 @@
+h3
+  a(href='https://github.com/simboonlong/utility#onmediaquerywidth', target='_blank', rel='noopener noreferrer') onMediaQueryWidth
+p Breakpoint callbacks with matchMedia, based on min-width and max-width conditions.
+.py-5
+  pre.bg-gray-900.text-white.p-4.
+    onMediaQueryWidth({
+      breakpoint: {
+        0: () => {
+          document.getElementById("mq").innerText = "xs - 0";
+        },
+        640: () => {
+          document.getElementById("mq").innerText = "sm - 640";
+        },
+        768: () => {
+          document.getElementById("mq").innerText = "md - 768";
+        },
+        1024: () => {
+          document.getElementById("mq").innerText = "lg - 1024";
+        },
+        1280: () => {
+          document.getElementById("mq").innerText = "xl - 1280";
+        },
+        1536: () => {
+          document.getElementById("mq").innerText = "xxl - 1536";
+        }
+      }
+    });
+.bg-gray-100.border.rounded.text-gray-600.px-4.py-2
+  b#mq(data-testid="mq")
+
++block("script-on-media-query-width")
+  script.
+    onMediaQueryWidth({
+      onInit: true,
+      breakpoint: {
+        0: () => {
+          document.getElementById("mq").innerText = "xs - 0";
+        },
+        640: () => {
+          document.getElementById("mq").innerText = "sm - 640";
+        },
+        768: () => {
+          document.getElementById("mq").innerText = "md - 768";
+        },
+        1024: () => {
+          document.getElementById("mq").innerText = "lg - 1024";
+        },
+        1280: () => {
+          document.getElementById("mq").innerText = "xl - 1280";
+        },
+        1536: () => {
+          document.getElementById("mq").innerText = "xxl - 1536";
+        },
+      }
+    });
