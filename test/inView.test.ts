@@ -1,4 +1,6 @@
+import { screen } from "@testing-library/dom";
 import { inView } from "../src/inView";
+
 const observe = jest.fn();
 const unobserve = jest.fn();
 const disconnect = jest.fn();
@@ -18,16 +20,22 @@ const prepDOM = () => {
 
   const divInView = document.createElement("div");
   divInView.style.height = "100px";
+  divInView.setAttribute("data-testid", "inview");
   divInView.setAttribute("data-inview", "");
 
   document.body.appendChild(div);
   document.body.appendChild(divInView);
 };
 
-test("inView should scroll correctly", async () => {
-  prepDOM();
-  inView({
-    elements: document.querySelectorAll("[data-inview]"),
+describe("inView", () => {
+  test("should scroll correctly", async () => {
+    prepDOM();
+    const testDiv = screen.getByTestId("inview");
+    expect(testDiv.getAttribute("data-inview")).toEqual("");
+    inView({
+      elements: document.querySelectorAll("[data-inview]"),
+    });
+    expect(observe).toHaveBeenCalledTimes(1);
+    expect(testDiv.getAttribute("data-inview")).toEqual("false");
   });
-  expect(observe).toHaveBeenCalledTimes(1);
 });
