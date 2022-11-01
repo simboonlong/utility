@@ -18,15 +18,39 @@ const getExampleDOM = () => {
   return div;
 };
 
-test("urlLinkMatch should add class correctly", async () => {
-  const className = "active";
-  const container = getExampleDOM();
-  // console.log(prettyDOM(container));
+const getExampleMalformedDOM = () => {
+  const div = document.createElement("div");
 
-  urlLinkMatched({
-    links: container.querySelectorAll("a"),
-    callback: (link) => link.classList.add(className),
+  const link1 = document.createElement("a");
+  div.appendChild(link1);
+
+  return div;
+};
+
+describe("urlLinkMatch", () => {
+  test("should add class correctly", async () => {
+    const className = "active";
+    const container = getExampleDOM();
+    // console.log(prettyDOM(container));
+
+    urlLinkMatched({
+      links: container.querySelectorAll("a"),
+      callback: (link) => link.classList.add(className),
+    });
+
+    expect(getByText(container, "home").getAttribute("class")).toBe(className);
   });
 
-  expect(getByText(container, "home").getAttribute("class")).toBe(className);
+  test("should throw error if href is omitted", async () => {
+    const container = getExampleMalformedDOM();
+
+    expect(() => {
+      urlLinkMatched({
+        links: container.querySelectorAll("a"),
+        callback: () => {
+          return;
+        },
+      });
+    }).toThrow("href attribute not defined on anchor element");
+  });
 });

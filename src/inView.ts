@@ -20,12 +20,14 @@ interface InView {
   isGuides?: boolean;
 }
 
+/* istanbul ignore next  */
 const getValue = (value: string, total: number) => {
   return value.includes("px")
     ? parseInt(value)
     : (parseInt(value) / 100) * total;
 };
 
+/* istanbul ignore next  */
 const getValueInverse = (value: string, total: number) => {
   return value.includes("px")
     ? parseInt(value) > 0
@@ -36,6 +38,7 @@ const getValueInverse = (value: string, total: number) => {
     : Math.abs((parseInt(value) / 100) * total);
 };
 
+/* istanbul ignore next  */
 const initGuides = (index: number, rootMargin: string) => {
   const rootMarginArray = rootMargin.split(" ");
   const top = rootMarginArray[0];
@@ -71,6 +74,7 @@ export const inView = ({
   isOnce = false,
   isGuides = false,
 }: InView): void => {
+  /* istanbul ignore next  */
   const handleIntersect = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (entry.isIntersecting) {
@@ -109,6 +113,7 @@ export const inView = ({
     const observer = new IntersectionObserver(handleIntersect, options);
     observer.observe(element);
 
+    /* istanbul ignore next  */
     if (isGuides) {
       initGuides(index, rootMargin[trigger]); // helper only works on init, not responsive
     }

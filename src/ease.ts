@@ -57,23 +57,21 @@ const PI = Math.PI;
 interface Ease {
   startValue: number;
   endValue: number;
+  onStep: (endValue: number) => void;
   decimal?: number;
   duration?: number;
   easeType?: (t: number) => number;
-  onStep: (endValue: number) => void;
   onComplete?: () => void;
 }
 
 export const ease = ({
   startValue,
   endValue,
+  onStep,
   decimal = 0,
   duration = 1000,
   easeType = easeInOutCubic,
-  onStep,
-  onComplete = () => {
-    return;
-  },
+  onComplete,
 }: Ease): void => {
   const now = window.performance.now();
   let currentSinValue = 0;
@@ -94,7 +92,7 @@ export const ease = ({
       window.requestAnimationFrame(step);
     } else {
       onStep(endValue);
-      onComplete();
+      if (onComplete) onComplete();
     }
   };
 

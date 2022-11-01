@@ -15,7 +15,7 @@ jobs:
       - name: Build Scripts
         run: npm run build
       - name: Unit Test
-        run: npm run test
+        run: npm run test -- --coverage
       - name: Build Demo
         run: npm run demo
       - name: Integration tests
