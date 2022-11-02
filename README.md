@@ -1,5 +1,7 @@
 ![CI](https://github.com/simboonlong/utility/workflows/CI/badge.svg?branch=master&event=push) [![Netlify Status](https://api.netlify.com/api/v1/badges/0c993cb8-5cca-4c05-a543-a921ff62dee0/deploy-status)](https://app.netlify.com/sites/simboonlong-utility/deploys) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
+![Statements](https://img.shields.io/badge/statements-97.15%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-93.44%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-95.74%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-96.64%25-brightgreen.svg?style=flat)
+
 # Utility
 
 Some web utility functions to use.
