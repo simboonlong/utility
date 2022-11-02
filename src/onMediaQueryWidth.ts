@@ -12,38 +12,11 @@ interface MediaQueryWidth {
   updateAll: () => void;
 }
 
-const optionDefault = {
-  onInit: false,
-  breakpoint: {
-    // unit test to ensure breakpoint order does not matter? should sort
-    0: () => {
-      console.log("xs");
-    },
-    640: () => {
-      console.log("sm");
-    },
-    768: () => {
-      console.log("md");
-    },
-    1024: () => {
-      console.log("lg");
-    },
-    1280: () => {
-      console.log("xl");
-    },
-    1536: () => {
-      console.log("xxl");
-    },
-  },
-};
-
 const between = (x: number, min: number, max: number) => {
   return x >= min && x < max;
 };
 
-export const onMediaQueryWidth = (
-  option: Option = optionDefault,
-): MediaQueryWidth => {
+export const onMediaQueryWidth = (option: Option): MediaQueryWidth => {
   const { onInit, breakpoint } = option;
   const breakpoints = Object.keys(breakpoint).map((key) => parseInt(key));
   const callbacks = Object.values(breakpoint);

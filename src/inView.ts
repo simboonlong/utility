@@ -114,6 +114,7 @@ export const inView = ({
     observer.observe(element);
 
     /* istanbul ignore next  */
+    // initGuides is an easter egg for internal use only
     if (isGuides) {
       initGuides(index, rootMargin[trigger]); // helper only works on init, not responsive
     }

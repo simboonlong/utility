@@ -1,3 +1,5 @@
+// TODO: this entire feature should be deprecated to use IntersectionObserver API instead, not gonna write coverage tests for this yet
+
 interface ScrollProgressBody {
   scrollTopCurr: number;
   decimal?: number;

@@ -2,7 +2,7 @@ import { throttle } from "./throttle";
 
 interface OnWindowResize {
   resize: () => void;
-  throtteRate: number;
+  throtteRate?: number;
 }
 
 export const onWindowResize = ({
@@ -19,7 +19,7 @@ interface OnWindowScroll {
   top?: () => void;
   between?: (st: number) => void;
   bottom?: () => void;
-  throtteRate: number;
+  throtteRate?: number;
 }
 
 export const onWindowScroll = ({
