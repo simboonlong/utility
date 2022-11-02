@@ -32,6 +32,8 @@ export const searchParams = (): SearchParams => {
     const valuesUnique = new Set([...valuesAppend, ...valuesCurrent]);
 
     url.searchParams.delete(key);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     [...valuesUnique].map((value) => {
       url.searchParams.append(key, value);
     });

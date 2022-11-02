@@ -1,3 +1,4 @@
+/* istanbul ignore file  */
 // extracted from underscore.js
 // https://github.com/jashkenas/underscore/blob/master/underscore.js
 
