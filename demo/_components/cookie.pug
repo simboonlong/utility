@@ -3,25 +3,12 @@ h3
   | ,&nbsp;
   a(href='https://github.com/simboonlong/utility#setcookie', target='_blank', rel='noopener noreferrer') setCookie
 p Get and set browser cookie.
-.py-5
-  pre.bg-gray-900.text-white.p-4.mb-2.
-    setCookie({
-      cname: "tracker",
-      cvalue: "abc123",
-      exdays: 0.125
-    })
-  pre.bg-gray-900.text-white.p-4.mb-2.
-    setCookie({
-      cname: "tracker",
-      cvalue: "abc123",
-      exdays: 0
-    })
-  .py-4
-    button#cookie-set(type='button', data-testid='cookie-set') setCookie (3 hours expiry)
-    button#cookie-unset(type='button', data-testid='cookie-unset') setCookie (0 hour expiry)
-    br
-    .bg-gray-100.border.rounded.text-gray-600.px-4.py-2 getCookie({ cname: &quot;tracker&quot; }):&nbsp;
-      b#cookie(data-testid='cookie')
+.py-4
+  button#cookie-set(type='button', data-testid='cookie-set') setCookie (3 hours expiry)
+  button#cookie-unset(type='button', data-testid='cookie-unset') setCookie (0 hour expiry)
+  br
+  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2 getCookie({ cname: &quot;tracker&quot; }):&nbsp;
+    b#cookie(data-testid='cookie')
 
 +block("script-cookie")
   script.
