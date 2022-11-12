@@ -1,37 +1,19 @@
 h3
   a(href='https://github.com/simboonlong/utility#ease', target='_blank', rel='noopener noreferrer') ease
 p Easing on any numerical attribute, of any element.
-.py-5
-  pre.bg-gray-900.text-white.p-4.mb-2.
-    ease({
-      startValue: 0,
-      endValue: 1,
-      decimal: 2,
-      onStep: value => {
-        document.getElementById("ease-opacity").style.opacity = value
-      }
-    })
-  pre.bg-gray-900.text-white.p-4.mb-2.
-    ease({
-      startValue: 0,
-      endValue: 800,
-      onStep: value => {
-        document.getElementById("ease-scroll").scrollLeft = value
-      }
-    })
-  .py-4
-    button#ease-to-opacity(type='button', data-testid='ease-to-opacity') ease (opacity)
-    button#scroll-to-x(type='button', data-testid='scroll-to-x') ease (scrollLeft)
-    .bg-gray-100.border.rounded.text-gray-600.px-4.py-2.mb-2
-      p.mb-0 opacity:&nbsp;
-        b#on-step-opacity(style='color: orange', data-testid='opacity') 0
-      p#ease-opacity.mb-0 #ease-opacity
-    #ease-scroll.relative.bg-gray-100.border.rounded.text-gray-600.px-4.py-2(style='overflow-x: auto')
-      .sticky.top-0.left-0
-        p.mb-0 scrollLeft:&nbsp;
-          b#on-step-scroll(style='color: orange') 0
-      div(style='width: 400vw')
-        p.mb-0 #ease-scroll Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+.py-4
+  button#ease-to-opacity(type='button', data-testid='ease-to-opacity') ease (opacity)
+  button#scroll-to-x(type='button', data-testid='scroll-to-x') ease (scrollLeft)
+  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2.mb-2
+    p.mb-0 opacity:&nbsp;
+      b#on-step-opacity(style='color: orange', data-testid='opacity') 0
+    p#ease-opacity.mb-0 #ease-opacity
+  #ease-scroll.relative.bg-gray-100.border.rounded.text-gray-600.px-4.py-2(style='overflow-x: auto')
+    .sticky.top-0.left-0
+      p.mb-0 scrollLeft:&nbsp;
+        b#on-step-scroll(style='color: orange') 0
+    div(style='width: 400vw')
+      p.mb-0 #ease-scroll Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
 
 +block("script-ease")
   script.
