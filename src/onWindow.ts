@@ -33,9 +33,12 @@ export const onWindowScroll = ({
   let scrollTopPrev = 0;
 
   const onScroll = () => {
-    const scrollTopCurr =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    const mostBottomTop = document.body.scrollHeight - window.innerHeight;
+    const scrollTopCurr = Math.round(
+      document.body.scrollTop || document.documentElement.scrollTop,
+    );
+    const mostBottomTop = Math.round(
+      document.body.scrollHeight - window.innerHeight,
+    );
 
     if (between) {
       between(scrollTopCurr);
