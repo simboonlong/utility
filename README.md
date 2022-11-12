@@ -34,6 +34,7 @@ Example:
 
 ```
 import { cookie } from "@simboonlong/utility"
+
 const Cookie = cookie();
 
 Cookie.set({
