@@ -1,22 +1,10 @@
-import { onWindowResize, onWindowScroll } from "../src/onWindow";
+import { onWindowScroll } from "../src/onWindowScroll";
 
-const mockResize = jest.fn();
 const mockUp = jest.fn();
 const mockDown = jest.fn();
 const mockBetween = jest.fn();
 const mockTop = jest.fn();
 const mockBottom = jest.fn();
-
-describe("onWindowResize", () => {
-  test("should callback on resize correctly", () => {
-    onWindowResize({
-      resize: mockResize,
-    });
-
-    global.dispatchEvent(new Event("resize"));
-    expect(mockResize).toBeCalledTimes(1);
-  });
-});
 
 describe("onWindowScroll", () => {
   beforeEach(() => {
