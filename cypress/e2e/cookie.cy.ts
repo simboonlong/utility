@@ -4,10 +4,10 @@ describe("cookie", () => {
     user.visit(Cypress.env("PATH"));
 
     user.findByTestId("cookie-set").click();
-    user.findByTestId("cookie").should("have.text", "abc123");
+    user.findByTestId("cookie").should("have.text", "Some value");
 
     user.reload();
-    user.findByTestId("cookie").should("have.text", "abc123");
+    user.findByTestId("cookie").should("have.text", "Some value");
   });
 
   it("should unset correctly, after reload cookie should not exist", () => {

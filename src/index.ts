@@ -1,5 +1,6 @@
 export * from "./breakpoint";
 export * from "./cookie";
+export * from "./delay";
 export * from "./ease";
 export * from "./getViewport";
 export * from "./inView";

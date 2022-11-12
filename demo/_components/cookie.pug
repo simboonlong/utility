@@ -1,29 +1,28 @@
 h3
-  a(href='https://github.com/simboonlong/utility#getcookie', target='_blank', rel='noopener noreferrer') getCookie
-  | ,&nbsp;
-  a(href='https://github.com/simboonlong/utility#setcookie', target='_blank', rel='noopener noreferrer') setCookie
-p Get and set browser cookie.
+  a(href='https://github.com/simboonlong/utility#cookie', target='_blank', rel='noopener noreferrer') cookie
+p Set and get browser cookie.
 .py-4
-  button#cookie-set(type='button', data-testid='cookie-set') setCookie (3 hours expiry)
-  button#cookie-unset(type='button', data-testid='cookie-unset') setCookie (0 hour expiry)
+  button#cookie-set(type='button', data-testid='cookie-set') Set Cookie (3 hours expiry)
+  button#cookie-unset(type='button', data-testid='cookie-unset') Set Cookie (0 hour expiry)
   br
-  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2 getCookie({ cname: &quot;tracker&quot; }):&nbsp;
+  .bg-gray-100.border.rounded.text-gray-600.px-4.py-2 &quot;tracker&quot;:&nbsp;
     b#cookie(data-testid='cookie')
 
 +block("script-cookie")
   script.
+    const Cookie = cookie();
     const updateCookie = () => {
       document.getElementById("cookie").innerText =
-        getCookie({ cname: "tracker" }) ?? "undefined";
+        Cookie.get("tracker") ?? "undefined";
     };
 
     document.getElementById("cookie-unset").addEventListener("click", () => {
-      setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 });
+      Cookie.set({ name: "tracker", value: "Some value", expire: 0 });
       updateCookie();
     });
 
     document.getElementById("cookie-set").addEventListener("click", () => {
-      setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 });
+      Cookie.set({ name: "tracker", value: "Some value", expire: 0.125 });
       updateCookie();
     });
 

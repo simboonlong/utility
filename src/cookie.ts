@@ -1,32 +1,44 @@
-// w3s examples
-interface GetCookie {
-  cname: string;
+interface CookieSet {
+  name: string;
+  value: string;
+  expire: number; // compulsory expire. don't leave to "session", it seems unpredictable in devices/os
+  sameSite?: "Lax" | "Strict" | "None";
+  secure?: boolean;
 }
 
-export const getCookie = ({ cname }: GetCookie): string | undefined => {
-  const name = cname + "=";
-  const ca = document.cookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return undefined;
-};
+export const cookie = () => {
+  const getAll = (): Record<string, string> => {
+    const cookies = document.cookie.split(";");
+    return cookies.reduce((accumulator, item) => {
+      const keyValue = item.split("=");
+      return {
+        ...accumulator,
+        [keyValue[0].toString().trimLeft()]: keyValue[1], // need to trim here and not on document cookie level, otherwise document cookie gets mutated
+      };
+    }, {});
+  };
 
-interface SetCookie {
-  cname: string;
-  cvalue: string;
-  exdays: number;
-}
+  const get = (name: string) => {
+    const allCookies = getAll();
+    return allCookies[name];
+  };
 
-export const setCookie = ({ cname, cvalue, exdays }: SetCookie): void => {
-  const d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  const expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  const set = ({ name, value, expire, sameSite, secure }: CookieSet) => {
+    if (location.protocol !== "https:" && secure) {
+      console.warn("Unable to set cookie due to non-https protocol detected.");
+    }
+
+    const d = new Date();
+    d.setTime(d.getTime() + expire * 24 * 60 * 60 * 1000);
+    const expires = `expires=${d.toUTCString()}`;
+    document.cookie = `${name}=${value}; ${expires};${
+      sameSite ? ` SameSite=${sameSite};` : ""
+    } ${secure ? " Secure;" : ""} path=/`;
+  };
+
+  return {
+    getAll,
+    get,
+    set,
+  };
 };
