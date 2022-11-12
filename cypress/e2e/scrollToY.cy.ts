@@ -1,4 +1,4 @@
-describe("scrollTo", () => {
+describe("scrollToY", () => {
   it("should scroll to y correctly", () => {
     const user = cy;
     user.visit(Cypress.env("PATH"));

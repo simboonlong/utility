@@ -1,12 +1,4 @@
-describe("progressScroll", () => {
-  it("should show scroll progress on body correctly", () => {
-    const user = cy;
-    user.visit(Cypress.env("PATH"));
-
-    user.scrollTo("center");
-    user.findByTestId("sp-body").should("have.text", "0.5");
-  });
-
+describe("scrollProgressItem", () => {
   it("should show full scroll progress on item correctly", () => {
     const user = cy;
     user.visit(Cypress.env("PATH"));
