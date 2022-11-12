@@ -1,6 +1,6 @@
 ![CI](https://github.com/simboonlong/utility/workflows/CI/badge.svg?branch=master&event=push) [![Netlify Status](https://api.netlify.com/api/v1/badges/0c993cb8-5cca-4c05-a543-a921ff62dee0/deploy-status)](https://app.netlify.com/sites/simboonlong-utility/deploys)
 
-![Statements](https://img.shields.io/badge/statements-97.16%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-93.44%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-95.74%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-96.66%25-brightgreen.svg?style=flat)
+![Statements](https://img.shields.io/badge/statements-97.23%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-93.33%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-96.29%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-96.77%25-brightgreen.svg?style=flat)
 
 # Utility
 
@@ -26,6 +26,42 @@ or
 
 ---
 
+#### cookie
+
+Get browser cookie.
+
+Example:
+
+```
+import { cookie } from "@simboonlong/utility"
+const Cookie = cookie();
+
+Cookie.get("tracker"); // if set = returns cookie's value, if unset = returns undefined
+```
+
+Set browser cookie.
+
+Example:
+
+```
+import { cookie } from "@simboonlong/utility"
+const Cookie = cookie();
+
+Cookie.set({
+  name: "tracker",
+  value: "abc",
+  daysToExpire: 0.125
+}); // set cookie to 3 hours expiry
+
+Cookie.set({
+  name: "tracker",
+  value: "abc",
+  daysToExpire: 0
+}); // delete cookie by setting expiry to 0
+```
+
+---
+
 #### ease
 
 Set easing values on anything.
@@ -46,33 +82,6 @@ ease({
     console.log("scroll completed")
   } // optional
 })
-```
-
----
-
-#### getCookie
-
-Get browser cookie.
-
-Example:
-
-```
-import { getCookie } from "@simboonlong/utility"
-
-getCookie({ cname: "tracker" }); // if set = returns cookie's value, if unset = returns undefined
-```
-
-#### setCookie
-
-Set browser cookie.
-
-Example:
-
-```
-import { setCookie } from "@simboonlong/utility"
-
-setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0.125 }); // set cookie to 3 hours expiry
-setCookie({ cname: "tracker", cvalue: "abc123", exdays: 0 }); // delete cookie by setting expiry to 0
 ```
 
 ---

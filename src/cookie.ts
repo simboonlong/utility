@@ -1,32 +1,47 @@
-// w3s examples
-interface GetCookie {
-  cname: string;
-}
+export const cookie = () => {
+  const getAll = (): Record<string, string> => {
+    const cookies = document.cookie.split(";");
+    return cookies.reduce((accumulator, item) => {
+      const keyValue = item.split("=");
+      return {
+        ...accumulator,
+        [keyValue[0].toString().trimLeft()]: keyValue[1], // need to trim here and not on document cookie level, otherwise document cookie gets mutated
+      };
+    }, {});
+  };
 
-export const getCookie = ({ cname }: GetCookie): string | undefined => {
-  const name = cname + "=";
-  const ca = document.cookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return undefined;
-};
+  const get = (name: string) => {
+    const allCookies = getAll();
+    return allCookies[name];
+  };
 
-interface SetCookie {
-  cname: string;
-  cvalue: string;
-  exdays: number;
-}
+  const set = ({
+    name,
+    value,
+    daysToExpire,
+  }: {
+    name: string;
+    value: string;
+    daysToExpire: number;
+  }) => {
+    const d = new Date();
+    d.setTime(d.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+    const expires = `expires=${d.toUTCString()}`;
+    document.cookie = `${name}=${value}; ${expires}; path=/`;
+  };
 
-export const setCookie = ({ cname, cvalue, exdays }: SetCookie): void => {
-  const d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  const expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  const removeAll = () => {
+    document.cookie.split(";").forEach((c) => {
+      document.cookie = c
+        .replace(/\s+/g, "")
+        .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
+    });
+  };
+
+  return {
+    getAll,
+    get,
+    set,
+    removeAll,
+  };
 };
