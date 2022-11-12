@@ -17,12 +17,12 @@ p Set and get browser cookie.
     };
 
     document.getElementById("cookie-unset").addEventListener("click", () => {
-      Cookie.set({ name: "tracker", value: "Some value", daysToExpire: 0 });
+      Cookie.set({ name: "tracker", value: "Some value", expire: 0 });
       updateCookie();
     });
 
     document.getElementById("cookie-set").addEventListener("click", () => {
-      Cookie.set({ name: "tracker", value: "Some value", daysToExpire: 0.125 });
+      Cookie.set({ name: "tracker", value: "Some value", expire: 0.125 });
       updateCookie();
     });
 

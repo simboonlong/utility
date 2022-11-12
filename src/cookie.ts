@@ -1,3 +1,11 @@
+interface CookieSet {
+  name: string;
+  value: string;
+  expire: number; // compulsory expire. don't leave to "session", it seems unpredictable in devices/os
+  sameSite?: "Lax" | "Strict" | "None";
+  secure?: boolean;
+}
+
 export const cookie = () => {
   const getAll = (): Record<string, string> => {
     const cookies = document.cookie.split(";");
@@ -15,33 +23,22 @@ export const cookie = () => {
     return allCookies[name];
   };
 
-  const set = ({
-    name,
-    value,
-    daysToExpire,
-  }: {
-    name: string;
-    value: string;
-    daysToExpire: number;
-  }) => {
-    const d = new Date();
-    d.setTime(d.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
-    const expires = `expires=${d.toUTCString()}`;
-    document.cookie = `${name}=${value}; ${expires}; path=/`;
-  };
+  const set = ({ name, value, expire, sameSite, secure }: CookieSet) => {
+    if (location.protocol !== "https:" && secure) {
+      console.warn("Unable to set cookie due to non-https protocol detected.");
+    }
 
-  const removeAll = () => {
-    document.cookie.split(";").forEach((c) => {
-      document.cookie = c
-        .replace(/\s+/g, "")
-        .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
-    });
+    const d = new Date();
+    d.setTime(d.getTime() + expire * 24 * 60 * 60 * 1000);
+    const expires = `expires=${d.toUTCString()}`;
+    document.cookie = `${name}=${value}; ${expires};${
+      sameSite ? ` SameSite=${sameSite};` : ""
+    } ${secure ? " Secure;" : ""} path=/`;
   };
 
   return {
     getAll,
     get,
     set,
-    removeAll,
   };
 };
