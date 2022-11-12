@@ -28,18 +28,7 @@ or
 
 #### cookie
 
-Get browser cookie.
-
-Example:
-
-```
-import { cookie } from "@simboonlong/utility"
-const Cookie = cookie();
-
-Cookie.get("tracker"); // if set = returns cookie's value, if unset = returns undefined
-```
-
-Set browser cookie.
+Set and get browser cookie.
 
 Example:
 
@@ -50,14 +39,18 @@ const Cookie = cookie();
 Cookie.set({
   name: "tracker",
   value: "abc",
-  daysToExpire: 0.125
+  expire: 0.125
 }); // set cookie to 3 hours expiry
 
+Cookie.get("tracker"); // returns "abc"
+
 Cookie.set({
   name: "tracker",
   value: "abc",
-  daysToExpire: 0
+  expire: 0
 }); // delete cookie by setting expiry to 0
+
+Cookie.get("tracker"); // returns undefined
 ```
 
 ---
