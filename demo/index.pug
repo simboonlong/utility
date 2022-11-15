@@ -2,19 +2,19 @@ extends /_layouts/default.pug
 
 block content
   .container.mx-auto.py-8
-    .flex.flex-wrap.items-center
+    .flex.flex-wrap.items-center.mb-8
       .w-16.mr-6
         img.w-full(src="./images/utility.svg", alt="utility")
       .flex-grow
         h1.text-4xl.font-semibold Utility
         p.text-xl.font-medium.mb-0 Literally not your regular swiss army knife.
-    hr.my-8
+    hr
     .max-w-2xl
-      section.pb-8
-        include /_components/ease.pug
-      hr
       section.py-8
         include /_components/cookie.pug
+      hr
+      section.py-8
+        include /_components/ease.pug
       hr
       section.py-8
         include /_components/getViewport.pug
@@ -33,6 +33,9 @@ block content
       hr
       section.py-8
         include /_components/searchParams.pug
+      hr
+      section.py-8
+        include /_components/urlLinkMatched.pug
 
 block scripts
   +block("script-ease")
@@ -43,3 +46,4 @@ block scripts
   +block("script-scroll-progress")
   +block("script-scroll-to")
   +block("script-search-params")
+  +block("script-url-link-matched")
