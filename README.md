@@ -1,6 +1,6 @@
 ![CI](https://github.com/simboonlong/utility/workflows/CI/badge.svg?branch=master&event=push) [![Netlify Status](https://api.netlify.com/api/v1/badges/0c993cb8-5cca-4c05-a543-a921ff62dee0/deploy-status)](https://app.netlify.com/sites/simboonlong-utility/deploys)
 
-![Statements](https://img.shields.io/badge/statements-97.22%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-94.02%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-96.15%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-96.75%25-brightgreen.svg?style=flat)
+![Statements](https://img.shields.io/badge/statements-97.32%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-94.02%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-96.42%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-96.85%25-brightgreen.svg?style=flat)
 
 # Utility
 
@@ -24,13 +24,11 @@ or
 
 > Do note that umd version utilises the global namespace, so there's a chance of name collisions if any.
 
----
+## Documentation
 
 #### cookie
 
 Set and get browser cookie.
-
-Example:
 
 ```
 import { cookie } from "@simboonlong/utility"
@@ -60,8 +58,6 @@ Cookie.get("tracker"); // returns undefined
 
 Set easing values on anything.
 
-Example:
-
 ```
 import { ease, easeOutQuart } from "@simboonlong/utility"
 
@@ -84,8 +80,6 @@ ease({
 
 Get accurate viewport width or height, regardless of cross-browser scrollbar width or its presence.
 
-Example:
-
 ```
 import { getViewport } from "@simboonlong/utility"
 
@@ -98,8 +92,6 @@ getViewport().h // returns current viewport height
 #### inView
 
 Sets `[data-inview="true"]` when element is scrolled into view.
-
-Example:
 
 ```
 import { inView } from "@simboonlong/utility"
@@ -152,8 +144,6 @@ isOnce    ---   Determines if to reset back to `[data-inview]` after elements ex
 
 Breakpoint callbacks with matchMedia, based on min-width and max-width conditions.
 
-Example:
-
 ```
 import { onMediaQueryWidth } from "@simboonlong/utility"
 
@@ -191,8 +181,6 @@ mq.updateAll(); // fire all callbacks
 
 Throttled window resize event.
 
-Example:
-
 ```
 import { onWindowResize } from "@simboonlong/utility"
 
@@ -207,8 +195,6 @@ onWindowResize({
 #### onWindowScroll
 
 Various scrolling scenario callbacks, on window scroll event.
-
-Example:
 
 ```
 import { onWindowScroll } from "@simboonlong/utility"
@@ -239,8 +225,6 @@ onWindowScroll({
 
 Returns scroll progress based on document.
 
-Example:
-
 ```
 import { scrollProgressBody } from "@simboonlong/utility"
 
@@ -255,8 +239,6 @@ console.log(`${progress}%`);
 #### scrollProgressItem
 
 Returns scroll progress based on item against document.
-
-Example:
 
 ```
 import { scrollProgressItem } from "@simboonlong/utility"
@@ -275,8 +257,6 @@ console.log(`${progress}%`);
 #### scrollToY
 
 `scrollToY` is built upon [`ease`](#ease) function. Mainly for vertical ease scrolling of window.
-
-Example:
 
 ```
 import { scrollToY, easeOutQuart } from "@simboonlong/utility"
@@ -300,8 +280,6 @@ document.getElementById('someId').addEventListener("click", (event) => {
 #### searchParams
 
 Update browser history by search params.
-
-Example:
 
 ```
 import { searchParams } from "@simboonlong/utility"
@@ -330,8 +308,6 @@ SearchParams.removeAll({ key: "foo" });
 
 Scan links and update, when `location.href` URL matched link's href.
 
-Example:
-
 ```
 import { urlLinkMatched } from "@simboonlong/utility"
 
@@ -339,6 +315,56 @@ urlLinkMatched({
   links: document.querySelectorAll("a"),
   callback: (link) => link.classList.add("active"),
 });
+```
+
+## Extras
+
+#### delay
+
+Async / await timeout.
+
+```
+import { delay } from "@simboonlong/utility"
+
+const foo = async () => {
+  await delay(1000);
+}
+```
+
+---
+
+#### inlineAttribute
+
+Apply inline attributes from object.
+
+```
+import { inlineAttribute } from "@simboonlong/utility"
+
+const attributes = {
+  width: "200px",
+  height: "100px",
+  style: "color: red; font-size: 12px;",
+  "data-custom": "custom",
+};
+const div = `<div ${inlineAttribute(attributes)}>dummy</div>`;
+```
+
+---
+
+#### inlineStyle
+
+Apply inline styles from object.
+
+```
+import { inlineStyle } from "@simboonlong/utility"
+
+const styles = {
+  width: "200px",
+  height: "100px",
+  color: "red",
+  "font-size": "12px",
+};
+const div = `<div style="${inlineStyle(styles)}">dummy</div>`;
 ```
 
 Author © [Sim Boon Long](https://simboonlong.com).

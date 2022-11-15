@@ -1,0 +1,22 @@
+h3
+  a(href='https://github.com/simboonlong/utility#urllinkmatched', target='_blank', rel='noopener noreferrer') urlLinkMatched
+p Scan links and update, when location.href URL matched link's href.
+.py-4
+  a#match-1.url-link-matched.mr-2.mb-2(href="#match-1") #match-1
+  a#match-2.url-link-matched.mr-2.mb-2(href="#match-2") #match-2
+  a#match-3.url-link-matched.mr-2.mb-2(href="#match-3") #match-3
+
++block("script-url-link-matched")
+  script.
+    urlLinkMatched({
+      links: document.querySelectorAll(".url-link-matched"),
+      callback: (link) => link.style.color = "orange",
+    });
+
+    document.querySelectorAll(".url-link-matched").forEach((el) => {
+      el.addEventListener("click", (event) => {
+        event.preventDefault();
+        location.hash = event.target.hash;
+        location.reload();
+      })
+    })
