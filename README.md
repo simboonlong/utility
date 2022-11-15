@@ -347,6 +347,7 @@ const attributes = {
   "data-custom": "custom",
 };
 const div = `<div ${inlineAttribute(attributes)}>dummy</div>`;
+// <div width="200px" height="100px" style="color: red; font-size: 12px;" data-custom="custom">dummy</div>
 ```
 
 ---
@@ -365,6 +366,7 @@ const styles = {
   "font-size": "12px",
 };
 const div = `<div style="${inlineStyle(styles)}">dummy</div>`;
+// <div style="width: 200px; height: 100px; color: red; font-size: 12px;">dummy</div>
 ```
 
 Author © [Sim Boon Long](https://simboonlong.com).
