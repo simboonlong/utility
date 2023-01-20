@@ -5,7 +5,7 @@ describe("ease", () => {
 
     user.findByTestId("opacity").should("have.text", "0");
     user.findByTestId("ease-to-opacity").click();
-    user.wait(750); // easeInOutCubic, decimal 2
+    user.wait(500);
     user
       .findByTestId("opacity")
       .invoke("text")
@@ -16,7 +16,7 @@ describe("ease", () => {
       .invoke("text")
       .then(parseFloat)
       .should("be.lt", 0.99);
-    user.wait(250); // easeInOutCubic, decimal 2
+    user.wait(500);
     user.findByTestId("opacity").should("have.text", "1");
   });
 });
