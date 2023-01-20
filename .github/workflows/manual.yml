@@ -1,28 +1,36 @@
-name: CI/CD
-on: [push]
+name: CI
+on:
+  push:
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-        with:
-          node-version: 16
       - name: Clean Install
         run: npm ci
-      - name: Lint
+      - name: Run Lint
         run: npm run lint
-      - name: Build Scripts
+      - name: Build Distribution
         run: npm run build
-      - name: Unit Test
-        run: npm run test -- --coverage
       - name: Build Demo
         run: npm run demo
-      - name: Integration tests
+      - name: Unit Test
+        run: npm run test -- --coverage
+      - name: Integration Test
         run: npm run e2e:ci
-      - name: Release
+  release:
+    if: github.ref == 'refs/heads/master'
+    needs: [test]
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Semantic Release
         if: ${{ !env.ACT }}
-        run: npx semantic-release --branches master
+        run: npx semantic-release@19.0.5 --branches master
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
