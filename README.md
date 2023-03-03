@@ -1,6 +1,6 @@
 ![CI](https://github.com/simboonlong/utility/workflows/CI/badge.svg?branch=master&event=push) [![Netlify Status](https://api.netlify.com/api/v1/badges/0c993cb8-5cca-4c05-a543-a921ff62dee0/deploy-status)](https://app.netlify.com/sites/simboonlong-utility/deploys)
 
-![Statements](https://img.shields.io/badge/statements-97.32%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-94.02%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-96.42%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-96.85%25-brightgreen.svg?style=flat)
+![Statements](https://img.shields.io/badge/statements-97.61%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-94.87%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-96.55%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-97.23%25-brightgreen.svg?style=flat)
 
 # Utility
 
@@ -329,6 +329,32 @@ import { delay } from "@simboonlong/utility"
 const foo = async () => {
   await delay(1000);
 }
+```
+
+---
+
+#### binarySearch
+
+Binary search on array.
+
+```
+import { binarySearch } from "@simboonlong/utility"
+
+const index = binarySearch([0, 1, 2, 3], 1);
+// index returns 1, then do something with index
+```
+
+---
+
+#### binarySearchClosest
+
+Binary search closest value on array.
+
+```
+import { binarySearchClosest } from "@simboonlong/utility"
+
+const index = binarySearchClosest([0, 1, 2, 3], 1.2);
+// index returns 1, then do something with index
 ```
 
 ---
