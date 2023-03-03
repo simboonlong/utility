@@ -20,16 +20,8 @@ jobs:
         run: npm run test -- --coverage
       - name: Integration Test
         run: npm run e2e:ci
-  release:
-    if: github.ref == 'refs/heads/master'
-    needs: [test]
-    name: Release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - name: Semantic Release
-        if: ${{ !env.ACT }}
+      - name: Release
+        if: github.ref == 'refs/heads/master'
         run: npx semantic-release@19.0.5 --branches master
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
